@@ -36,7 +36,6 @@ export const navItems: NavItem[] = [
       { label: 'Website Maintenance', href: '/services/maintenance', description: 'Keep your site running perfectly' },
     ],
   },
-  { label: 'Portfolio', href: '/portfolio' },
   { label: 'Case Studies', href: '/case-studies' },
 ];
 

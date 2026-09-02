@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import Navbar from './components/layout/Navbar'
 import Hero from './components/sections/Hero'
-import PortfolioPage from './pages/PortfolioPage'
 
 export default function App() {
   const [activePage, setActivePage] = useState('/')
@@ -14,13 +13,7 @@ export default function App() {
   return (
     <>
       <Navbar activeHref={activePage} onNavigate={navigate} />
-      {activePage === '/portfolio' ? (
-        <PortfolioPage />
-      ) : (
-        <>
-          <Hero />
-        </>
-      )}
+      <Hero />
     </>
   )
 }
