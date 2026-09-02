@@ -1,11 +1,10 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 /* ==========================================================================
    TradeKing Marketing — Global Theme
    Tailwind CSS v4 — @theme directive
    ========================================================================== */
-
-@import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
 
 /* --------------------------------------------------------------------------
    Design Tokens
@@ -113,6 +112,7 @@ html {
 }
 
 body {
+  /* height: 200vh; */
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.6;
@@ -422,10 +422,10 @@ hr {
 /* ── Layout ─────────────────────────────────────────────────────────────── */
 
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
   z-index: 100;
   background-color: var(--color-bg-base);
   transition: box-shadow var(--transition-base);
@@ -437,7 +437,7 @@ hr {
 
 /* Spacer pushes page content below the fixed navbar */
 .navbar__spacer {
-  height: 72px;
+  height: 0;
 }
 
 .navbar__inner {
@@ -541,7 +541,7 @@ hr {
 }
 
 .nav-link--contact {
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
 }
 
 .nav-link--contact:hover {
@@ -963,5 +963,1058 @@ hr {
 @media (max-width: 480px) {
   .navbar__inner {
     padding-inline: 1rem;
+  }
+}
+
+/* ── Tablet navbar (1024px – 1200px) — desktop nav visible but needs tightening ── */
+@media (min-width: 1024px) and (max-width: 1200px) {
+  .navbar__inner {
+    padding-inline: 1.25rem;
+    padding-top: 10px;
+  }
+
+  /* Reduce the logo clearance zone so nav items have more room */
+  .navbar__left {
+    padding-right: 4rem;
+    gap: 0;
+  }
+
+  .navbar__right {
+    padding-left: 4rem;
+    gap: 0.25rem;
+  }
+
+  /* Tighter nav link padding at this width */
+  .nav-link {
+    padding: 0.4rem 0.45rem;
+    font-size: 0.8rem;
+  }
+
+  /* Shrink the logo slightly so it takes less center space */
+  .navbar__logo {
+    width: 90px;
+    height: 90px;
+    margin-bottom: -30px;
+  }
+
+  /* Show icon only for phone — number is too long at this width */
+  .navbar__phone span {
+    display: none;
+  }
+
+  .navbar__phone {
+    padding: 0.4rem 0.5rem;
+  }
+
+  /* Compact CTA */
+  .navbar__cta {
+    padding: 10px 10px;
+    font-size: 0.75rem;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+}
+
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+
+/* ── Section wrapper ─────────────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-bg-base);
+  min-height: calc(100svh - 72px);
+  display: flex;
+  align-items: center;
+}
+
+/* ── Background glow — centered, spans full section (matches reference) ───── */
+/*
+ * In the reference the deep maroon/crimson radial glow fills the entire
+ * hero and is heaviest at center-top. It creates the dramatic dark-room
+ * atmosphere without being a gradient on the text itself.
+ */
+.hero__glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    /* Primary warm glow — heavy at top-center, site of the headline */
+    radial-gradient(ellipse 80% 65% at 50% 40%,
+      rgba(120, 16, 6, 0.72) 0%,
+      rgba(80, 10, 4, 0.45) 38%,
+      transparent 72%),
+    /* Secondary softer spread across the full hero width */
+    radial-gradient(ellipse 110% 80% at 50% 50%,
+      rgba(70, 8, 3, 0.35) 0%,
+      transparent 65%);
+}
+
+/* ── Three-column grid ────────────────────────────────────────────────────── */
+
+.hero__grid {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: grid;
+  /* side columns flex to fill remaining space; center column is content */
+  grid-template-columns: 1fr minmax(0, 700px) 1fr;
+  align-items: flex-end;
+  /* mockups sit at the bottom of the row */
+  min-height: calc(100svh - 72px);
+}
+
+/* ── Centre content ───────────────────────────────────────────────────────── */
+
+.hero__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem 3rem;
+  /* ensure text renders above the glow layer */
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Headline ─────────────────────────────────────────────────────────────── */
+/*
+ * Reference layout:
+ *   Line 1 (white, wide): "AMERICA'S #1 AI AGENCY FOR"   → our version
+ *   Line 2 (white + red italic): "HOME SERVICE BRANDS"   → our version
+ *
+ * The headline is intentionally large so it nearly fills the centre column.
+ */
+
+.hero__headline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin: 0;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  /* Override global h1 size — we control it with the child spans */
+  font-size: inherit;
+}
+
+/* Line 1 — all white */
+.hero__hl-top {
+  display: block;
+  font-size: 58px;
+  font-weight: 800;
+  color: #ffffff;
+  white-space: nowrap;
+  line-height: 1.1;
+}
+
+/* Line 2 — "HOME" white, "SERVICE BRANDS" red italic.
+   Sized & weighted to match `.hero__hl-top` so both lines feel like one headline. */
+.hero__hl-bottom {
+  display: block;
+  font-size: 58px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+/* Red italic portion — "SERVICE BRANDS" */
+.hero__hl-accent {
+  color: #D5410B;
+  font-style: italic;
+  font-weight: 800;
+}
+
+/* ── Description ──────────────────────────────────────────────────────────── */
+
+.hero__desc {
+  margin-top: 1.375rem;
+  font-size: clamp(0.875rem, 1.25vw + 0.3rem, 1.0625rem);
+  line-height: 1.75;
+  color: #c0c0c0;
+  max-width: 500px;
+}
+
+/* ── Industry badges ──────────────────────────────────────────────────────── */
+
+.hero__industries {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.375rem 1.125rem;
+  margin-top: 1.125rem;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.hero-badge__icon {
+  color: #D5410B;
+  flex-shrink: 0;
+}
+
+/* ── Social proof ─────────────────────────────────────────────────────────── */
+
+.hero__proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* Avatar stack */
+.hero__avatars {
+  display: flex;
+  /* row-reverse so first avatar in array appears on the left */
+  flex-direction: row-reverse;
+}
+
+.hero__avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2.5px solid #080808;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.625rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0;
+  /* Overlap adjacent avatars */
+  margin-left: -10px;
+  flex-shrink: 0;
+}
+
+.hero__avatars .hero__avatar:last-child {
+  margin-left: 0;
+}
+
+/* Facebook circle */
+.hero__fb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  flex-shrink: 0;
+  margin-left: 0.25rem;
+}
+
+/* Rating */
+.hero__rating {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+}
+
+.hero__rating-top {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.hero__rating-score {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.hero-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.hero__rating-sub {
+  font-size: 0.725rem;
+  color: #a0a0a0;
+  white-space: nowrap;
+}
+
+/* ── CTA button ───────────────────────────────────────────────────────────── */
+
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: #FFFFFF;
+  background: var(--color-accent);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-fast);
+  user-select: none;
+  margin-top: 20px;
+  box-shadow:
+    0 4px 28px rgba(149, 61, 29, 0.55),
+    0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.hero__cta:hover {
+  background: #bf3a0a;
+  transform: translateY(-2px);
+}
+
+.hero__cta:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 12px rgba(213, 65, 11, 0.4);
+}
+
+.hero__cta:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+/* ── Side mockup columns ──────────────────────────────────────────────────── */
+
+.hero__side {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  /* clips the part of the image that bleeds past the column */
+}
+
+/* Left side: image anchors to the outer (left) edge of the column */
+.hero__side--left {
+  justify-content: flex-start;
+}
+
+/* Right side: image anchors to the outer (right) edge of the column */
+.hero__side--right {
+  justify-content: flex-end;
+}
+
+/* Mockup images */
+.hero__mockup {
+  display: block;
+  max-height: 520px;
+  flex-shrink: 0;
+  /* Multi-layer drop shadow for depth */
+  filter:
+    drop-shadow(0 20px 60px rgba(0, 0, 0, 0.8)) drop-shadow(0 4px 16px rgba(0, 0, 0, 0.6));
+}
+
+/* Left laptop — anchored to left edge, left side slightly cropped */
+.hero__mockup--left {
+  width: 115%;
+  /* wider than column so it bleeds past left edge */
+  max-width: 620px;
+  object-fit: contain;
+  margin-left: -12%;
+  /* shift left → left side bleeds out and gets clipped */
+  transform: perspective(1400px) rotateY(10deg) rotateX(3deg);
+  transform-origin: right bottom;
+}
+
+/* Right laptop — anchored to right edge */
+.hero__mockup--right {
+  display: block;
+  flex-shrink: 0;
+  object-fit: contain;
+  max-height: 300px;
+  /* Slight bleed past the right column edge */
+  margin-right: -8%;
+}
+
+/* ==========================================================================
+   Hero — Responsive Breakpoints
+   ========================================================================== */
+
+/* ── Wide desktop (≥1400px) ──────────────────────────────────────────────── */
+@media (min-width: 1400px) {
+  .hero__grid {
+    grid-template-columns: 1fr minmax(0, 800px) 1fr;
+  }
+}
+
+/* ── Standard desktop / large screens (1201px – 1399px) — just tighten columns ── */
+@media (min-width: 1201px) and (max-width: 1399px) {
+  .hero__grid {
+    grid-template-columns: 0.85fr minmax(0, 700px) 0.85fr;
+  }
+
+  .hero__mockup--left {
+    max-width: 500px;
+  }
+}
+
+/* ── Tablet hero (1024px – 1200px) — mockups flanking CTA with negative offset ── */
+@media (min-width: 1024px) and (max-width: 1200px) {
+  .hero {
+    min-height: auto;
+    overflow: hidden;
+  }
+
+  .hero__grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    min-height: auto;
+  }
+
+  .hero__body {
+    grid-column: 1;
+    padding: 3rem 3rem 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero__side--left {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+
+  .hero__side--right {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+
+  .hero__mockup--left {
+    width: 280px;
+    height: auto;
+    object-fit: cover;
+    left: -30px;
+    position: relative;
+    transform: perspective(1400px) rotateY(10deg) rotateX(3deg);
+    transform-origin: right bottom;
+  }
+
+  .hero__mockup--right {
+    width: 280px;
+    height: auto;
+    object-fit: cover;
+    right: -30px;
+    position: relative;
+    transform: perspective(1400px) rotateY(-8deg) rotateX(2deg);
+    transform-origin: left bottom;
+  }
+
+  .hero__hl-top {
+    font-size: 46px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .hero__hl-bottom {
+    font-size: 46px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+}
+
+/* ── Narrow-tablet / large-mobile (960px – 1023px) — treated by ≤960 rule ── */
+
+
+@media (max-width: 960px) {
+  .hero {
+    min-height: auto;
+  }
+
+  /* Row 1: content (full width) — Row 2: left mockup | right mockup */
+  .hero__grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    min-height: auto;
+    /* Center vertically so content isn't pushed to the bottom of a tall viewport */
+    align-items: center;
+  }
+
+  /* Content spans both columns */
+  .hero__body {
+    grid-row: 1;
+    grid-column: 1 / -1;
+    /* Reduced top padding — navbar already provides visual separation */
+    padding: 2rem 1.5rem 1.5rem;
+  }
+
+  /* Left mockup — row 2, left column, anchors toward center.
+   * position:relative overrides the Tailwind `absolute` class so the
+   * element participates in the two-row grid layout. */
+  .hero__side--left {
+    position: relative;
+    left: auto;
+    grid-row: 2;
+    grid-column: 1;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-top: 0.5rem;
+  }
+
+  /* Right mockup — row 2, right column, shown on tablet */
+  .hero__side--right {
+    position: relative;
+    right: auto;
+    display: flex;
+    grid-row: 2;
+    grid-column: 2;
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin-top: 0.5rem;
+  }
+
+  /* Left mockup: keep tilt, fit within half viewport */
+  .hero__mockup--left {
+    width: 100%;
+    max-width: 420px;
+    max-height: 300px;
+    margin-left: -8%;
+    transform: perspective(1400px) rotateY(10deg) rotateX(3deg);
+    transform-origin: right bottom;
+  }
+
+  /* Right mockup: no bleed, fit within half column */
+  .hero__mockup--right {
+    max-height: 260px;
+    margin-right: 0;
+    width: auto;
+  }
+
+  .hero__hl-top {
+    white-space: normal;
+    font-size: 46px;
+    font-weight: 800;
+  }
+
+  .hero__hl-bottom {
+    white-space: normal;
+    font-size: 46px;
+    font-weight: 800;
+  }
+}
+
+/* ── Mobile (≤600px) ─────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .hero {
+    height: auto;
+    min-height: auto;
+    overflow: visible; /* ← was "hidden", which clipped the right mockup */
+  }
+
+  .hero__grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    min-height: auto;
+    overflow: visible;
+  }
+
+  .hero__body {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    padding: 1.25rem 1.25rem 0; /* ← was 0.5rem bottom, now 0 to close gap to mockups */
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero__side--left {
+    position: relative;
+    left: auto;
+    top: auto;
+    grid-row: 2;
+    grid-column: 1;
+    z-index: 1;
+    display: flex;
+    justify-content: flex-end;   /* ← was flex-start, pushes image toward center */
+    align-items: flex-end;       /* ← was flex-start, anchors to bottom so it's visible */
+    overflow: visible;
+  }
+
+  .hero__side--right {
+    position: relative;
+    right: auto;
+    top: auto;
+    grid-row: 2;
+    grid-column: 2;
+    z-index: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;       /* ← was flex-start, anchors to bottom */
+    overflow: visible;
+  }
+
+  .hero__mockup--left {
+    width: 150px;                /* ← was 140px, slightly wider so it's visible */
+    height: auto;
+    object-fit: contain;
+    left: -100px;                     /* ← was -12px which pulled it off-screen */
+    position: relative;
+    transform: perspective(600px) rotateY(8deg) rotateX(2deg);
+    transform-origin: right bottom;
+  }
+
+  .hero__mockup--right {
+    width: 150px;                /* ← was 140px */
+    height: auto;
+    object-fit: contain;
+    right: -100px;                    /* ← was -12px which caused clipping */
+    position: relative;
+    transform: perspective(600px) rotateY(-6deg) rotateX(2deg);
+    transform-origin: left bottom;
+  }
+
+  /* rest of the block unchanged */
+  .hero__hl-top {
+    font-size: 28px;
+    font-weight: 800;
+  }
+
+  .hero__hl-bottom {
+    font-size: 28px;
+    font-weight: 800;
+  }
+
+  .hero__desc {
+    font-size: 0.875rem;
+  }
+
+  .hero-badge {
+    font-size: 0.875rem;
+  }
+
+  .hero__cta {
+    font-size: 0.8125rem;
+    padding: 0.9rem 1.875rem;
+    letter-spacing: 0.05em;
+    margin-top: 0.75rem;         /* ← tighten CTA bottom margin before mockups */
+  }
+}
+
+/* ── Extra small (≤400px) ────────────────────────────────────────────────── */
+@media (max-width: 400px) {
+  .hero__side--left {
+    display: none;
+  }
+
+  .hero__side--right {
+    top: 55%;
+  }
+
+  .hero__mockup--right {
+    width: 200px;
+    margin-right: -16px;
+  }
+
+  .hero__hl-top {
+    font-size: 28px;
+    font-weight: 800;
+  }
+
+  .hero__hl-bottom {
+    font-size: 28px;
+    font-weight: 800;
+  }
+
+  .hero__cta {
+    white-space: normal;
+    text-align: center;
+    line-height: 1.4;
+    padding-inline: 1.5rem;
+  }
+}
+
+
+/* ==========================================================================
+   Portfolio Page
+   ========================================================================== */
+
+.portfolio-page {
+  width: 100%;
+}
+
+/* ── Hero ─────────────────────────────────────────────────────────────────── */
+
+.portfolio-hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-bg-base);
+  padding-block: 6rem 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portfolio-hero__glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 40%,
+      rgba(120, 16, 6, 0.65) 0%,
+      rgba(80, 10, 4, 0.38) 38%,
+      transparent 70%);
+}
+
+.portfolio-hero__content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 720px;
+  padding-inline: 1.5rem;
+}
+
+.portfolio-hero__eyebrow {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.portfolio-hero__title {
+  font-size: clamp(2.25rem, 4vw + 0.75rem, 4.25rem);
+  font-weight: 900;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  margin-bottom: 1rem;
+}
+
+.portfolio-hero__subtitle {
+  font-size: clamp(0.9375rem, 1.5vw + 0.25rem, 1.125rem);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 540px;
+  margin-inline: auto;
+}
+
+/* ── Portfolio Section (page-level) ────────────────────────────────────────── */
+
+.portfolio-section {
+  width: 100%;
+  padding-block: 4rem 6rem;
+  background-color: var(--color-bg-secondary);
+}
+
+/* ── Filter Tabs ─────────────────────────────────────────────────────────── */
+
+.portfolio-filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 2rem;
+  margin-bottom: 3rem;
+}
+
+.portfolio-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.portfolio-filter-btn:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.portfolio-filter-btn.active {
+  color: #ffffff;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+/* ── Empty State ─────────────────────────────────────────────────────────── */
+
+.portfolio-empty {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  padding-block: 4rem;
+}
+
+/* ── Page CTA ─────────────────────────────────────────────────────────────── */
+
+.portfolio-cta {
+  width: 100%;
+  padding-block: 5rem;
+  background-color: var(--color-bg-base);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.portfolio-cta__title {
+  font-size: clamp(1.5rem, 2.5vw + 0.5rem, 2.5rem);
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.portfolio-cta__text {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  max-width: 440px;
+}
+
+/* ==========================================================================
+   Portfolio Section
+   ========================================================================== */
+
+.portfolio {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-bg-secondary);
+  padding-block: 6rem;
+}
+
+.portfolio__glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 100%,
+      rgba(120, 16, 6, 0.35) 0%,
+      transparent 65%);
+}
+
+.portfolio__header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 680px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.portfolio__title {
+  font-size: clamp(1.75rem, 3vw + 0.5rem, 3rem);
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.portfolio__subtitle {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.portfolio__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+/* ── Portfolio Card ───────────────────────────────────────────────────────── */
+
+.portfolio-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-card:hover {
+  border-color: rgba(198, 90, 22, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  transform: translateY(-4px);
+}
+
+.portfolio-card__image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.portfolio-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.portfolio-card:hover .portfolio-card__image {
+  transform: scale(1.04);
+}
+
+.portfolio-card__industry {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(198, 90, 22, 0.3);
+}
+
+.portfolio-card__body {
+  padding: 1.25rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.portfolio-card__title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.portfolio-card__desc {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.portfolio-card__metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-bottom: 1.25rem;
+}
+
+.portfolio-metric {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: rgba(198, 90, 22, 0.12);
+  border: 1px solid rgba(198, 90, 22, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.02em;
+}
+
+.portfolio-card__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: 0.625rem 1.25rem;
+  text-decoration: none;
+  transition:
+    background-color var(--transition-base),
+    transform var(--transition-fast);
+  align-self: flex-start;
+}
+
+.portfolio-card__cta:hover {
+  background: #bf3a0a;
+  transform: translateY(-1px);
+}
+
+.portfolio-card__cta:active {
+  transform: translateY(0);
+}
+
+/* ── Portfolio Responsive ─────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .portfolio {
+    padding-block: 4rem;
+  }
+
+  .portfolio__grid {
+    padding-inline: 1.25rem;
+    gap: 1.25rem;
+  }
+
+  .portfolio__header {
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio__grid {
+    grid-template-columns: 1fr;
   }
 }

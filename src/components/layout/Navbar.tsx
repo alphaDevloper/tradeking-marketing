@@ -34,9 +34,10 @@ function Dropdown({ items, isOpen }: DropdownProps) {
 interface NavLinkProps {
   item: (typeof navItems)[number];
   isActive: boolean;
+  onNavigate: (href: string) => void;
 }
 
-function NavLink({ item, isActive }: NavLinkProps) {
+function NavLink({ item, isActive, onNavigate }: NavLinkProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const hasDropdown = Boolean(item.dropdown?.length);
@@ -55,12 +56,12 @@ function NavLink({ item, isActive }: NavLinkProps) {
 
   if (!hasDropdown) {
     return (
-      <a
-        href={item.href}
+      <button
+        onClick={() => onNavigate(item.href)}
         className={`nav-link ${isActive ? 'nav-link--active' : ''}`}
       >
         {item.label}
-      </a>
+      </button>
     );
   }
 
@@ -96,9 +97,10 @@ interface MobileNavProps {
   isOpen: boolean;
   onClose: () => void;
   activePath: string;
+  onNavigate: (href: string) => void;
 }
 
-function MobileNav({ isOpen, onClose, activePath }: MobileNavProps) {
+function MobileNav({ isOpen, onClose, activePath, onNavigate }: MobileNavProps) {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   // Lock body scroll when open
@@ -168,27 +170,25 @@ function MobileNav({ isOpen, onClose, activePath }: MobileNavProps) {
                     <div className={`mobile-dropdown ${isDropdownOpen ? 'mobile-dropdown--open' : ''}`}>
                       <div className="mobile-dropdown__inner">
                         {item.dropdown!.map((sub) => (
-                          <a
+                          <button
                             key={sub.href}
-                            href={sub.href}
+                            onClick={() => { onNavigate(sub.href); onClose(); }}
                             className="mobile-dropdown__item"
-                            onClick={onClose}
                           >
                             <ArrowRight size={13} className="mobile-dropdown__arrow" aria-hidden="true" />
                             {sub.label}
-                          </a>
+                          </button>
                         ))}
                       </div>
                     </div>
                   </>
                 ) : (
-                  <a
-                    href={item.href}
+                  <button
+                    onClick={() => { onNavigate(item.href); onClose(); }}
                     className={`mobile-nav-link ${isActive ? 'mobile-nav-link--active' : ''}`}
-                    onClick={onClose}
                   >
                     {item.label}
-                  </a>
+                  </button>
                 )}
               </div>
             );
@@ -210,9 +210,12 @@ function MobileNav({ isOpen, onClose, activePath }: MobileNavProps) {
             <Phone size={16} aria-hidden="true" />
             {phone.display}
           </a>
-          <a href={ctaHref} className="btn-primary mobile-cta" onClick={onClose}>
+          <button
+            onClick={() => { onNavigate(ctaHref); onClose(); }}
+            className="btn-primary mobile-cta"
+          >
             {ctaLabel}
-          </a>
+          </button>
         </div>
       </div>
     </>
@@ -221,7 +224,7 @@ function MobileNav({ isOpen, onClose, activePath }: MobileNavProps) {
 
 // ─── Navbar ───────────────────────────────────────────────────────────────────
 
-export default function Navbar() {
+export default function Navbar({ activeHref = '/', onNavigate }: { activeHref?: string; onNavigate?: (href: string) => void }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -232,8 +235,8 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Active path (simple pathname match — upgrade to router when routing is added)
-  const activePath = typeof window !== 'undefined' ? window.location.pathname : '/';
+  // Active path
+  const activePath = activeHref;
 
   return (
     <>
@@ -250,6 +253,7 @@ export default function Navbar() {
                 key={item.label}
                 item={item}
                 isActive={activePath === item.href}
+                onNavigate={onNavigate ?? ((_) => {})}
               />
             ))}
           </nav>
@@ -267,16 +271,23 @@ export default function Navbar() {
 
           {/* ── Right actions ── */}
           <div className="navbar__right">
-            <a href="/contact" className="nav-link nav-link--contact">
+            <button
+              onClick={() => onNavigate?.('/contact')}
+              className="nav-link nav-link--contact"
+            >
               Contact Us
-            </a>
+            </button>
             <a href={phone.href} className="navbar__phone" aria-label={`Call us at ${phone.display}`}>
               <Phone size={15} strokeWidth={2} aria-hidden="true" />
               <span>{phone.display}</span>
             </a>
-            <a href={ctaHref} className="navbar__cta btn-primary" id="navbar-cta">
+            <button
+              onClick={() => onNavigate?.(ctaHref)}
+              className="navbar__cta btn-primary"
+              id="navbar-cta"
+            >
               {ctaLabel}
-            </a>
+            </button>
 
             {/* Mobile hamburger */}
             <button
@@ -300,6 +311,7 @@ export default function Navbar() {
         isOpen={mobileOpen}
         onClose={() => setMobileOpen(false)}
         activePath={activePath}
+        onNavigate={onNavigate ?? ((_) => {})}
       />
     </>
   );
