@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Navbar from './components/layout/Navbar'
 import Hero from './components/sections/Hero'
+import Services from './components/sections/Services'
 
 export default function App() {
   const [activePage, setActivePage] = useState('/')
@@ -14,6 +15,7 @@ export default function App() {
     <>
       <Navbar activeHref={activePage} onNavigate={navigate} />
       <Hero />
+      <Services />
     </>
   )
 }
