@@ -129,11 +129,6 @@ export default function Hero() {
             src={laptop}
             alt=""
             className="hero__mockup hero__mockup--right"
-            style={{
-              filter: 'drop-shadow(0 20px 60px rgba(0,0,0,0.8)) drop-shadow(0 4px 16px rgba(0,0,0,0.6))',
-              transform: 'perspective(1400px) rotateY(-8deg) rotateX(2deg)',
-              transformOrigin: 'left bottom',
-            }}
             loading="eager"
           />
         </div>

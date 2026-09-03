@@ -104,6 +104,7 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -1351,6 +1352,10 @@ hr {
   max-height: 300px;
   /* Slight bleed past the right column edge */
   margin-right: -8%;
+  filter:
+    drop-shadow(0 20px 60px rgba(0, 0, 0, 0.8)) drop-shadow(0 4px 16px rgba(0, 0, 0, 0.6));
+  transform: perspective(1400px) rotateY(-8deg) rotateX(2deg);
+  transform-origin: left bottom;
 }
 
 /* ==========================================================================
@@ -1375,8 +1380,8 @@ hr {
   }
 }
 
-/* ── Tablet hero (1024px – 1200px) — mockups flanking CTA with negative offset ── */
-@media (min-width: 1024px) and (max-width: 1200px) {
+/* ── Tablet hero (768px – 1200px) — mockups flanking content from outer edges ── */
+@media (min-width: 768px) and (max-width: 1200px) {
   .hero {
     min-height: auto;
     overflow: hidden;
@@ -1415,7 +1420,7 @@ hr {
   }
 
   .hero__mockup--left {
-    width: 280px;
+    width: 260px;                /* ← tighter than desktop so tablets feel balanced */
     height: auto;
     object-fit: cover;
     left: -30px;
@@ -1425,7 +1430,7 @@ hr {
   }
 
   .hero__mockup--right {
-    width: 280px;
+    width: 260px;
     height: auto;
     object-fit: cover;
     right: -30px;
@@ -1447,10 +1452,28 @@ hr {
   }
 }
 
-/* ── Narrow-tablet / large-mobile (960px – 1023px) — treated by ≤960 rule ── */
+/* ── Small-tablet tweak (768px – 900px) — shrink mockups so narrower viewports stay clean ── */
+@media (min-width: 768px) and (max-width: 900px) {
+  .hero__mockup--left,
+  .hero__mockup--right {
+    width: 200px;
+  }
 
+  .hero__hl-top {
+    font-size: 38px;
+  }
 
-@media (max-width: 960px) {
+  .hero__hl-bottom {
+    font-size: 38px;
+  }
+
+  .hero__body {
+    padding: 2.5rem 2rem 1.75rem;
+  }
+}
+
+/* ── Narrow-tablet / large-mobile (≤767px) — 2-column stacked mockups below content ── */
+@media (max-width: 767px) {
   .hero {
     min-height: auto;
   }
@@ -1469,7 +1492,7 @@ hr {
     grid-row: 1;
     grid-column: 1 / -1;
     /* Reduced top padding — navbar already provides visual separation */
-    padding: 2rem 1.5rem 1.5rem;
+    padding: 2rem 1.5rem 2rem;       /* ← added bottom spacing so CTA breathes above mockups */
   }
 
   /* Left mockup — row 2, left column, anchors toward center.
@@ -1482,7 +1505,7 @@ hr {
     grid-column: 1;
     justify-content: flex-end;
     align-items: flex-end;
-    margin-top: 0.5rem;
+    margin-top: 1.25rem;            /* ← visual gap from CTA */
   }
 
   /* Right mockup — row 2, right column, shown on tablet */
@@ -1494,7 +1517,7 @@ hr {
     grid-column: 2;
     justify-content: flex-start;
     align-items: flex-end;
-    margin-top: 0.5rem;
+    margin-top: 1.25rem;            /* ← visual gap from CTA */
   }
 
   /* Left mockup: keep tilt, fit within half viewport */
@@ -1532,7 +1555,7 @@ hr {
   .hero {
     height: auto;
     min-height: auto;
-    overflow: visible; /* ← was "hidden", which clipped the right mockup */
+    overflow: hidden; /* ← clip any mockup overflow so it never causes horizontal page scroll */
   }
 
   .hero__grid {
@@ -1560,7 +1583,7 @@ hr {
     display: flex;
     justify-content: flex-end;   /* ← was flex-start, pushes image toward center */
     align-items: flex-end;       /* ← was flex-start, anchors to bottom so it's visible */
-    overflow: visible;
+    overflow: hidden;            /* ← clip the slight visual overflow inside the column */
   }
 
   .hero__side--right {
@@ -1573,24 +1596,30 @@ hr {
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;       /* ← was flex-start, anchors to bottom */
-    overflow: visible;
+    overflow: hidden;            /* ← clip the slight visual overflow inside the column */
   }
 
   .hero__mockup--left {
-    width: 150px;                /* ← was 140px, slightly wider so it's visible */
+    width: 130px;                /* fits within left half without extending past viewport */
     height: auto;
+    max-width: none;
+    max-height: 200px;
     object-fit: contain;
-    left: -100px;                     /* ← was -12px which pulled it off-screen */
+    left: -120px;                 /* slight bleed past left edge, clipped by .hero__side overflow */
+    margin-left: 0;
     position: relative;
     transform: perspective(600px) rotateY(8deg) rotateX(2deg);
     transform-origin: right bottom;
   }
 
   .hero__mockup--right {
-    width: 150px;                /* ← was 140px */
+    width: 130px;
     height: auto;
+    max-width: none;
+    max-height: 200px;
     object-fit: contain;
-    right: -100px;                    /* ← was -12px which caused clipping */
+    right: -120px;                /* slight bleed past right edge, clipped by .hero__side overflow */
+    margin-right: 0;
     position: relative;
     transform: perspective(600px) rotateY(-6deg) rotateX(2deg);
     transform-origin: left bottom;
@@ -1621,21 +1650,138 @@ hr {
     letter-spacing: 0.05em;
     margin-top: 0.75rem;         /* ← tighten CTA bottom margin before mockups */
   }
+
+  .hero__body {
+    padding-bottom: 2rem;        /* ← breathing room between CTA and mockups */
+  }
+
+  .hero__side--left,
+  .hero__side--right {
+    margin-top: 1.25rem;         /* ← visual gap between CTA row and mockups */
+  }
+
+  /* ── Trust bar — keep on one line at all mobile widths ── */
+  .hero__proof {
+    flex-wrap: nowrap;            /* ← never break across rows */
+    gap: 0.5rem;
+  }
+
+  .hero__avatar {
+    width: 30px;
+    height: 30px;
+    font-size: 0.5625rem;
+    border-width: 2px;
+    margin-left: -8px;
+  }
+
+  .hero__fb {
+    width: 28px;
+    height: 28px;
+    margin-left: 0.25rem;
+  }
+
+  .hero__fb svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .hero__rating {
+    gap: 0.1rem;
+  }
+
+  .hero__rating-top {
+    gap: 0.25rem;
+  }
+
+  .hero__rating-score {
+    font-size: 0.875rem;
+  }
+
+  .hero-stars {
+    gap: 0;
+  }
+
+  .hero-stars svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .hero__rating-sub {
+    font-size: 0.65rem;
+  }
 }
 
 /* ── Extra small (≤400px) ────────────────────────────────────────────────── */
 @media (max-width: 400px) {
   .hero__side--left {
-    display: none;
+    display: flex;
   }
 
   .hero__side--right {
-    top: 55%;
+    top: auto;
+  }
+
+  .hero__body {
+    padding: 1.25rem 1rem 1.5rem;    /* ← breathing room above mockups */
+  }
+
+  .hero__side--left,
+  .hero__side--right {
+    margin-top: 0.5rem;
+    padding-bottom: 1rem;             /* ← air below mockups before next section */
+  }
+
+  /* ── Trust bar — extra-compact so the sub text never wraps ── */
+  .hero__proof {
+    gap: 0.35rem;
+  }
+
+  .hero__avatar {
+    width: 26px;
+    height: 26px;
+    font-size: 0.5rem;
+    border-width: 1.5px;
+    margin-left: -6px;
+  }
+
+  .hero__fb {
+    width: 24px;
+    height: 24px;
+    margin-left: 0.15rem;
+  }
+
+  .hero__fb svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .hero__rating-top {
+    gap: 0.2rem;
+  }
+
+  .hero__rating-score {
+    font-size: 0.8125rem;
+  }
+
+  .hero-stars svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .hero__rating-sub {
+    font-size: 0.6rem;
+  }
+
+  .hero__mockup--left {
+    width: 110px;
+    max-height: 170px;
+    left: -100px;
   }
 
   .hero__mockup--right {
-    width: 200px;
-    margin-right: -16px;
+    width: 110px;
+    max-height: 170px;
+    right: -100px;
   }
 
   .hero__hl-top {
