@@ -94,16 +94,18 @@ function ServiceCard({ title, image, imageAlt, features, highlight }: ServiceCar
 
 export default function Services() {
   // Each click of the arrow advances/regresses the carousel by one card.
-  // CSS keeps 3 cards in view on desktop and 1 on mobile, but the
-  // translate-X math is the same: shift by one slide's width.
+  // CSS keeps 3 cards in view on desktop, 2 on tablet and 1 on mobile;
+  // the translate-X math uses `--services-visible` for both the slide width
+  // and the JS offset, so each click shifts by exactly one card.
+  const total = services.length;
   const [index, setIndex] = useState(0);
 
   function prev() {
-    setIndex((i) => (i - 1 + services.length) % services.length);
+    setIndex((i) => (i - 1 + total) % total);
   }
 
   function next() {
-    setIndex((i) => (i + 1) % services.length);
+    setIndex((i) => (i + 1) % total);
   }
 
   return (
@@ -139,7 +141,7 @@ export default function Services() {
                 className="services__slide"
                 role="group"
                 aria-roledescription="slide"
-                aria-label={`${i + 1} of ${services.length}: ${s.title}`}
+                aria-label={`${i + 1} of ${total}: ${s.title}`}
               >
                 <ServiceCard
                   title={s.title}

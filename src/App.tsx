@@ -3,6 +3,7 @@ import Navbar from './components/layout/Navbar'
 import Hero from './components/sections/Hero'
 import Services from './components/sections/Services'
 import WhyChooseUs from './components/sections/WhyChooseUs'
+import FeaturedWork from './components/sections/FeaturedWork'
 
 export default function App() {
   const [activePage, setActivePage] = useState('/')
@@ -18,6 +19,7 @@ export default function App() {
       <Hero />
       <Services />
       <WhyChooseUs />
+      <FeaturedWork />
     </>
   )
 }
