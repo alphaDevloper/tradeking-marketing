@@ -93,6 +93,9 @@ function ServiceCard({ title, image, imageAlt, features, highlight }: ServiceCar
 // ── Services section ─────────────────────────────────────────────────────────
 
 export default function Services() {
+  // Each click of the arrow advances/regresses the carousel by one card.
+  // CSS keeps 3 cards in view on desktop and 1 on mobile, but the
+  // translate-X math is the same: shift by one slide's width.
   const [index, setIndex] = useState(0);
 
   function prev() {
@@ -123,35 +126,20 @@ export default function Services() {
           </p>
         </header>
 
-        {/* ── Service cards grid (desktop) ── */}
-        <div className="services__grid" role="list">
-          {services.map((s) => (
-            <div key={s.id} role="listitem">
-              <ServiceCard
-                title={s.title}
-                image={s.image}
-                imageAlt={s.imageAlt}
-                features={s.features}
-                highlight={s.highlight}
-              />
-            </div>
-          ))}
-        </div>
-
-        {/* ── Service cards carousel (tablet / mobile) ── */}
+        {/* ── Horizontal carousel ── */}
         <div className="services__viewport" aria-roledescription="carousel">
           <div
             className="services__track"
-            style={{ transform: `translateX(-${index * 100}%)` }}
+            style={{ transform: `translateX(calc(-${index} * 100% / var(--services-visible, 3)))` }}
             aria-live="polite"
           >
-            {services.map((s) => (
+            {services.map((s, i) => (
               <div
                 key={s.id}
                 className="services__slide"
                 role="group"
                 aria-roledescription="slide"
-                aria-label={`${index + 1} of ${services.length}: ${s.title}`}
+                aria-label={`${i + 1} of ${services.length}: ${s.title}`}
               >
                 <ServiceCard
                   title={s.title}

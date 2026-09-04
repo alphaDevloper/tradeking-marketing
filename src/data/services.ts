@@ -111,4 +111,27 @@ export const services: Service[] = [
       },
     ],
   },
+  {
+    id: 'ppc-ads',
+    title: 'PPC & Paid Advertising',
+    image: 'https://picsum.photos/seed/ppc-ads/800/520',
+    imageAlt: 'PPC campaign dashboard showing conversions',
+    features: [
+      {
+        title: 'Google Ads Management',
+        description: 'High-intent traffic from search campaigns.',
+        icon: Megaphone,
+      },
+      {
+        title: 'Meta Ads',
+        description: 'Targeted social campaigns on Facebook & Instagram.',
+        icon: Target,
+      },
+      {
+        title: 'Retargeting',
+        description: 'Bring back visitors who didn’t convert.',
+        icon: Users,
+      },
+    ],
+  },
 ];
