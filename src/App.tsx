@@ -5,6 +5,7 @@ import Services from './components/sections/Services'
 import WhyChooseUs from './components/sections/WhyChooseUs'
 import FeaturedWork from './components/sections/FeaturedWork'
 import FAQ from './components/sections/FAQ'
+import Footer from './components/layout/Footer'
 
 export default function App() {
   const [activePage, setActivePage] = useState('/')
@@ -22,6 +23,7 @@ export default function App() {
       <WhyChooseUs />
       <FeaturedWork />
       <FAQ />
+      <Footer />
     </>
   )
 }

@@ -3158,3 +3158,321 @@ hr {
   }
 }
 
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer {
+  position: relative;
+  width: 100%;
+  background-color: #050505;
+  /* Subtle dark red gradient bleeding in from the bottom-right */
+  background-image:
+    radial-gradient(
+      ellipse at bottom right,
+      rgba(122, 18, 5, 0.55) 0%,
+      rgba(60, 8, 2, 0.25) 35%,
+      rgba(0, 0, 0, 0) 70%
+    );
+  background-repeat: no-repeat;
+  color: var(--color-text-primary);
+  overflow: hidden;
+}
+
+/* ── Marquee banner ───────────────────────────────────────────────────────── */
+
+.footer__marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #000000;
+  padding-block: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.footer__marquee-track {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  /* The track is 6 copies of the unit; we translate by -50% (3 copies) so
+     when one full set scrolls past, the next set is already in place.
+     This produces a seamless infinite loop. */
+  animation: footer-marquee 28s linear infinite;
+  will-change: transform;
+}
+
+/* Pause the slide while the user hovers or focuses the marquee so they
+   can read the text without it scrolling out from under them. */
+.footer__marquee:hover .footer__marquee-track,
+.footer__marquee:focus-within .footer__marquee-track {
+  animation-play-state: paused;
+}
+
+.footer__marquee-unit {
+  display: inline-flex;
+  align-items: center;
+  gap: 3rem;
+  padding-inline: 1.5rem;
+}
+
+.footer__marquee-text {
+  font-size: 129px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: #ffffff;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.footer__marquee-star {
+  font-size: 129px;
+  line-height: 1;
+  color: var(--color-accent);
+  font-weight: 900;
+  /* Visually center the star vertically relative to the text cap height */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes footer-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* -50% because the track contains 2 effective copies (3 visible × 2 sets
+       worth of content per "loop unit"). With 6 units rendered, -50% advances
+       exactly 3 units which equals the start of the 4th, looping seamlessly. */
+    transform: translateX(-50%);
+  }
+}
+
+/* ── Body / container ────────────────────────────────────────────────────── */
+
+.footer__body {
+  padding-block: 4rem;
+}
+
+.footer__container {
+  display: block;
+}
+
+/* ── 4-column grid ───────────────────────────────────────────────────────── */
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* ── Headings ────────────────────────────────────────────────────────────── */
+
+.footer__agency-name {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.footer__heading {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+
+.footer__heading--cta {
+  margin-top: 1.25rem;
+}
+
+/* ── Body / contact lines ────────────────────────────────────────────────── */
+
+.footer__line {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.55;
+  margin: 0;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a.footer__line:hover {
+  color: #ffffff;
+}
+
+.footer__tagline {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.55;
+  margin: 0.75rem 0 0;
+  max-width: 32ch;
+}
+
+/* ── Link lists ──────────────────────────────────────────────────────────── */
+
+.footer__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.footer__link {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer__link:hover {
+  color: #ffffff;
+}
+
+/* ── CTA button ──────────────────────────────────────────────────────────── */
+
+.footer__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+  background: var(--color-accent);
+  border: 0;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-fast);
+  box-shadow: 0 6px 20px rgba(213, 65, 11, 0.35);
+}
+
+.footer__cta:hover {
+  background: var(--color-accent-hover);
+  box-shadow: 0 10px 28px rgba(213, 65, 11, 0.5);
+  transform: translateY(-1px);
+}
+
+.footer__cta:active {
+  transform: translateY(0);
+}
+
+.footer__cta:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* ── Footer — Responsive ─────────────────────────────────────────────────── */
+
+/* Large tablet (≤1024px) */
+@media (max-width: 1024px) {
+  .footer__marquee-text,
+  .footer__marquee-star {
+    font-size: 96px;
+  }
+
+  .footer__grid {
+    grid-template-columns: 1.3fr 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .footer__body {
+    padding-block: 3rem;
+  }
+}
+
+/* Small tablet (≤768px) — 2 columns */
+@media (max-width: 768px) {
+  .footer__marquee-text,
+  .footer__marquee-star {
+    font-size: 72px;
+  }
+
+  .footer__marquee-unit {
+    gap: 2rem;
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.25rem;
+  }
+
+  .footer__col--connect {
+    /* Connect column spans the full second row on tablet */
+    grid-column: 1 / -1;
+    max-width: 360px;
+  }
+}
+
+/* Mobile (≤600px) — single column */
+@media (max-width: 600px) {
+  .footer__marquee-text,
+  .footer__marquee-star {
+    font-size: 56px;
+  }
+
+  .footer__marquee-unit {
+    gap: 1.25rem;
+    padding-inline: 1rem;
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer__col--connect {
+    grid-column: auto;
+    max-width: none;
+  }
+
+  .footer__body {
+    padding-block: 2.5rem;
+  }
+
+  .footer__agency-name {
+    font-size: 1.5rem;
+  }
+}
+
+/* Extra small (≤400px) */
+@media (max-width: 400px) {
+  .footer__marquee-text,
+  .footer__marquee-star {
+    font-size: 44px;
+  }
+
+  .footer__marquee-unit {
+    gap: 1rem;
+  }
+
+  .footer__heading {
+    font-size: 18px;
+  }
+}
+
