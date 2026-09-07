@@ -1,15 +1,39 @@
+// src/components/sections/AboutHero.tsx
+// About page hero — dark dramatic composition matching the reference design.
+// Composition (top → bottom):
+//   • "OUR STORY" pill badge (red border, red text)
+//   • Large headline with red→orange gradient on "#1 CHOICE"
+//   • Supporting subtitle
+//   • Industry badges row (Roofing / HVAC / Plumbing / Solar)
+//   • Social proof row (4 avatars + Facebook + 5.0 ★ + tagline)
+//   • Primary CTA (red→orange gradient)
+//   • Two tilted laptop mockups anchored at bottom corners emerging from rubble
+
 import { CheckCircle2, Star } from 'lucide-react';
 import laptopDemo from '../../assets/laptop demo.png';
 import laptop from '../../assets/laptop.png';
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
-const defaultIndustries = ['Roofing', 'HVAC', 'Plumbing', 'Solar'];
+const aboutHeroData = {
+  eyebrow: 'OUR STORY',
+  // Headline is a single H1. The visual wrap is handled in markup (two lines).
+  // White text everywhere except "#1 CHOICE" which uses a red→orange gradient.
+  headlineLine1: 'WE BUILD AI WEBSITES THAT MAKE',
+  headlineLine2Lead: 'CONTRACTORS THE',
+  headlineAccent: '#1 CHOICE',
+  headlineLine2Tail: 'IN THEIR MARKET',
+  description: 'More traffic. Better lead quality. Sell more roofs.',
+  industries: ['Roofing', 'HVAC', 'Plumbing', 'Solar'],
+  ctaLabel: 'GET YOUR FREE CUSTOM DESIGN',
+  ctaHref: '/contact',
+};
 
 const avatars = [
   { initials: 'JD', color: '#e67e22' },
   { initials: 'AL', color: '#27ae60' },
   { initials: 'MR', color: '#c0392b' },
+  { initials: 'BK', color: '#2980b9' },
 ];
 
 // ── Sub-components ────────────────────────────────────────────────────────────
@@ -33,45 +57,20 @@ function Stars({ count }: { count: number }) {
   );
 }
 
-// ── Hero ──────────────────────────────────────────────────────────────────────
+// ── AboutHero ────────────────────────────────────────────────────────────────
 
-export interface HeroData {
-  eyebrow?: string;
-  headlineTop: string;
-  headlineMid: string;
-  headlineAccent: string;
-  headlineTail: string;
-  description: string;
-  industries: string[];
-  ctaLabel: string;
-  ctaHref: string;
-}
-
-const defaultHeroData: HeroData = {
-  headlineTop: 'The #1 Marketing Agency For',
-  headlineMid: 'Home',
-  headlineAccent: 'Service Brands',
-  headlineTail: '',
-  description:
-    'Custom-built brands and proven growth systems designed to help contractors dominate their local market within 24–72 hours.',
-  industries: defaultIndustries,
-  ctaLabel: 'GET YOUR FREE CUSTOM DESIGN',
-  ctaHref: '/contact',
-};
-
-export default function Hero({ data = defaultHeroData }: { data?: HeroData }) {
+export default function AboutHero() {
   return (
-    <section className="hero" aria-label="Hero section">
+    <section className="hero hero--about" aria-label="About hero section">
 
-      {/* ── Centered background glow — spans the full section ── */}
+      {/* ── Centered background glow ── */}
       <div className="hero__glow" aria-hidden="true" />
 
-      {/* ── Three-column grid ── */}
+      {/* ── Three-column grid (left mockup / content / right mockup) ── */}
       <div className="hero__grid">
 
-        {/* Left mockup */}
+        {/* Left mockup — emerges from rubble */}
         <div className="hero__side hero__side--left" aria-hidden="true">
-          {/* <div className="w-96 h-96 bg-accent blur-[200px]  absolute" /> */}
           <img
             src={laptopDemo}
             alt=""
@@ -83,30 +82,27 @@ export default function Hero({ data = defaultHeroData }: { data?: HeroData }) {
         {/* Centre content */}
         <div className="hero__body">
 
-          {/* H1 — 2-line layout matching the reference */}
-          {data.eyebrow && (
-            <span className="hero__eyebrow">{data.eyebrow}</span>
+          {/* "OUR STORY" pill */}
+          {aboutHeroData.eyebrow && (
+            <span className="hero__eyebrow">{aboutHeroData.eyebrow}</span>
           )}
 
+          {/* Headline — wraps to two visual lines */}
           <h1 className="hero__headline">
-            <span className="hero__hl-top">
-              {data.headlineTop}
-            </span>
-            <span className="hero__hl-bottom">
-              {data.headlineMid}{' '}
-              <em className="hero__hl-accent">{data.headlineAccent}</em>
-              {data.headlineTail && <> {data.headlineTail}</>}
+            <span className="hero__hl-line">{aboutHeroData.headlineLine1}</span>
+            <span className="hero__hl-line">
+              {aboutHeroData.headlineLine2Lead}{' '}
+              <em className="hero__hl-accent">{aboutHeroData.headlineAccent}</em>
+              {' '}{aboutHeroData.headlineLine2Tail}
             </span>
           </h1>
 
-          {/* Description */}
-          <p className="hero__desc">
-            {data.description}
-          </p>
+          {/* Subtitle */}
+          <p className="hero__desc">{aboutHeroData.description}</p>
 
           {/* Industry list */}
           <div className="hero__industries" role="list" aria-label="Industries we serve">
-            {data.industries.map((ind) => (
+            {aboutHeroData.industries.map((ind) => (
               <div key={ind} role="listitem">
                 <IndustryBadge label={ind} />
               </div>
@@ -146,12 +142,12 @@ export default function Hero({ data = defaultHeroData }: { data?: HeroData }) {
           </div>
 
           {/* CTA */}
-          <a href={data.ctaHref} className="hero__cta" id="hero-cta">
-            {data.ctaLabel}
+          <a href={aboutHeroData.ctaHref} className="hero__cta" id="hero-cta">
+            {aboutHeroData.ctaLabel}
           </a>
         </div>
 
-        {/* Right mockup */}
+        {/* Right mockup — emerges from rubble */}
         <div className="hero__side hero__side--right" aria-hidden="true">
           <img
             src={laptop}

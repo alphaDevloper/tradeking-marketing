@@ -15,15 +15,7 @@ export interface NavItem {
 
 export const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
-  {
-    label: 'About Us',
-    href: '/about',
-    dropdown: [
-      { label: 'Our Story', href: '/about/story', description: 'Who we are and why we do this' },
-      { label: 'Our Team', href: '/about/team', description: 'The people behind TradeKing' },
-      { label: 'Our Mission', href: '/about/mission', description: 'Building brands that win locally' },
-    ],
-  },
+  { label: 'About Us', href: '/about-us' },
   {
     label: 'Services',
     href: '/services',

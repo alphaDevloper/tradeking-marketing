@@ -13,13 +13,13 @@ export interface FAQItem {
 export const faqs: FAQItem[] = [
   {
     id: 'services',
-    question: 'What services does King Contractor Agency offer?',
+    question: 'What services does TradeKing Marketing Agency offer?',
     answer:
-      'King Contractor Agency is your go-to full-service web design partner. Our services include website design using our ULTIMATE TESTED BLUEPRINT, development, hosting, maintenance, and strategic online marketing solutions such as SEO and social media management.',
+      'TradeKing Marketing Agency is your go-to full-service web design partner. Our services include website design using our ULTIMATE TESTED BLUEPRINT, development, hosting, maintenance, and strategic online marketing solutions such as SEO and social media management.',
   },
   {
     id: 'process',
-    question: 'How does the website design process work with King Contractor Agency?',
+    question: 'How does the website design process work with TradeKing Marketing Agency?',
     answer:
       'Our proven process begins with a free strategy call to understand your business, goals, and customers. We then research your market, plan the website structure, design high-fidelity mockups, and develop a fully responsive site. You approve each stage before we move forward, and we launch only when everything is ready to convert.',
   },

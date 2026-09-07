@@ -1092,6 +1092,22 @@ hr {
  * The headline is intentionally large so it nearly fills the centre column.
  */
 
+/* Optional eyebrow label above the headline (e.g. "OUR STORY" on the About page) */
+.hero__eyebrow {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  padding: 0.55rem 1.5rem;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  background: transparent;
+  border: 1.5px solid var(--color-accent);
+  border-radius: 9999px;
+  line-height: 1;
+}
+
 .hero__headline {
   display: flex;
   flex-direction: column;
@@ -1799,6 +1815,94 @@ hr {
     text-align: center;
     line-height: 1.4;
     padding-inline: 1.5rem;
+  }
+}
+
+
+/* ==========================================================================
+   About Hero — overrides & additions
+   ========================================================================== */
+
+/* About-hero headline is built from .hero__hl-line spans (one per visual
+   line) instead of .hero__hl-top / .hero__hl-bottom. Each line is forced to
+   a single line via nowrap so the headline always renders as exactly 2 lines
+   without breaking out of the viewport. The max size is capped so the longer
+   line ("CONTRACTORS THE #1 CHOICE IN THEIR MARKET") fits in the body column. */
+.hero--about .hero__headline {
+  max-width: 100%;
+}
+
+.hero--about .hero__hl-line {
+  display: block;
+  /* Cap is set so the longest line fits the body column at common viewports;
+     below 1100px the size scales down via vw. 900px+ viewports render at the
+     full 46px so the headline stays visually dominant. */
+  font-size: clamp(24px, 4.2vw, 46px);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* Accent color (#1 CHOICE) reuses the home hero's solid red, italic, 800 */
+.hero--about .hero__hl-accent {
+  color: #D5410B;
+  font-style: italic;
+  font-weight: 800;
+}
+
+/* Description matches the home hero's .hero__desc exactly */
+.hero--about .hero__desc {
+  margin-top: 1.375rem;
+  font-size: clamp(0.875rem, 1.25vw + 0.3rem, 1.0625rem);
+  line-height: 1.75;
+  color: #c0c0c0;
+  max-width: 500px;
+}
+
+/* Industry badges — same look as home hero */
+.hero--about .hero-badge {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  gap: 0.35rem;
+}
+
+.hero--about .hero-badge__icon {
+  color: #D5410B;
+}
+
+/* CTA reuses the home hero's .hero__cta class entirely (same color, padding,
+   border-radius, weight, letter-spacing, shadow). */
+
+/* ── About hero — laptop mockups inherit the home hero's .hero__mockup,
+   .hero__mockup--left, .hero__mockup--right base rules and all responsive
+   breakpoint overrides (no about-specific mockup styles). ── */
+
+/* ── About hero — headline responsive tweaks (only about-specific) ────── */
+@media (max-width: 1024px) {
+  /* Allow wrap on narrow viewports so the headline never overflows */
+  .hero--about .hero__hl-line {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero--about .hero__hl-line {
+    font-size: clamp(24px, 5.6vw, 40px);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero--about .hero__hl-line {
+    font-size: clamp(22px, 6.4vw, 32px);
+  }
+}
+
+@media (max-width: 400px) {
+  .hero--about .hero__hl-line {
+    font-size: clamp(20px, 7vw, 28px);
   }
 }
 
@@ -3476,3 +3580,870 @@ a.footer__line:hover {
   }
 }
 
+
+/* ==========================================================================
+   My Story, Your Results
+   ========================================================================== */
+
+.mystory {
+  position: relative;
+  background-color: var(--color-bg-base);
+}
+
+.mystory__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 4rem;
+}
+
+.mystory__left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 560px;
+}
+
+.mystory__heading {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 1.5rem;
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+}
+
+.mystory__eyebrow {
+  display: block;
+  color: var(--color-accent);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4rem;
+}
+
+.mystory__heading-main {
+  display: block;
+  color: #ffffff;
+}
+
+.mystory__heading-accent {
+  color: #ffffff;
+  font-style: italic;
+  font-weight: 800;
+}
+
+.mystory__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.mystory__para {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #b8b8c0;
+  margin: 0;
+}
+
+.mystory__signature {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  margin-top: 1.25rem;
+}
+
+.mystory__sig-name {
+  font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.mystory__sig-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Right column — portrait */
+
+.mystory__right {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.mystory__photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-width: 460px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: #1a0b02;
+  border: 1px solid rgba(213, 65, 11, 0.25);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+
+.mystory__photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* My Story — Responsive */
+
+@media (max-width: 1024px) {
+  .mystory__container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .mystory__left {
+    max-width: 100%;
+  }
+
+  .mystory__photo {
+    max-width: 380px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .mystory__heading {
+    font-size: 30px;
+  }
+
+  .mystory__para {
+    font-size: 14px;
+  }
+
+  .mystory__sig-name {
+    font-size: 28px;
+  }
+}
+
+
+/* ==========================================================================
+   Track Record Band
+   ========================================================================== */
+
+.track {
+  position: relative;
+  background-color: var(--color-accent);
+  background-image: linear-gradient(180deg, #D5410B 0%, #b5360a 100%);
+  color: #ffffff;
+  padding-block: 4rem;
+}
+
+.track__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.track__eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.track__heading {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0 0 1.75rem;
+  line-height: 1.15;
+}
+
+.track__heading-accent {
+  font-style: italic;
+  font-weight: 600;
+}
+
+.track__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  justify-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 960px;
+}
+
+.track__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+  padding: 0 0.5rem;
+  position: relative;
+}
+
+.track__stat:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 18%;
+  bottom: 18%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.track__stat-value {
+  font-size: 48px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.track__stat-icon {
+  color: rgba(255, 255, 255, 0.85);
+  margin-block: 0.1rem;
+}
+
+.track__stat-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.2;
+}
+
+/* Track Record — Responsive */
+
+@media (max-width: 768px) {
+  .track {
+    padding-block: 3rem;
+  }
+
+  .track__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
+  }
+
+  .track__stat-value {
+    font-size: 40px;
+  }
+
+  .track__heading {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .track__stat-value {
+    font-size: 34px;
+  }
+
+  .track__stat-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+
+  .track__stat:nth-child(2)::after {
+    display: none;
+  }
+}
+
+
+/* ==========================================================================
+   Reasons — The Reason We Exist
+   ========================================================================== */
+
+.reasons {
+  position: relative;
+  background-color: var(--color-bg-base);
+}
+
+.reasons__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.reasons__eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem;
+}
+
+.reasons__heading {
+  font-size: 38px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+  max-width: 720px;
+}
+
+.reasons__heading-accent {
+  color: var(--color-accent);
+  font-style: italic;
+  font-weight: 600;
+}
+
+.reasons__subheading {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #b8b8c0;
+  max-width: 760px;
+  margin: 0 0 2.5rem;
+}
+
+.reasons__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  width: 100%;
+  max-width: 980px;
+}
+
+.reasons__row {
+  display: grid;
+  grid-template-columns: 1.1fr 1.6fr;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(180deg, #0f0f0f 0%, #0a0a0a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  text-align: left;
+  transition:
+    border-color var(--transition-base),
+    transform var(--transition-fast),
+    box-shadow var(--transition-base);
+}
+
+.reasons__row:hover {
+  border-color: rgba(213, 65, 11, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+.reasons__row-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.reasons__row-number {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--color-accent);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-style: italic;
+  min-width: 2.4rem;
+}
+
+.reasons__row-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: var(--color-accent);
+  background: rgba(213, 65, 11, 0.12);
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+
+.reasons__row-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.reasons__row-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #b8b8c0;
+  margin: 0;
+}
+
+/* Reasons — Responsive */
+
+@media (max-width: 768px) {
+  .reasons__heading {
+    font-size: 30px;
+  }
+
+  .reasons__row {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    padding: 1.125rem 1.25rem;
+  }
+
+  .reasons__row-number {
+    font-size: 28px;
+    min-width: 2rem;
+  }
+
+  .reasons__row-title {
+    font-size: 16px;
+  }
+
+  .reasons__row-desc {
+    font-size: 13px;
+  }
+}
+
+
+/* ==========================================================================
+   Steps — What It's Like To Work With Us
+   ========================================================================== */
+
+.steps {
+  position: relative;
+  background-color: #F4F4F4;
+  color: #0a0a0a;
+}
+
+.steps__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.steps__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 38px;
+  font-weight: 800;
+  color: #0a0a0a;
+  line-height: 1.1;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  margin: 0 0 2.5rem;
+  text-align: center;
+}
+
+.steps__heading-lead {
+  color: #0a0a0a;
+}
+
+.steps__heading-row {
+  display: block;
+}
+
+.steps__heading-accent {
+  color: var(--color-accent);
+  font-style: italic;
+  font-weight: 600;
+}
+
+.steps__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.steps__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.5rem 1.5rem 1.75rem;
+  background: #ffffff;
+  border: 1px solid #C8C8C8;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 2px 8px rgba(200, 200, 200, 0.45);
+  transition:
+    transform var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.steps__card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(213, 65, 11, 0.4);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.18);
+}
+
+.steps__card-top {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.steps__card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: var(--color-accent);
+  background: rgba(213, 65, 11, 0.12);
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+
+.steps__card-number {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0a0a0a;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-style: italic;
+}
+
+.steps__card-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0a0a0a;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.steps__card-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #404040;
+  margin: 0;
+}
+
+/* Steps — Responsive */
+
+@media (max-width: 768px) {
+  .steps__heading {
+    font-size: 30px;
+    margin-bottom: 1.75rem;
+  }
+
+  .steps__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .steps__card {
+    padding: 1.25rem 1.25rem 1.5rem;
+  }
+}
+
+
+/* ==========================================================================
+   Guarantee — We Work For Free Until You're Satisfied
+   ========================================================================== */
+
+.guarantee {
+  position: relative;
+  background-color: #ffffff;
+}
+
+.guarantee__container {
+  display: flex;
+  justify-content: center;
+}
+
+.guarantee__card {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  align-items: center;
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 980px;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(180deg, #0f0f0f 0%, #0a0a0a 100%);
+  border: 1px solid rgba(213, 65, 11, 0.35);
+  border-radius: var(--radius-2xl);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+.guarantee__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.guarantee__badge-img {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  display: block;
+  filter:
+    drop-shadow(0 8px 20px rgba(0, 0, 0, 0.55))
+    drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+}
+
+.guarantee__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  text-align: left;
+}
+
+.guarantee__heading {
+  display: flex;
+  flex-direction: column;
+  font-size: 30px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+  margin: 0 0 0.5rem;
+}
+
+.guarantee__heading-top {
+  color: #ffffff;
+}
+
+.guarantee__heading-bottom {
+  color: #ffffff;
+}
+
+.guarantee__heading-bottom em {
+  color: var(--color-accent);
+  font-style: italic;
+  font-weight: 600;
+}
+
+.guarantee__desc {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #b8b8c0;
+  margin: 0;
+}
+
+/* Guarantee — Responsive */
+
+@media (max-width: 768px) {
+  .guarantee__card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 1.75rem 1.5rem;
+  }
+
+  .guarantee__text {
+    text-align: center;
+    align-items: center;
+  }
+
+  .guarantee__heading {
+    font-size: 24px;
+  }
+}
+
+
+/* ==========================================================================
+   Contact Form Section
+   ========================================================================== */
+
+.cform {
+  position: relative;
+  background-color: var(--color-bg-base);
+}
+
+.cform__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.cform__heading {
+  display: flex;
+  flex-direction: column;
+  font-size: 34px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+
+.cform__heading-row {
+  display: block;
+}
+
+.cform__heading-accent {
+  color: var(--color-accent);
+  font-style: italic;
+  font-weight: 600;
+}
+
+.cform__description {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #b8b8c0;
+  max-width: 720px;
+  margin: 0 0 2.25rem;
+}
+
+.cform__form {
+  width: 100%;
+  max-width: 720px;
+  background: linear-gradient(180deg, #0f0f0f 0%, #0a0a0a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-2xl);
+  padding: 1.75rem;
+  text-align: left;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+}
+
+.cform__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.25rem;
+}
+
+.cform__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.cform__group--full {
+  grid-column: 1 / -1;
+}
+
+.cform__label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cform__required {
+  color: var(--color-accent);
+  margin-left: 0.2rem;
+}
+
+.cform__input {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  transition:
+    border-color var(--transition-base),
+    background-color var(--transition-base);
+}
+
+.cform__input::placeholder {
+  color: #6a6a6a;
+}
+
+.cform__input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  background: rgba(213, 65, 11, 0.05);
+}
+
+.cform__textarea {
+  resize: vertical;
+  min-height: 110px;
+  font-family: var(--font-sans);
+}
+
+.cform__consent {
+  font-size: 12px;
+  color: #808080;
+  margin: 1rem 0 1.25rem;
+  line-height: 1.5;
+}
+
+.cform__submit {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+
+.cform__submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.cform__spinner {
+  animation: cform-spin 0.9s linear infinite;
+}
+
+@keyframes cform-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.cform__feedback {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.cform__feedback--success {
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  color: #86efac;
+}
+
+.cform__feedback--error {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+}
+
+/* Contact Form — Responsive */
+
+@media (max-width: 600px) {
+  .cform__heading {
+    font-size: 26px;
+  }
+
+  .cform__form {
+    padding: 1.25rem;
+  }
+
+  .cform__grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+}

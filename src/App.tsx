@@ -1,29 +1,47 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Navbar from './components/layout/Navbar'
-import Hero from './components/sections/Hero'
-import Services from './components/sections/Services'
-import WhyChooseUs from './components/sections/WhyChooseUs'
-import FeaturedWork from './components/sections/FeaturedWork'
-import FAQ from './components/sections/FAQ'
-import Footer from './components/layout/Footer'
+import Home from './pages/Home'
+import About from './pages/About'
+
+const ABOUT_PATH = '/about-us'
 
 export default function App() {
-  const [activePage, setActivePage] = useState('/')
+  const [activePage, setActivePage] = useState<string>(() => {
+    return window.location.pathname === ABOUT_PATH ? ABOUT_PATH : '/'
+  })
+
+  // Sync state with browser URL so manual URL changes work
+  useEffect(() => {
+    function syncFromUrl() {
+      if (window.location.pathname === ABOUT_PATH) {
+        setActivePage(ABOUT_PATH)
+      } else {
+        setActivePage('/')
+      }
+    }
+    window.addEventListener('popstate', syncFromUrl)
+    return () => window.removeEventListener('popstate', syncFromUrl)
+  }, [])
 
   function navigate(href: string) {
     window.scrollTo({ top: 0, behavior: 'instant' })
-    setActivePage(href)
+    // Only handle pages we've actually built. Everything else stays on Home.
+    if (href === '/about' || href === ABOUT_PATH) {
+      setActivePage(ABOUT_PATH)
+      window.history.pushState({}, '', ABOUT_PATH)
+    } else if (href === '/') {
+      setActivePage('/')
+      window.history.pushState({}, '', '/')
+    } else {
+      // Not-yet-built pages stay on Home without changing URL
+      setActivePage('/')
+    }
   }
 
   return (
     <>
       <Navbar activeHref={activePage} onNavigate={navigate} />
-      <Hero />
-      <Services />
-      <WhyChooseUs />
-      <FeaturedWork />
-      <FAQ />
-      <Footer />
+      {activePage === ABOUT_PATH ? <About /> : <Home />}
     </>
   )
 }
