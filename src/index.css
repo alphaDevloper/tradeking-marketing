@@ -1905,21 +1905,6 @@ hr {
   .hero--about .hero__hl-line {
     font-size: clamp(24px, 5.6vw, 40px);
   }
-
-  /* Shrink industry badges so all 4 fit on a single row */
-  .hero--about .hero__industries {
-    gap: 0.25rem 0.75rem;
-  }
-
-  .hero--about .hero-badge {
-    font-size: 0.8125rem;
-    gap: 0.25rem;
-  }
-
-  .hero--about .hero-badge__icon {
-    width: 14px;
-    height: 14px;
-  }
 }
 
 @media (max-width: 600px) {
@@ -1927,34 +1912,9 @@ hr {
     font-size: clamp(22px, 6.4vw, 32px);
   }
 
+  /* Tighten industry gap so all 4 fit on one row at the home's badge size */
   .hero--about .hero__industries {
-    gap: 0.2rem 0.6rem;
-  }
-
-  .hero--about .hero-badge {
-    font-size: 0.75rem;
-    gap: 0.2rem;
-  }
-
-  .hero--about .hero-badge__icon {
-    width: 12px;
-    height: 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero--about .hero__industries {
-    gap: 0.15rem 0.45rem;
-  }
-
-  .hero--about .hero-badge {
-    font-size: 0.6875rem;
-    gap: 0.18rem;
-  }
-
-  .hero--about .hero-badge__icon {
-    width: 11px;
-    height: 11px;
+    gap: 0.25rem 0.75rem;
   }
 }
 
@@ -1963,18 +1923,10 @@ hr {
     font-size: clamp(20px, 7vw, 28px);
   }
 
+  /* Even tighter gap at extra-small widths — home's badge size (0.875rem)
+     is preserved, only the gap is reduced so the row fits. */
   .hero--about .hero__industries {
-    gap: 0.1rem 0.35rem;
-  }
-
-  .hero--about .hero-badge {
-    font-size: 0.625rem;
-    gap: 0.15rem;
-  }
-
-  .hero--about .hero-badge__icon {
-    width: 10px;
-    height: 10px;
+    gap: 0.15rem 0.55rem;
   }
 }
 
