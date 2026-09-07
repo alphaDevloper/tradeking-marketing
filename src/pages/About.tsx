@@ -4,12 +4,14 @@
 
 import AboutHero from '../components/sections/AboutHero';
 import MyStory from '../components/sections/MyStory';
+import TrackRecord from '../components/sections/TrackRecord';
 
 export default function About() {
   return (
     <main className="page page--about" aria-label="About TradeKing Marketing">
       <AboutHero />
       <MyStory />
+      <TrackRecord />
     </main>
   );
 }

@@ -20,15 +20,30 @@ import satisfactionSeal from '../assets/tradeking_satisfaction.png';
 
 export interface AboutStat {
   value: string;
+  /** Final numeric value used by the count-up animation. */
+  target: number;
+  /** Decimal places to display (0 for whole numbers, 1 for 5.0 / 100.0). */
+  decimals?: number;
+  /** Suffix appended after the number, e.g. "+" or "%". */
+  suffix?: string;
   label: string;
   Icon: LucideIcon;
+  /** When true, the icon is rendered next to the value (not as a separate row). */
+  iconInline?: boolean;
+  /** Delay (ms) for the count-up animation, used to stagger columns. */
+  delay?: number;
 }
 
+export const trackRecordHeading = {
+  eyebrow: 'BY THE NUMBERS',
+  headline: 'A TRACK RECORD CONTRACTORS TRUST',
+};
+
 export const aboutStats: AboutStat[] = [
-  { value: '200+', label: 'Websites Launched', Icon: Trophy },
-  { value: '50', label: 'States Served', Icon: Building2 },
-  { value: '100%', label: 'Satisfaction Rate', Icon: Percent },
-  { value: '5.0', label: 'Star Rating', Icon: Star },
+  { value: '200+', target: 200, suffix: '+', label: 'Contractor Brands Built', Icon: Trophy, delay: 320 },
+  { value: '50', target: 50, label: 'States Served', Icon: Building2, delay: 400 },
+  { value: '100%', target: 100, suffix: '%', decimals: 0, label: 'Custom Built', Icon: Percent, delay: 480 },
+  { value: '5.0', target: 5, suffix: '', decimals: 1, label: 'Average Client Rating', Icon: Star, iconInline: true, delay: 560 },
 ];
 
 export interface ReasonRow {

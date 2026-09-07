@@ -3871,7 +3871,7 @@ a.footer__line:hover {
   background-color: var(--color-accent);
   background-image: linear-gradient(180deg, #D5410B 0%, #b5360a 100%);
   color: #ffffff;
-  padding-block: 4rem;
+  padding-block: clamp(3.5rem, 7vw, 5.75rem);
 }
 
 .track__container {
@@ -3880,30 +3880,29 @@ a.footer__line:hover {
   align-items: center;
   text-align: center;
   gap: 0.5rem;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2rem);
 }
 
 .track__eyebrow {
-  font-size: 13px;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.85);
-  letter-spacing: 0.12em;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  margin: 0;
+  margin: 0 0 0.875rem;
 }
 
 .track__heading {
-  font-size: 30px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #ffffff;
-  margin: 0 0 1.75rem;
+  margin: 0 0 clamp(2rem, 5vw, 3rem);
   line-height: 1.15;
-}
-
-.track__heading-accent {
-  font-style: italic;
-  font-weight: 600;
+  max-width: 1000px;
 }
 
 .track__grid {
@@ -3911,9 +3910,8 @@ a.footer__line:hover {
   grid-template-columns: repeat(4, 1fr);
   align-items: center;
   justify-items: center;
-  gap: 1rem;
   width: 100%;
-  max-width: 960px;
+  max-width: 1100px;
 }
 
 .track__stat {
@@ -3921,8 +3919,11 @@ a.footer__line:hover {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 0.4rem;
-  padding: 0 0.5rem;
+  gap: 0.6rem;
+  /* Symmetric breathing room on both sides of each column so the right-edge
+     divider (rendered by the next stat's ::after) sits equidistant from the
+     number/label text on its left and right. */
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
   position: relative;
 }
 
@@ -3933,64 +3934,110 @@ a.footer__line:hover {
   top: 18%;
   bottom: 18%;
   width: 1px;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.22);
 }
 
 .track__stat-value {
-  font-size: 48px;
-  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: 69px;
+  font-weight: 700;
   color: #ffffff;
-  line-height: 1;
-  letter-spacing: -0.02em;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
 }
 
-.track__stat-icon {
-  color: rgba(255, 255, 255, 0.85);
-  margin-block: 0.1rem;
+.track__stat-star {
+  width: clamp(2.4rem, 5.4vw, 4rem);
+  height: clamp(2.4rem, 5.4vw, 4rem);
+  color: #ffffff;
 }
 
 .track__stat-label {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.92);
   line-height: 1.2;
+  max-width: 22ch;
 }
 
 /* Track Record — Responsive */
 
+/* Tablet — 2×2 grid */
 @media (max-width: 768px) {
   .track {
-    padding-block: 3rem;
+    padding-block: clamp(3rem, 7vw, 4rem);
   }
 
   .track__grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem 1rem;
+    row-gap: 2.25rem;
+    column-gap: 1rem;
+    max-width: 520px;
   }
 
-  .track__stat-value {
-    font-size: 40px;
+  /* Right dividers on first row, left dividers on second row */
+  .track__stat:nth-child(1)::after,
+  .track__stat:nth-child(2)::after,
+  .track__stat:nth-child(3)::after {
+    content: '';
+    position: absolute;
+    top: 12%;
+    bottom: 12%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.22);
   }
 
-  .track__heading {
-    font-size: 24px;
-  }
-}
-
-@media (max-width: 480px) {
-  .track__stat-value {
-    font-size: 34px;
-  }
-
-  .track__stat-label {
-    font-size: 11px;
-    letter-spacing: 0.12em;
+  .track__stat:nth-child(1)::after {
+    right: 0;
   }
 
   .track__stat:nth-child(2)::after {
+    right: 0;
+  }
+
+  .track__stat:nth-child(3)::after {
+    left: 0;
+  }
+
+  .track__stat:nth-child(4)::after {
     display: none;
+  }
+
+  .track__heading {
+    font-size: 30px;
+    margin-bottom: 2.25rem;
+  }
+
+  .track__stat-value {
+    font-size: 56px;
+  }
+}
+
+/* Mobile — single column, dividers hidden */
+@media (max-width: 480px) {
+  .track__stat:not(:last-child)::after,
+  .track__stat:nth-child(1)::after,
+  .track__stat:nth-child(2)::after,
+  .track__stat:nth-child(3)::after,
+  .track__stat:nth-child(4)::after {
+    display: none;
+  }
+
+  .track__heading {
+    font-size: 26px;
+  }
+
+  .track__stat-value {
+    font-size: 48px;
+  }
+
+  .track__stat-label {
+    letter-spacing: 0.16em;
   }
 }
 
