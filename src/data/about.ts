@@ -245,6 +245,36 @@ export const missionRows: MissionRow[] = [
   },
 ];
 
+// ── Our Promise / Satisfaction Guarantee section ─────────────────────────────
+
+export interface PromiseContent {
+  badge: {
+    src: string;
+    alt: string;
+  };
+  eyebrow: string;
+  /** First line of the headline — rendered in white. */
+  headlineLead: string;
+  /** Second line of the headline — rendered in solid red. */
+  headlineAccent: string;
+  body1: string;
+  body2: string;
+}
+
+export const promiseContent: PromiseContent = {
+  badge: {
+    src: satisfactionSeal,
+    alt: 'King Contractor Agency satisfaction guarantee gold seal',
+  },
+  eyebrow: 'OUR PROMISE',
+  headlineLead: 'WE WORK FOR FREE UNTIL',
+  headlineAccent: "YOU'RE SATISFIED.",
+  body1:
+    'Five drafts, ten redesigns, a hundred tweaks, if that’s what it takes to get it right, that’s what we do.',
+  body2:
+    'No one else in the contractor space makes that promise, and it’s why Dean puts his name on every single project.',
+};
+
 // ── What It's Like To Work With Us section ────────────────────────────────────
 
 export interface WorkWithUsHeading {
