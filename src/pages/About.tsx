@@ -8,6 +8,7 @@ import OurMission from '../components/sections/OurMission';
 import TrackRecord from '../components/sections/TrackRecord';
 import WorkWithUs from '../components/sections/WorkWithUs';
 import OurPromise from '../components/sections/OurPromise';
+import ContactForm from '../components/sections/ContactForm';
 
 export default function About() {
   return (
@@ -18,6 +19,7 @@ export default function About() {
       <OurMission />
       <WorkWithUs />
       <OurPromise />
+      <ContactForm />
     </main>
   );
 }
