@@ -13,6 +13,8 @@ import {
   Headphones,
   ClipboardList,
   Sparkles,
+  Monitor,
+  LineChart,
 } from 'lucide-react';
 
 import founderPhoto from '../assets/about-owner.png';
@@ -175,3 +177,67 @@ export const founderStory: FounderStory = {
   photo: founderPhoto,
   photoAlt: 'Abdullah Alam, founder of TradeKing Marketing Agency',
 };
+
+// ── Our Mission / Most Trusted Name section ────────────────────────────────────
+
+export interface MissionRow {
+  number: string;
+  title: string;
+  Icon: LucideIcon;
+  description: string;
+  tags: string[];
+}
+
+export interface MissionHeading {
+  eyebrowRed: string;
+  eyebrowWhite: string;
+  /** Headline is split into two visual lines, with `accent` rendered in red. */
+  headlineLine1: string;
+  headlineAccent: string;
+  headlineLine2: string;
+  /** Description is split into three lines: lead + emphasis + trailing sentence. */
+  descriptionLine1: string;
+  descriptionEmphasis: string;
+  descriptionLine3: string;
+}
+
+export const missionHeading: MissionHeading = {
+  eyebrowRed: 'THE REASON WE EXIST',
+  eyebrowWhite: 'OUR MISSION',
+  headlineLine1: 'THE MOST',
+  headlineAccent: 'TRUSTED',
+  headlineLine2: 'NAME IN CONTRACTOR MARKETING.',
+  descriptionLine1:
+    'Most agencies treat contractors like any other client. We built King Contractor Agency specifically for this industry.',
+  descriptionEmphasis:
+    'Every website, every campaign, and every brand we deliver is built around one outcome:',
+  descriptionLine3:
+    'making you the contractor every homeowner in your city already knows before they even start searching.',
+};
+
+export const missionRows: MissionRow[] = [
+  {
+    number: '01',
+    title: 'Build',
+    Icon: Monitor,
+    description:
+      'Custom contractor websites built from scratch. Designed to stop the scroll, earn trust instantly, and turn visitors into booked jobs.',
+    tags: ['Custom Design', 'Mobile-First', 'AI Chat Widget', 'Lead Forms'],
+  },
+  {
+    number: '02',
+    title: 'Grow',
+    Icon: LineChart,
+    description:
+      'SEO, LSA, and paid advertising systems that put your business in front of homeowners who are actively searching for a contractor in your city right now.',
+    tags: ['SEO', 'Google LSA', 'Facebook Ads', 'PPC'],
+  },
+  {
+    number: '03',
+    title: 'Dominate',
+    Icon: Crown,
+    description:
+      'Own your market. Outrank every competitor. Become the name homeowners in your area recognize, trust, and call first.',
+    tags: ['Google Maps', 'Review Engine', 'Reputation', 'Retargeting'],
+  },
+];

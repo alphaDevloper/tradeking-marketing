@@ -4618,3 +4618,291 @@ a.footer__line:hover {
     gap: 0.85rem;
   }
 }
+
+
+/* ==========================================================================
+   Our Mission / Most Trusted Name Section
+   ========================================================================== */
+
+.mission {
+  position: relative;
+  background-color: var(--color-bg-base);
+  color: #ffffff;
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+}
+
+.mission__container {
+  width: 100%;
+  max-width: 1100px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Header block ─────────────────────────────────────────────────────────── */
+
+.mission__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+}
+
+/* Eyebrows — stacked, centered */
+.mission__eyebrow {
+  display: inline-block;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.mission__eyebrow--red {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 0.625rem;
+}
+
+.mission__eyebrow--white {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+}
+
+/* Headline — three lines, accent word in solid red */
+.mission__headline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0 1.25rem;
+  font-size: 39px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.005em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.mission__hl-line {
+  display: block;
+  text-align: center;
+}
+
+.mission__hl-accent {
+  color: var(--color-accent);
+  font-style: italic;
+  font-weight: 700;
+}
+
+/* Description */
+.mission__desc {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #b8b8c0;
+  margin: 0;
+  max-width: 780px;
+  text-align: center;
+}
+
+.mission__desc-emphasis {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ── Feature rows container ───────────────────────────────────────────────── */
+
+.mission__rows {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Each row sits between two thin dividers. The first row's top border and
+   the last row's bottom border are omitted to keep the edges clean. */
+.mission__row {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(0, 2.4fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  padding-block: clamp(1.5rem, 3vw, 2.25rem);
+  padding-inline: clamp(0.75rem, 2vw, 1.25rem);
+  margin-inline: clamp(-0.75rem, -2vw, -1.25rem);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  /* border-radius: 12px; */
+  transition: background-color var(--transition-base);
+}
+
+.mission__row:hover {
+  background-color: rgba(47, 47, 47, 0.177);
+}
+
+.mission__row:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Row left — number + icon-tile + label ─────────────────────────────────── */
+
+.mission__row-left {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.875rem, 2vw, 1.25rem);
+  min-width: 0;
+}
+
+.mission__row-number {
+  font-size: 51px;
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+.mission__row-label-group {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-width: 0;
+}
+
+.mission__row-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  color: #e6e6e6;
+  flex-shrink: 0;
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base),
+    transform var(--transition-base);
+}
+
+.mission__row:hover .mission__row-icon {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #ffffff;
+  transform: scale(1.04);
+}
+
+.mission__row-label {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1;
+}
+
+/* ── Row right — description + pill tags ───────────────────────────────────── */
+
+.mission__row-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  min-width: 0;
+}
+
+.mission__row-desc {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #c8c8c8;
+  margin: 0;
+  max-width: 560px;
+}
+
+.mission__row-tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.mission__tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.375rem 0.875rem;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #d8d8d8;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* ── Our Mission — Tablet (≤1024px) ─────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .mission__row {
+    grid-template-columns: minmax(150px, 1fr) minmax(0, 2fr);
+    gap: 1.75rem;
+  }
+
+  .mission__row-icon {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+/* ── Our Mission — Mobile (≤768px) ─────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .mission__row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .mission__row-left {
+    justify-content: flex-start;
+  }
+
+  .mission__headline {
+    font-size: 30px;
+  }
+}
+
+/* ── Our Mission — Small mobile (≤480px) ───────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .mission__headline {
+    font-size: 26px;
+  }
+
+  .mission__row-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .mission__row-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .mission__tag {
+    font-size: 9px;
+    padding: 0.375rem 0.75rem;
+  }
+
+  .mission__desc,
+  .mission__row-desc {
+    font-size: 12px;
+  }
+}
