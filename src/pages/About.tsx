@@ -6,6 +6,7 @@ import AboutHero from '../components/sections/AboutHero';
 import MyStory from '../components/sections/MyStory';
 import OurMission from '../components/sections/OurMission';
 import TrackRecord from '../components/sections/TrackRecord';
+import WorkWithUs from '../components/sections/WorkWithUs';
 
 export default function About() {
   return (
@@ -14,6 +15,7 @@ export default function About() {
       <MyStory />
       <TrackRecord />
       <OurMission />
+      <WorkWithUs />
     </main>
   );
 }

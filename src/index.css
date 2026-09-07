@@ -4906,3 +4906,181 @@ a.footer__line:hover {
     font-size: 12px;
   }
 }
+
+/* ===========================================================================
+   Work With Us — 2x2 feature card grid on light gray
+   =========================================================================== */
+
+.wwu {
+  background: #f2f2f2;
+  color: #0a0a0a;
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.wwu__container {
+  width: 100%;
+  max-width: 1100px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header (top-left aligned) ───────────────────────────────────────────── */
+
+.wwu__header {
+  margin: 0 0 clamp(2.25rem, 4vw, 3.25rem);
+}
+
+.wwu__heading {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-size: 39px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+}
+
+.wwu__hl-line {
+  display: block;
+  color: #0a0a0a;
+}
+
+.wwu__hl-accent {
+  display: block;
+  color: var(--color-accent);
+  font-style: italic;
+}
+
+/* ── 2x2 card grid ───────────────────────────────────────────────────────── */
+
+.wwu__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.wwu__card {
+  background: #ffffff;
+  border: 1px solid rgba(10, 10, 10, 0.06);
+  border-radius: var(--radius-xl);
+  padding: clamp(1.5rem, 2.5vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+}
+
+.wwu__card:hover {
+  background: #0a0a0a;
+  border-color: rgba(10, 10, 10, 1);
+  box-shadow: 0 10px 24px rgba(10, 10, 10, 0.18);
+}
+
+.wwu__card:hover .wwu__card-icon {
+  background: var(--color-accent);
+}
+
+.wwu__card:hover .wwu__card-title,
+.wwu__card:hover .wwu__card-desc {
+  color: #ffffff;
+}
+
+.wwu__card-top {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.wwu__card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: #0a0a0a;
+  border-radius: 10px;
+  color: #ffffff;
+  flex-shrink: 0;
+  transition: background-color var(--transition-base);
+}
+
+.wwu__card-number {
+  font-size: 31px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-accent);
+  letter-spacing: 0.01em;
+}
+
+.wwu__card-title {
+  margin: 0;
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  line-height: 1.2;
+}
+
+.wwu__card-desc {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #4a4a4a;
+  max-width: 56ch;
+}
+
+/* ── Work With Us — Tablet (≤1024px) ─────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .wwu__card-number {
+    font-size: 28px;
+  }
+
+  .wwu__heading {
+    font-size: 36px;
+  }
+}
+
+/* ── Work With Us — Mobile (≤768px) ───────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .wwu__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wwu__heading {
+    font-size: 34px;
+  }
+
+  .wwu__card {
+    padding: 1.5rem;
+  }
+
+  .wwu__card-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .wwu__card-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* ── Work With Us — Small mobile (≤480px) ─────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .wwu__heading {
+    font-size: 28px;
+  }
+}

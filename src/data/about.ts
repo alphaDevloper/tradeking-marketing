@@ -15,6 +15,9 @@ import {
   Sparkles,
   Monitor,
   LineChart,
+  Crosshair,
+  BarChart3,
+  ShieldCheck,
 } from 'lucide-react';
 
 import founderPhoto from '../assets/about-owner.png';
@@ -239,5 +242,56 @@ export const missionRows: MissionRow[] = [
     description:
       'Own your market. Outrank every competitor. Become the name homeowners in your area recognize, trust, and call first.',
     tags: ['Google Maps', 'Review Engine', 'Reputation', 'Retargeting'],
+  },
+];
+
+// ── What It's Like To Work With Us section ────────────────────────────────────
+
+export interface WorkWithUsHeading {
+  /** Headline split into two lines; `accent` is rendered in red. */
+  headlineLine1: string;
+  headlineAccent: string;
+}
+
+export interface WorkWithUsCard {
+  number: string;
+  title: string;
+  Icon: LucideIcon;
+  description: string;
+}
+
+export const workWithUsHeading: WorkWithUsHeading = {
+  headlineLine1: "WHAT IT'S LIKE TO",
+  headlineAccent: 'WORK WITH US',
+};
+
+export const workWithUsCards: WorkWithUsCard[] = [
+  {
+    number: '01',
+    title: 'Strategy First',
+    Icon: Crosshair,
+    description:
+      'Before we touch a single design element, we get deep into your market, your competitors, and your goals. Everything we build is engineered around winning in your specific city.',
+  },
+  {
+    number: '02',
+    title: 'Built for Results',
+    Icon: BarChart3,
+    description:
+      'Every colour, every headline, and every page layout exists for one reason: turning visitors into booked jobs.',
+  },
+  {
+    number: '03',
+    title: 'Contractors Only',
+    Icon: ShieldCheck,
+    description:
+      'Roofing, HVAC, plumbing, solar, construction. This is all we do. We know your customers, your buying journey, and what makes homeowners pick up the phone.',
+  },
+  {
+    number: '04',
+    title: 'Ongoing Support',
+    Icon: Headphones,
+    description:
+      "We don't hand you a website and go silent. We stay in your corner, updating, optimising, and making sure your site keeps performing long after launch.",
   },
 ];
