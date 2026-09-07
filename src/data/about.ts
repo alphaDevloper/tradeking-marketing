@@ -15,6 +15,9 @@ import {
   Sparkles,
 } from 'lucide-react';
 
+import founderPhoto from '../assets/about-owner.png';
+import satisfactionSeal from '../assets/tradeking_satisfaction.png';
+
 export interface AboutStat {
   value: string;
   label: string;
@@ -96,3 +99,64 @@ export const aboutSteps: StepCard[] = [
     Icon: Headphones,
   },
 ];
+
+// ── My Story / Meet The Founder section ─────────────────────────────────────
+
+export interface FounderStory {
+  eyebrow: string;
+  headlineLead: string;
+  headlineAccent: string;
+  /** Mixed paragraphs: 'p' for body, 'p-emphasis' for the bold uppercase line,
+   *  'p-short' for the short standalone "I decided to fix that." line. */
+  paragraphs: Array<{ kind: 'p' | 'p-short' | 'p-emphasis'; text: string }>;
+  /** Path to the seal image shown next to the founder's name. */
+  sealImage: string;
+  sealAlt: string;
+  founderName: string;
+  founderRole: string;
+  photo: string;
+  photoAlt: string;
+}
+
+export const founderStory: FounderStory = {
+  eyebrow: 'MEET THE FOUNDER',
+  headlineLead: 'MY STORY,',
+  headlineAccent: 'YOUR RESULTS',
+  paragraphs: [
+    {
+      kind: 'p',
+      text:
+        'I started TradeKing Marketing Agency because I kept seeing the same thing over and over again. Great contractors are getting absolutely burned by marketing agencies that have no idea what they are selling or who they are selling it to.',
+    },
+    {
+      kind: 'p-short',
+      text: 'I decided to fix that.',
+    },
+    {
+      kind: 'p',
+      text:
+        'Over the past five years, I have worked with more than 200 roofing, HVAC, plumbing, and construction companies across the United States. I have been to industry conferences. I have flown out to meet clients on their job sites. I have sat in on sales calls and studied exactly what makes a homeowner choose one contractor over another. This is not something I do from behind a desk. I live in this industry.',
+    },
+    {
+      kind: 'p',
+      text:
+        'What I have built is not just a web design agency. It is a comprehensive brand system specifically engineered for contractors who are serious about becoming the number-one choice in their market. Every website we launch, every campaign we run, every brand we build is designed with one outcome in mind. More calls. More jobs. More revenue.',
+    },
+    {
+      kind: 'p-emphasis',
+      text:
+        'MY NAME GOES ON EVERY SINGLE PROJECT WE DELIVER. THAT IS THE STANDARD I HOLD MYSELF AND MY TEAM TO EVERY DAY.',
+    },
+    {
+      kind: 'p',
+      text:
+        "If you are ready to be the #1 contractor in your city, I am ready to make it happen.",
+    },
+  ],
+  sealImage: satisfactionSeal,
+  sealAlt: 'TradeKing Marketing satisfaction guaranteed seal',
+  founderName: 'ABDULLAH ALAM',
+  founderRole: 'Founder, TradeKing Marketing Agency',
+  photo: founderPhoto,
+  photoAlt: 'Abdullah Alam, founder of TradeKing Marketing Agency',
+};
