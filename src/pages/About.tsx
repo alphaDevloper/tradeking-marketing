@@ -2,13 +2,17 @@
 // About page — composes the About Hero, My Story, Track Record, Reasons, Steps,
 // Guarantee, Contact Form, Why Trust, Featured Work, FAQ, and Footer.
 
-import AboutHero from '../components/sections/AboutHero';
-import MyStory from '../components/sections/MyStory';
-import OurMission from '../components/sections/OurMission';
-import TrackRecord from '../components/sections/TrackRecord';
-import WorkWithUs from '../components/sections/WorkWithUs';
-import OurPromise from '../components/sections/OurPromise';
-import ContactForm from '../components/sections/ContactForm';
+import AboutHero from "../components/sections/AboutHero";
+import MyStory from "../components/sections/MyStory";
+import OurMission from "../components/sections/OurMission";
+import TrackRecord from "../components/sections/TrackRecord";
+import WorkWithUs from "../components/sections/WorkWithUs";
+import OurPromise from "../components/sections/OurPromise";
+import ContactForm from "../components/sections/ContactForm";
+import WhyChooseUs from "../components/sections/WhyChooseUs";
+import FeaturedWork from "../components/sections/FeaturedWork";
+import FAQ from "../components/sections/FAQ";
+import Footer from "../components/layout/Footer";
 
 export default function About() {
   return (
@@ -20,6 +24,10 @@ export default function About() {
       <WorkWithUs />
       <OurPromise />
       <ContactForm />
+      <WhyChooseUs />
+      <FeaturedWork />
+      <FAQ />
+      <Footer />
     </main>
   );
 }
