@@ -1,7 +1,18 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { ChevronDown, Phone, Menu, X, ArrowRight } from 'lucide-react';
 import logoSrc from '../../assets/tradeking_logo.png';
 import { navItems, phone, ctaLabel, ctaHref } from '../../data/navigation';
+
+// ─── Scroll-to-top on every route change ─────────────────────────────────────
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+  }, [pathname]);
+  return null;
+}
 
 // ─── Dropdown Menu ────────────────────────────────────────────────────────────
 
@@ -18,12 +29,17 @@ function Dropdown({ items, isOpen }: DropdownProps) {
       aria-hidden={!isOpen}
     >
       {items.map((item) => (
-        <a key={item.href} href={item.href} className="nav-dropdown__item" role="menuitem">
+        <Link
+          key={item.href}
+          to={item.href}
+          className="nav-dropdown__item"
+          role="menuitem"
+        >
           <span className="nav-dropdown__label">{item.label}</span>
           {item.description && (
             <span className="nav-dropdown__desc">{item.description}</span>
           )}
-        </a>
+        </Link>
       ))}
     </div>
   );
@@ -31,13 +47,12 @@ function Dropdown({ items, isOpen }: DropdownProps) {
 
 // ─── Desktop Nav Item ─────────────────────────────────────────────────────────
 
-interface NavLinkProps {
+interface DesktopNavLinkProps {
   item: (typeof navItems)[number];
   isActive: boolean;
-  onNavigate: (href: string) => void;
 }
 
-function NavLink({ item, isActive, onNavigate }: NavLinkProps) {
+function DesktopNavLink({ item, isActive }: DesktopNavLinkProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const hasDropdown = Boolean(item.dropdown?.length);
@@ -56,12 +71,12 @@ function NavLink({ item, isActive, onNavigate }: NavLinkProps) {
 
   if (!hasDropdown) {
     return (
-      <button
-        onClick={() => onNavigate(item.href)}
+      <Link
+        to={item.href}
         className={`nav-link ${isActive ? 'nav-link--active' : ''}`}
       >
         {item.label}
-      </button>
+      </Link>
     );
   }
 
@@ -73,6 +88,7 @@ function NavLink({ item, isActive, onNavigate }: NavLinkProps) {
       onMouseLeave={() => setOpen(false)}
     >
       <button
+        type="button"
         className={`nav-link nav-link--btn ${isActive ? 'nav-link--active' : ''} ${open ? 'nav-link--open' : ''}`}
         aria-haspopup="true"
         aria-expanded={open}
@@ -97,10 +113,11 @@ interface MobileNavProps {
   isOpen: boolean;
   onClose: () => void;
   activePath: string;
-  onNavigate: (href: string) => void;
 }
 
-function MobileNav({ isOpen, onClose, activePath, onNavigate }: MobileNavProps) {
+function MobileNav({ isOpen, onClose, activePath }: MobileNavProps) {
+  // Derive dropdown open state from outside-click + close-handler instead of
+  // resetting it in an effect.
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   // Lock body scroll when open
@@ -109,10 +126,10 @@ function MobileNav({ isOpen, onClose, activePath, onNavigate }: MobileNavProps) 
     return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
 
-  // Close when nav closes
-  useEffect(() => {
-    if (!isOpen) setOpenDropdown(null);
-  }, [isOpen]);
+  function closeAndReset() {
+    setOpenDropdown(null);
+    onClose();
+  }
 
   return (
     <>
@@ -132,8 +149,8 @@ function MobileNav({ isOpen, onClose, activePath, onNavigate }: MobileNavProps) 
       >
         {/* Drawer header */}
         <div className="mobile-drawer__header">
-          {/* <img src={logoSrc} alt="TradeKing Marketing" className="mobile-drawer__logo" /> */}
           <button
+            type="button"
             className="mobile-drawer__close"
             onClick={onClose}
             aria-label="Close navigation menu"
@@ -154,6 +171,7 @@ function MobileNav({ isOpen, onClose, activePath, onNavigate }: MobileNavProps) 
                 {hasDropdown ? (
                   <>
                     <button
+                      type="button"
                       className={`mobile-nav-link mobile-nav-link--toggle ${isActive ? 'mobile-nav-link--active' : ''}`}
                       onClick={() =>
                         setOpenDropdown(isDropdownOpen ? null : item.label)
@@ -170,38 +188,40 @@ function MobileNav({ isOpen, onClose, activePath, onNavigate }: MobileNavProps) 
                     <div className={`mobile-dropdown ${isDropdownOpen ? 'mobile-dropdown--open' : ''}`}>
                       <div className="mobile-dropdown__inner">
                         {item.dropdown!.map((sub) => (
-                          <button
+                          <Link
                             key={sub.href}
-                            onClick={() => { onNavigate(sub.href); onClose(); }}
+                            to={sub.href}
+                            onClick={closeAndReset}
                             className="mobile-dropdown__item"
                           >
                             <ArrowRight size={13} className="mobile-dropdown__arrow" aria-hidden="true" />
                             {sub.label}
-                          </button>
+                          </Link>
                         ))}
                       </div>
                     </div>
                   </>
                 ) : (
-                  <button
-                    onClick={() => { onNavigate(item.href); onClose(); }}
+                  <Link
+                    to={item.href}
+                    onClick={closeAndReset}
                     className={`mobile-nav-link ${isActive ? 'mobile-nav-link--active' : ''}`}
                   >
                     {item.label}
-                  </button>
+                  </Link>
                 )}
               </div>
             );
           })}
 
           {/* Contact */}
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
+            onClick={closeAndReset}
             className="mobile-nav-link"
-            onClick={onClose}
           >
             Contact Us
-          </a>
+          </Link>
         </nav>
 
         {/* Drawer footer */}
@@ -210,12 +230,13 @@ function MobileNav({ isOpen, onClose, activePath, onNavigate }: MobileNavProps) 
             <Phone size={16} aria-hidden="true" />
             {phone.display}
           </a>
-          <button
-            onClick={() => { onNavigate(ctaHref); onClose(); }}
+          <Link
+            to={ctaHref}
+            onClick={closeAndReset}
             className="btn-primary mobile-cta"
           >
             {ctaLabel}
-          </button>
+          </Link>
         </div>
       </div>
     </>
@@ -224,9 +245,11 @@ function MobileNav({ isOpen, onClose, activePath, onNavigate }: MobileNavProps) 
 
 // ─── Navbar ───────────────────────────────────────────────────────────────────
 
-export default function Navbar({ activeHref = '/', onNavigate }: { activeHref?: string; onNavigate?: (href: string) => void }) {
+export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const activePath = location.pathname;
 
   // Detect scroll for shadow/background intensification
   useEffect(() => {
@@ -235,11 +258,14 @@ export default function Navbar({ activeHref = '/', onNavigate }: { activeHref?: 
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Active path
-  const activePath = activeHref;
+  function closeMobile() {
+    setMobileOpen(false);
+  }
 
   return (
     <>
+      <ScrollToTop />
+
       <header
         className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}
         role="banner"
@@ -249,17 +275,16 @@ export default function Navbar({ activeHref = '/', onNavigate }: { activeHref?: 
           {/* ── Left nav links ── */}
           <nav className="navbar__left" aria-label="Primary navigation left">
             {navItems.slice(0, 5).map((item) => (
-              <NavLink
+              <DesktopNavLink
                 key={item.label}
                 item={item}
                 isActive={activePath === item.href}
-                onNavigate={onNavigate ?? ((_) => {})}
               />
             ))}
           </nav>
 
           {/* ── Center logo ── */}
-          <a href="/" className="navbar__logo-link" aria-label="TradeKing Marketing — Home">
+          <Link to="/" className="navbar__logo-link" aria-label="TradeKing Marketing — Home">
             <img
               src={logoSrc}
               alt="TradeKing Marketing"
@@ -267,30 +292,28 @@ export default function Navbar({ activeHref = '/', onNavigate }: { activeHref?: 
               width={110}
               height={110}
             />
-          </a>
+          </Link>
 
           {/* ── Right actions ── */}
           <div className="navbar__right">
-            <button
-              onClick={() => onNavigate?.('/contact')}
-              className="nav-link nav-link--contact"
-            >
+            <Link to="/contact" className="nav-link nav-link--contact">
               Contact Us
-            </button>
+            </Link>
             <a href={phone.href} className="navbar__phone" aria-label={`Call us at ${phone.display}`}>
               <Phone size={15} strokeWidth={2} aria-hidden="true" />
               <span>{phone.display}</span>
             </a>
-            <button
-              onClick={() => onNavigate?.(ctaHref)}
+            <Link
+              to={ctaHref}
               className="navbar__cta btn-primary"
               id="navbar-cta"
             >
               {ctaLabel}
-            </button>
+            </Link>
 
             {/* Mobile hamburger */}
             <button
+              type="button"
               className="navbar__hamburger"
               onClick={() => setMobileOpen(true)}
               aria-label="Open navigation menu"
@@ -309,9 +332,8 @@ export default function Navbar({ activeHref = '/', onNavigate }: { activeHref?: 
       {/* Mobile drawer */}
       <MobileNav
         isOpen={mobileOpen}
-        onClose={() => setMobileOpen(false)}
+        onClose={closeMobile}
         activePath={activePath}
-        onNavigate={onNavigate ?? ((_) => {})}
       />
     </>
   );
