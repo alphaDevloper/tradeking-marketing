@@ -1,15 +1,15 @@
-import { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { ChevronDown, Phone, Menu, X, ArrowRight } from 'lucide-react';
-import logoSrc from '../../assets/tradeking_logo.png';
-import { navItems, phone, ctaLabel, ctaHref } from '../../data/navigation';
+import { useState, useEffect, useRef } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { ChevronDown, Phone, Menu, X, ArrowRight } from "lucide-react";
+import logoSrc from "../../assets/tradeking_logo.png";
+import { navItems, phone, ctaLabel, ctaHref } from "../../data/navigation";
 
 // ─── Scroll-to-top on every route change ─────────────────────────────────────
 
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   }, [pathname]);
   return null;
 }
@@ -17,14 +17,14 @@ function ScrollToTop() {
 // ─── Dropdown Menu ────────────────────────────────────────────────────────────
 
 interface DropdownProps {
-  items: NonNullable<(typeof navItems)[number]['dropdown']>;
+  items: NonNullable<(typeof navItems)[number]["dropdown"]>;
   isOpen: boolean;
 }
 
 function Dropdown({ items, isOpen }: DropdownProps) {
   return (
     <div
-      className={`nav-dropdown ${isOpen ? 'nav-dropdown--open' : ''}`}
+      className={`nav-dropdown ${isOpen ? "nav-dropdown--open" : ""}`}
       role="menu"
       aria-hidden={!isOpen}
     >
@@ -55,6 +55,7 @@ interface DesktopNavLinkProps {
 function DesktopNavLink({ item, isActive }: DesktopNavLinkProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
   const hasDropdown = Boolean(item.dropdown?.length);
 
   // Close on outside click
@@ -65,15 +66,15 @@ function DesktopNavLink({ item, isActive }: DesktopNavLinkProps) {
         setOpen(false);
       }
     }
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
   }, [open]);
 
   if (!hasDropdown) {
     return (
       <Link
         to={item.href}
-        className={`nav-link ${isActive ? 'nav-link--active' : ''}`}
+        className={`nav-link ${isActive ? "nav-link--active" : ""}`}
       >
         {item.label}
       </Link>
@@ -89,16 +90,19 @@ function DesktopNavLink({ item, isActive }: DesktopNavLinkProps) {
     >
       <button
         type="button"
-        className={`nav-link nav-link--btn ${isActive ? 'nav-link--active' : ''} ${open ? 'nav-link--open' : ''}`}
+        className={`nav-link nav-link--btn ${isActive ? "nav-link--active" : ""} ${open ? "nav-link--open" : ""}`}
         aria-haspopup="true"
         aria-expanded={open}
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => {
+          setOpen((v) => !v);
+          navigate(item.href);
+        }}
       >
         {item.label}
         <ChevronDown
           size={14}
           strokeWidth={2.5}
-          className={`nav-chevron ${open ? 'nav-chevron--open' : ''}`}
+          className={`nav-chevron ${open ? "nav-chevron--open" : ""}`}
           aria-hidden="true"
         />
       </button>
@@ -119,11 +123,14 @@ function MobileNav({ isOpen, onClose, activePath }: MobileNavProps) {
   // Derive dropdown open state from outside-click + close-handler instead of
   // resetting it in an effect.
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   // Lock body scroll when open
   useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isOpen]);
 
   function closeAndReset() {
@@ -135,14 +142,14 @@ function MobileNav({ isOpen, onClose, activePath }: MobileNavProps) {
     <>
       {/* Overlay */}
       <div
-        className={`mobile-overlay ${isOpen ? 'mobile-overlay--visible' : ''}`}
+        className={`mobile-overlay ${isOpen ? "mobile-overlay--visible" : ""}`}
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Drawer */}
       <div
-        className={`mobile-drawer ${isOpen ? 'mobile-drawer--open' : ''}`}
+        className={`mobile-drawer ${isOpen ? "mobile-drawer--open" : ""}`}
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
@@ -172,20 +179,23 @@ function MobileNav({ isOpen, onClose, activePath }: MobileNavProps) {
                   <>
                     <button
                       type="button"
-                      className={`mobile-nav-link mobile-nav-link--toggle ${isActive ? 'mobile-nav-link--active' : ''}`}
-                      onClick={() =>
-                        setOpenDropdown(isDropdownOpen ? null : item.label)
-                      }
+                      className={`mobile-nav-link mobile-nav-link--toggle ${isActive ? "mobile-nav-link--active" : ""}`}
+                      onClick={() => {
+                        setOpenDropdown(isDropdownOpen ? null : item.label);
+                        navigate(item.href);
+                      }}
                       aria-expanded={isDropdownOpen}
                     >
                       {item.label}
                       <ChevronDown
                         size={16}
-                        className={`nav-chevron ${isDropdownOpen ? 'nav-chevron--open' : ''}`}
+                        className={`nav-chevron ${isDropdownOpen ? "nav-chevron--open" : ""}`}
                         aria-hidden="true"
                       />
                     </button>
-                    <div className={`mobile-dropdown ${isDropdownOpen ? 'mobile-dropdown--open' : ''}`}>
+                    <div
+                      className={`mobile-dropdown ${isDropdownOpen ? "mobile-dropdown--open" : ""}`}
+                    >
                       <div className="mobile-dropdown__inner">
                         {item.dropdown!.map((sub) => (
                           <Link
@@ -194,7 +204,11 @@ function MobileNav({ isOpen, onClose, activePath }: MobileNavProps) {
                             onClick={closeAndReset}
                             className="mobile-dropdown__item"
                           >
-                            <ArrowRight size={13} className="mobile-dropdown__arrow" aria-hidden="true" />
+                            <ArrowRight
+                              size={13}
+                              className="mobile-dropdown__arrow"
+                              aria-hidden="true"
+                            />
                             {sub.label}
                           </Link>
                         ))}
@@ -205,7 +219,7 @@ function MobileNav({ isOpen, onClose, activePath }: MobileNavProps) {
                   <Link
                     to={item.href}
                     onClick={closeAndReset}
-                    className={`mobile-nav-link ${isActive ? 'mobile-nav-link--active' : ''}`}
+                    className={`mobile-nav-link ${isActive ? "mobile-nav-link--active" : ""}`}
                   >
                     {item.label}
                   </Link>
@@ -254,8 +268,8 @@ export default function Navbar() {
   // Detect scroll for shadow/background intensification
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   function closeMobile() {
@@ -267,11 +281,10 @@ export default function Navbar() {
       <ScrollToTop />
 
       <header
-        className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}
+        className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}
         role="banner"
       >
         <div className="navbar__inner">
-
           {/* ── Left nav links ── */}
           <nav className="navbar__left" aria-label="Primary navigation left">
             {navItems.slice(0, 5).map((item) => (
@@ -284,7 +297,11 @@ export default function Navbar() {
           </nav>
 
           {/* ── Center logo ── */}
-          <Link to="/" className="navbar__logo-link" aria-label="TradeKing Marketing — Home">
+          <Link
+            to="/"
+            className="navbar__logo-link"
+            aria-label="TradeKing Marketing — Home"
+          >
             <img
               src={logoSrc}
               alt="TradeKing Marketing"
@@ -299,7 +316,11 @@ export default function Navbar() {
             <Link to="/contact" className="nav-link nav-link--contact">
               Contact Us
             </Link>
-            <a href={phone.href} className="navbar__phone" aria-label={`Call us at ${phone.display}`}>
+            <a
+              href={phone.href}
+              className="navbar__phone"
+              aria-label={`Call us at ${phone.display}`}
+            >
               <Phone size={15} strokeWidth={2} aria-hidden="true" />
               <span>{phone.display}</span>
             </a>
