@@ -3,6 +3,7 @@ import Navbar from './components/layout/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
 import ServicesPage from './pages/ServicesPage';
+import WebDesignPage from './pages/WebDesignPage';
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about-us" element={<About />} />
         <Route path="/services" element={<ServicesPage />} />
+        <Route path="/services/website-design-development" element={<WebDesignPage />} />
       </Routes>
     </BrowserRouter>
   );

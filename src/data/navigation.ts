@@ -20,12 +20,9 @@ export const navItems: NavItem[] = [
     label: 'Services',
     href: '/services',
     dropdown: [
-      { label: 'Website Design', href: '/services/website-design', description: 'Custom sites built to convert' },
-      { label: 'Website Development', href: '/services/website-development', description: 'Fast, modern, and responsive' },
-      { label: 'Website Redesign', href: '/services/website-redesign', description: 'Modernize your existing site' },
+      { label: 'Website Design & Development', href: '/services/website-design-development', description: 'Custom sites built to convert' },
       { label: 'Local SEO', href: '/services/local-seo', description: 'Rank higher in your local market' },
-      { label: 'Conversion Optimization', href: '/services/conversion-optimization', description: 'Turn visitors into leads' },
-      { label: 'Website Maintenance', href: '/services/maintenance', description: 'Keep your site running perfectly' },
+      { label: 'Local Service Ads', href: '/services/local-service-ads', description: 'Turn visitors into leads' }
     ],
   },
   { label: 'Case Studies', href: '/case-studies' },
