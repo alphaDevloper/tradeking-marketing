@@ -1,4 +1,3 @@
-import React from 'react'
 import ServicesHero from '../components/sections/ServicesHero'
 import Services from '../components/sections/Services'
 import Footer from '../components/layout/Footer'
