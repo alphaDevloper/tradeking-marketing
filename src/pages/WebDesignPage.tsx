@@ -5,6 +5,11 @@ import WebDesignHero from '../components/sections/WebDesignHero';
 import RoofingIntro from '../components/sections/RoofingIntro';
 import WebsiteFeatures from '../components/sections/WebsiteFeatures';
 import Process from '../components/sections/Process';
+import Packages from '../components/sections/Packages';
+import FeaturedWork from '../components/sections/FeaturedWork';
+import FinalCTA from '../components/sections/FinalCTA';
+import FAQ from '../components/sections/FAQ';
+import Footer from '../components/layout/Footer';
 
 
 export default function WebDesignPage() {
@@ -14,6 +19,11 @@ export default function WebDesignPage() {
       <RoofingIntro />
       <WebsiteFeatures />
       <Process />
+      <Packages />
+      <FeaturedWork/>
+      <FinalCTA />
+      <FAQ/>
+      <Footer/>
     </main>
   );
 }
