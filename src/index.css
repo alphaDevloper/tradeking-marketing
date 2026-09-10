@@ -6167,3 +6167,175 @@ a.footer__line:hover {
     height: 20px;
   }
 }
+
+/* ==========================================================================
+   Process Section — "How We Build Your Website"
+   ========================================================================== */
+
+.process {
+  background-color: #F2F2F2;
+}
+
+/* ── Container ──────────────────────────────────────────────────────────── */
+
+.process__container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+
+.process__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  text-align: left;
+}
+
+.process__eyebrow {
+  font-size: 11.52px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.process__heading {
+  font-size: 38.4px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: #1a1a1a;
+}
+
+.process__heading-accent {
+  font-style: italic;
+  color: #D5410B;
+}
+
+/* ── Grid ───────────────────────────────────────────────────────────────── */
+
+.process__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+/* ── Card ───────────────────────────────────────────────────────────────── */
+
+.process__card {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 16px;
+  padding: 2rem 1.75rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition:
+    background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
+}
+
+.process__card:hover {
+  background: #141414;
+  border-color: #2a2a2a;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+/* ── Card Top Row (number + icon) ───────────────────────────────────────── */
+
+.process__card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.process__card-number {
+  font-size: 38.4px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.process__card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: #444444;
+  margin-top: 0.5rem;
+  transition: color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.process__card:hover .process__card-icon {
+  color: #a0a0a0;
+}
+
+/* ── Card Title ─────────────────────────────────────────────────────────── */
+
+.process__card-title {
+  font-size: 20.48px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  transition: color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.process__card:hover .process__card-title {
+  color: #ffffff;
+}
+
+/* ── Card Description ───────────────────────────────────────────────────── */
+
+.process__card-desc {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #6b6b6b;
+  transition: color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.process__card:hover .process__card-desc {
+  color: #999999;
+}
+
+/* ── Responsive — Tablet (≤1024px) ──────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .process__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .process__heading {
+    font-size: clamp(28px, 5vw, 38.4px);
+  }
+}
+
+/* ── Responsive — Mobile (≤640px) ───────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .process__grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .process__heading {
+    font-size: clamp(24px, 6.5vw, 32px);
+  }
+
+  .process__card {
+    padding: 1.5rem 1.25rem 2rem;
+  }
+
+  .process__card-number {
+    font-size: 32px;
+  }
+}

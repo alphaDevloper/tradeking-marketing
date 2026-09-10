@@ -4,6 +4,7 @@
 import WebDesignHero from '../components/sections/WebDesignHero';
 import RoofingIntro from '../components/sections/RoofingIntro';
 import WebsiteFeatures from '../components/sections/WebsiteFeatures';
+import Process from '../components/sections/Process';
 
 
 export default function WebDesignPage() {
@@ -12,6 +13,7 @@ export default function WebDesignPage() {
       <WebDesignHero />
       <RoofingIntro />
       <WebsiteFeatures />
+      <Process />
     </main>
   );
 }

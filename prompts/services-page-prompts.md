@@ -224,9 +224,19 @@ Use the existing assets from the assets folder where appropriate. No images requ
 
 Make the section fully responsive: on smaller screens the 4-column grid should reflow to 2 columns on tablet and a single column on mobile, with each card maintaining consistent width and internal padding.
 
+here are the font sizes and weights to use:
+eyebrow: use 11.52px size and weight 600.
+headline: use 38.4px size and weight 700.
+card count: use 38.4px size and weight 700.
+
+card heading: use 20.48px size and weight 700.
+card paragraph: use 13px size and weight 400.
+
+Add a hover effect on cards, on hover the cards should exactly look like the one in the image
 Do not modify any other section or page.
 
-@prompt_material/how-we-build.png
+[website-process.png](file;file:///c%3A/Users/Talha/Documents/Builds/tradeking-marketing/prompt_mterial/website-process.png)
+
 ```
 
 ### 6. Choose Your Weapon - Packages Section
@@ -938,9 +948,11 @@ Do not modify any other section or page.
 This file contains **21 implementation prompts** across 3 service-related pages:
 
 ### Services Page (Main) - 1 prompt
+
 1. Services Page Hero
 
 ### Website Design & Development Service Page - 6 prompts
+
 2. Website Design Hero
 3. Professional Roofing Website Design Intro
 4. What's Included In Every Website
@@ -949,6 +961,7 @@ This file contains **21 implementation prompts** across 3 service-related pages:
 7. Website Design Final CTA
 
 ### Roofing SEO Service Page - 8 prompts
+
 8. Roofing SEO Hero
 9. Most Visible Contractor Wins Intro
 10. Why Roofing Contractors Can't Afford To Ignore SEO
@@ -959,6 +972,7 @@ This file contains **21 implementation prompts** across 3 service-related pages:
 15. SEO Final CTA
 
 ### Local Service Ads Service Page - 6 prompts
+
 16. Local Service Ads Hero
 17. Verified Leads Every Single Day Intro
 18. Contractors At The Top Aren't There By Accident
@@ -967,6 +981,7 @@ This file contains **21 implementation prompts** across 3 service-related pages:
 21. LSA Final CTA
 
 All prompts follow the standard project pattern and include:
+
 - Reference to AGENTS.md
 - Detailed content specifications
 - Asset guidance (use existing or placeholder)
