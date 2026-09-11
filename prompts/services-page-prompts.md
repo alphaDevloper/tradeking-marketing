@@ -658,6 +658,12 @@ Use the existing assets from the assets folder where appropriate. No images requ
 
 Make the section fully responsive: on smaller screens the pricing display and body content should stack vertically (pricing first, then body copy and CTA button), maintaining visual hierarchy and CTA prominence.
 
+here are the font sizes and weights to use:
+eyebrow: use 10.88px size and weight 600.
+Pricing number: use 66.56px and weight 800 and for per month use 14px size and weight 700
+paragraph: use 14px size and weight 400 and for bold text use 600.
+cta: use 13px size and weight 700.
+
 Do not modify any other section or page.
 
 @prompt_material/seo-pricing.png

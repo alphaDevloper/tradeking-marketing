@@ -3129,6 +3129,136 @@ hr {
 
 
 /* ==========================================================================
+   SEO Mistakes — "What's Killing Your Rankings Right Now"
+   ========================================================================== */
+
+.seo-mistakes {
+  background-color: #000000;
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.seo-mistakes__container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+/* ── Top-left aligned header ────────────────────────────────────────────── */
+
+.seo-mistakes__header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.seo-mistakes__eyebrow {
+  display: inline-block;
+  font-size: 11.52px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.seo-mistakes__headline {
+  display: flex;
+  flex-direction: column;
+  font-size: 38.4px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.seo-mistakes__hl-line {
+  display: block;
+}
+
+.seo-mistakes__accent {
+  font-style: italic;
+  font-weight: 700;
+  background: linear-gradient(90deg, #D5410B 0%, #EA4817 50%, #F15A24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* ── 2-column x 2-row mistakes grid ─────────────────────────────────────── */
+
+.seo-mistakes__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+/* ── Mistake Card ───────────────────────────────────────────────────────── */
+
+.seo-mistakes__card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background-color: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 20px 20px;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.seo-mistakes__card:hover {
+  border-color: rgba(213, 65, 11, 0.4);
+  transform: translateY(-2px);
+}
+
+.seo-mistakes__icon-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #D5410B;
+  flex-shrink: 0;
+}
+
+.seo-mistakes__text {
+  font-size: 13.44px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #ffffff;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .seo-mistakes__headline {
+    font-size: clamp(28px, 3.8vw, 36px);
+  }
+}
+
+@media (max-width: 767px) {
+  .seo-mistakes__grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .seo-mistakes__card {
+    padding: 1.25rem 1.25rem;
+  }
+
+  .seo-mistakes__headline {
+    font-size: clamp(24px, 5.5vw, 32px);
+  }
+}
+
+@media (max-width: 480px) {
+  .seo-mistakes__headline {
+    font-size: clamp(20px, 6.5vw, 26px);
+  }
+}
+
+
+/* ==========================================================================
    My Story / Meet The Founder Section
    ========================================================================== */
 
