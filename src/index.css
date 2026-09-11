@@ -2511,6 +2511,105 @@ hr {
 
 
 /* ==========================================================================
+   SEO Intro — "The Most Visible Contractor Wins Every Time"
+   ========================================================================== */
+
+.seo-intro {
+  background-color: #000000;
+  padding-block: clamp(4.5rem, 8.5vw, 7.5rem);
+}
+
+.seo-intro__container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.seo-intro__grid {
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
+}
+
+/* ── Left column — headline ─────────────────────────────────────────────── */
+
+.seo-intro__headline {
+  display: flex;
+  flex-direction: column;
+  font-size: 38.4px;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.seo-intro__hl-line {
+  display: block;
+}
+
+.seo-intro__accent {
+  font-style: italic;
+  font-weight: 700;
+  background: linear-gradient(90deg, #D5410B 0%, #EA4817 50%, #F15A24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* ── Right column — body copy ───────────────────────────────────────────── */
+
+.seo-intro__right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 0.25rem;
+}
+
+.seo-intro__paragraph {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.85;
+  color: #a1a1a1;
+}
+
+.seo-intro__bold {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .seo-intro__headline {
+    font-size: clamp(28px, 3.8vw, 36px);
+  }
+}
+
+@media (max-width: 767px) {
+  .seo-intro__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .seo-intro__headline {
+    font-size: clamp(26px, 6vw, 34px);
+  }
+
+  .seo-intro__right {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .seo-intro__headline {
+    font-size: clamp(22px, 6.5vw, 28px);
+  }
+}
+
+
+/* ==========================================================================
    My Story / Meet The Founder Section
    ========================================================================== */
 
