@@ -2695,7 +2695,7 @@ hr {
   box-shadow:
     0 0 20px rgba(213, 65, 11, 0.25),
     0 10px 30px rgba(0, 0, 0, 0.6);
-  transform: translateY(-4px) scale(1.02);
+  transform: translateY(-4px);
 }
 
 /* ── Icon Tile ──────────────────────────────────────────────────────────── */
@@ -2768,6 +2768,206 @@ hr {
 
 @media (max-width: 480px) {
   .why-seo__headline {
+    font-size: clamp(20px, 6.5vw, 26px);
+  }
+}
+
+
+/* ==========================================================================
+   Roofing SEO Services — "What's Included In Our Roofing SEO Service"
+   ========================================================================== */
+
+.seo-services {
+  background-color: #000000;
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.seo-services__container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+/* ── Top-left aligned header ────────────────────────────────────────────── */
+
+.seo-services__header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.seo-services__eyebrow {
+  display: inline-block;
+  font-size: 11.52px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.seo-services__headline {
+  display: flex;
+  flex-direction: column;
+  font-size: 38.4px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.seo-services__hl-line {
+  display: block;
+}
+
+.seo-services__accent {
+  font-style: italic;
+  font-weight: 700;
+  background: linear-gradient(90deg, #D5410B 0%, #EA4817 50%, #F15A24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* ── 3-column x 2-row feature card grid ─────────────────────────────────── */
+
+.seo-services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 2vw, 1.75rem);
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+/* ── Standard Feature Card ──────────────────────────────────────────────── */
+
+.seo-services__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: clamp(2rem, 3.5vw, 2.5rem) clamp(1.5rem, 2.5vw, 2rem);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover state — elevates with red border, glowing shadow & red icon tile */
+.seo-services__card:not(.seo-services__card--accent):hover {
+  border-color: #D5410B;
+  box-shadow:
+    0 0 20px rgba(213, 65, 11, 0.2),
+    0 8px 24px rgba(0, 0, 0, 0.6);
+  transform: translateY(-4px);
+}
+
+.seo-services__card:not(.seo-services__card--accent):hover .seo-services__icon-tile {
+  background-color: #D5410B;
+  color: #ffffff;
+  border-color: #D5410B;
+  box-shadow: 0 0 16px rgba(213, 65, 11, 0.5);
+}
+
+/* ── Icon Tile ──────────────────────────────────────────────────────────── */
+
+.seo-services__icon-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background-color: #1c1c1c;
+  color: #D5410B;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 1.5rem;
+  flex-shrink: 0;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ── Card Typography ────────────────────────────────────────────────────── */
+
+.seo-services__card-title {
+  font-size: 19.2px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.seo-services__card-desc {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #a1a1a1;
+}
+
+/* ── Highlight Accent Card (Card 06) ────────────────────────────────────── */
+
+.seo-services__card--accent {
+  background-color: #D5410B;
+  border: 1px solid transparent;
+  justify-content: center;
+  box-shadow:
+    0 4px 28px rgba(149, 61, 29, 0.55),
+    0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.seo-services__card--accent:hover {
+  transform: translateY(-4px);
+  /* box-shadow:
+    0 8px 36px rgba(213, 65, 11, 0.7),
+    0 4px 12px rgba(0, 0, 0, 0.5); */
+}
+
+.seo-services__accent-title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+}
+
+.seo-services__accent-desc {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .seo-services__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .seo-services__headline {
+    font-size: clamp(28px, 3.8vw, 36px);
+  }
+}
+
+@media (max-width: 767px) {
+  .seo-services__grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .seo-services__card {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .seo-services__headline {
+    font-size: clamp(24px, 5.5vw, 32px);
+  }
+}
+
+@media (max-width: 480px) {
+  .seo-services__headline {
     font-size: clamp(20px, 6.5vw, 26px);
   }
 }

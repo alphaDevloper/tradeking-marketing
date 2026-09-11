@@ -4,6 +4,7 @@
 import RoofingSeoHero from '../components/sections/RoofingSeoHero';
 import SeoIntro from '../components/sections/SeoIntro';
 import WhySeo from '../components/sections/WhySeo';
+import SeoServices from '../components/sections/SeoServices';
 import Footer from '../components/layout/Footer';
 
 export default function RoofingSeoPage() {
@@ -12,6 +13,7 @@ export default function RoofingSeoPage() {
       <RoofingSeoHero />
       <SeoIntro />
       <WhySeo />
+      <SeoServices />
       <Footer />
     </main>
   );
