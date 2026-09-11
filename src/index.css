@@ -2610,6 +2610,170 @@ hr {
 
 
 /* ==========================================================================
+   Why SEO — Benefits Section
+   ========================================================================== */
+
+.why-seo {
+  background-color: #000000;
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.why-seo__container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+/* ── Top-left aligned header ────────────────────────────────────────────── */
+
+.why-seo__header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.why-seo__eyebrow {
+  display: inline-block;
+  font-size: 11.52px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.why-seo__headline {
+  display: flex;
+  flex-direction: column;
+  font-size: 38.4px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.why-seo__hl-line {
+  display: block;
+}
+
+.why-seo__accent {
+  font-style: italic;
+  font-weight: 700;
+  background: linear-gradient(90deg, #D5410B 0%, #EA4817 50%, #F15A24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* ── 3-column feature card grid ─────────────────────────────────────────── */
+
+.why-seo__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 2vw, 1.75rem);
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+/* ── Feature Card ───────────────────────────────────────────────────────── */
+
+.why-seo__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: clamp(2rem, 3.5vw, 2.5rem) clamp(1.5rem, 2.5vw, 2rem);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover state — slightly scaled up, red border, and glowing shadow */
+.why-seo__card:hover {
+  border-color: #D5410B;
+  box-shadow:
+    0 0 20px rgba(213, 65, 11, 0.25),
+    0 10px 30px rgba(0, 0, 0, 0.6);
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* ── Icon Tile ──────────────────────────────────────────────────────────── */
+
+.why-seo__icon-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background-color: #D5410B;
+  color: #ffffff;
+  /* box-shadow:
+    0 0 16px rgba(213, 65, 11, 0.6),
+    0 0 32px rgba(213, 65, 11, 0.25); */
+  margin-bottom: 1.75rem;
+  flex-shrink: 0;
+}
+
+/* ── Card Content ───────────────────────────────────────────────────────── */
+
+.why-seo__card-title {
+  font-size: 20.48px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+}
+
+.why-seo__card-desc {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #a1a1a1;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .why-seo__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .why-seo__card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .why-seo__headline {
+    font-size: clamp(28px, 3.8vw, 36px);
+  }
+}
+
+@media (max-width: 767px) {
+  .why-seo__grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .why-seo__card {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .why-seo__headline {
+    font-size: clamp(24px, 5.5vw, 32px);
+  }
+}
+
+@media (max-width: 480px) {
+  .why-seo__headline {
+    font-size: clamp(20px, 6.5vw, 26px);
+  }
+}
+
+
+/* ==========================================================================
    My Story / Meet The Founder Section
    ========================================================================== */
 
