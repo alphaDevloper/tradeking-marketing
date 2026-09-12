@@ -2803,6 +2803,677 @@ hr {
   }
 }
 
+/* ==========================================================================
+   Local Service Ads Intro — "The Contractors At The Top..." (.ads-accident)
+   ========================================================================== */
+
+.ads-accident {
+  background-color: #ffffff;
+  padding-block: clamp(4.5rem, 8.5vw, 7.5rem);
+  color: #000000;
+}
+
+.ads-accident__container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.ads-accident__grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+/* ── Left Column: Headline ──────────────────────────────────────────────── */
+
+.ads-accident__headline {
+  font-size: 38.4px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #000000;
+  margin: 0;
+}
+
+.ads-accident__hl-line {
+  display: block;
+  white-space: nowrap;
+}
+
+.ads-accident__accent {
+  font-style: italic;
+  font-weight: 700;
+  background: linear-gradient(90deg, #D5410B 0%, #EA4817 50%, #F15A24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* ── Right Column: Paragraphs ───────────────────────────────────────────── */
+
+.ads-accident__right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-top: 0.2rem;
+}
+
+.ads-accident__p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: #555555;
+  margin: 0;
+}
+
+.ads-accident__p--bold {
+  font-weight: 600;
+  color: #000000;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .ads-accident__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .ads-accident__headline {
+    font-size: clamp(22px, 4.8vw, 32px);
+  }
+}
+
+@media (max-width: 480px) {
+  .ads-accident__headline {
+    font-size: clamp(18px, 5.2vw, 24px);
+  }
+}
+
+/* ==========================================================================
+   Why Local Service Ads Beat Everything Else (.why-lsa)
+   ========================================================================== */
+
+.why-lsa {
+  background-color: #000000;
+  padding-block: clamp(4.5rem, 8.5vw, 7.5rem);
+  color: #ffffff;
+}
+
+.why-lsa__container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+/* ── Top-left Aligned Header ────────────────────────────────────────────── */
+
+.why-lsa__header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.why-lsa__eyebrow {
+  display: inline-block;
+  font-size: 11.52px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.why-lsa__headline {
+  font-size: 38.4px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0;
+}
+
+.why-lsa__hl-line {
+  display: block;
+}
+
+.why-lsa__accent {
+  font-style: italic;
+  font-weight: 700;
+  background: linear-gradient(90deg, #D5410B 0%, #EA4817 50%, #F15A24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* ── 2-column x 2-row Feature Cards Grid ─────────────────────────────────── */
+
+.why-lsa__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+/* ── Feature Card ───────────────────────────────────────────────────────── */
+
+.why-lsa__card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  background-color: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: clamp(1.75rem, 3vw, 2.25rem) clamp(1.5rem, 2.5vw, 2rem);
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+  cursor: default;
+}
+
+/* ── Card Icon Tile ─────────────────────────────────────────────────────── */
+
+.why-lsa__icon-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background-color: #D5410B;
+  color: #ffffff;
+  flex-shrink: 0;
+  box-shadow: 0 0 16px rgba(213, 65, 11, 0.45);
+  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* ── Card Content ───────────────────────────────────────────────────────── */
+
+.why-lsa__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.why-lsa__card-title {
+  font-size: 20.48px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5rem 0;
+  transition: color 0.25s ease;
+}
+
+.why-lsa__card-desc {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #a1a1a1;
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+/* ── Hover State (matches prompt reference image exactly) ───────────────── */
+
+.why-lsa__card:hover {
+  background-color: #D5410B;
+  border-color: #D5410B;
+  box-shadow:
+    0 10px 32px rgba(213, 65, 11, 0.45),
+    0 2px 10px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.why-lsa__card:hover .why-lsa__icon-tile {
+  background-color: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  box-shadow: none;
+}
+
+.why-lsa__card:hover .why-lsa__card-title {
+  color: #ffffff;
+}
+
+.why-lsa__card:hover .why-lsa__card-desc {
+  color: #ffffff;
+}
+
+/* ── Responsive Breakpoints ─────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .why-lsa__headline {
+    font-size: clamp(28px, 3.8vw, 36px);
+  }
+}
+
+@media (max-width: 767px) {
+  .why-lsa__grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .why-lsa__card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.75rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .why-lsa__headline {
+    font-size: clamp(22px, 6vw, 28px);
+  }
+}
+
+/* ==========================================================================
+   LSA Management Packages (.lsa-packages)
+   ========================================================================== */
+
+.lsa-packages {
+  background-color: #000000;
+  padding-block: clamp(4.5rem, 8.5vw, 7.5rem);
+  color: #ffffff;
+}
+
+.lsa-packages__container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+/* ── Centered Header ────────────────────────────────────────────────────── */
+
+.lsa-packages__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: clamp(3rem, 6vw, 4.5rem);
+}
+
+.lsa-packages__eyebrow {
+  display: inline-block;
+  font-size: 11.52px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+}
+
+.lsa-packages__headline {
+  font-size: 38.4px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0;
+}
+
+.lsa-packages__accent {
+  font-style: italic;
+  font-weight: 800;
+  background: linear-gradient(90deg, #D5410B 0%, #EA4817 50%, #F15A24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* ── 2-Column Pricing Cards Grid ─────────────────────────────────────────── */
+
+.lsa-packages__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  align-items: stretch;
+}
+
+/* ── Pricing Card ───────────────────────────────────────────────────────── */
+
+.lsa-packages__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: clamp(2.25rem, 3.5vw, 3rem) clamp(2rem, 3.5vw, 2.75rem);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* Highlighted "MOST POPULAR" card */
+.lsa-packages__card--highlighted {
+  border-color: #D5410B;
+  box-shadow:
+    0 0 28px rgba(213, 65, 11, 0.25),
+    0 0 60px rgba(213, 65, 11, 0.1);
+}
+
+/* Floating "MOST POPULAR" tag badge */
+.lsa-packages__tag {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10.24px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #D5410B;
+  border-radius: 9999px;
+  padding: 0.35rem 1.1rem;
+  box-shadow: 0 0 16px rgba(213, 65, 11, 0.6);
+  white-space: nowrap;
+  z-index: 2;
+}
+
+/* ── Card Body Content ──────────────────────────────────────────────────── */
+
+.lsa-packages__card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.lsa-packages__pill-wrapper {
+  margin-bottom: 1.25rem;
+}
+
+.lsa-packages__pill {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  padding: 0.35rem 0.9rem;
+  line-height: 1;
+}
+
+.lsa-packages__pill--dark {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.lsa-packages__pill--red {
+  color: #D5410B;
+  background-color: transparent;
+  border: 1.5px solid #D5410B;
+}
+
+.lsa-packages__card-title {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin: 0 0 1.75rem 0;
+}
+
+/* ── Feature List ───────────────────────────────────────────────────────── */
+
+.lsa-packages__features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.lsa-packages__feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 13.44px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #ffffff;
+}
+
+.lsa-packages__check {
+  color: #D5410B;
+  flex-shrink: 0;
+}
+
+.lsa-packages__card-desc {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #888888;
+  margin: 1.25rem 0 0 0;
+}
+
+/* ── Card CTA Buttons ───────────────────────────────────────────────────── */
+
+.lsa-packages__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 8px;
+  padding: 13px 24px;
+  text-decoration: none;
+  margin-top: 2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.lsa-packages__btn--outlined {
+  color: #ffffff;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.lsa-packages__btn--outlined:hover {
+  border-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+.lsa-packages__btn--solid {
+  color: #ffffff;
+  background: linear-gradient(135deg, #e5441b 0%, #d53d10 50%, #c43208 100%);
+  border: 1px solid transparent;
+  box-shadow:
+    0 4px 20px rgba(69, 24, 8, 0.5),
+    0 0 30px rgba(62, 20, 5, 0.25);
+}
+
+.lsa-packages__btn--solid:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 26px rgba(69, 24, 8, 0.65),
+    0 0 40px rgba(62, 20, 5, 0.35);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 860px) {
+  .lsa-packages__grid {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+    margin-inline: auto;
+    gap: 2.5rem;
+  }
+
+  .lsa-packages__card {
+    padding: 2.25rem 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .lsa-packages__headline {
+    font-size: clamp(24px, 6vw, 32px);
+  }
+
+  .lsa-packages__card-title {
+    font-size: 24px;
+  }
+}
+
+
+/* ==========================================================================
+   LSA Final CTA Section — "Ready To Start Getting Google Guaranteed Leads Tomorrow?"
+   ========================================================================== */
+
+.lsa-final-cta {
+  position: relative;
+  background-color: #000000;
+  overflow: hidden;
+  padding-block: clamp(5.5rem, 9.5vw, 8.5rem);
+  color: #ffffff;
+}
+
+/* ── Red Radial Glow behind CTA button ──────────────────────────────────── */
+
+.lsa-final-cta__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 78%,
+    rgba(213, 65, 11, 0.22) 0%,
+    rgba(213, 65, 11, 0.06) 48%,
+    transparent 75%
+  );
+}
+
+/* ── Centered Container ─────────────────────────────────────────────────── */
+
+.lsa-final-cta__container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 4vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ── Headline ───────────────────────────────────────────────────────────── */
+
+.lsa-final-cta__heading {
+  font-size: 38.4px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  color: #ffffff;
+  max-width: 960px;
+  margin: 0;
+}
+
+.lsa-final-cta__hl-line {
+  display: block;
+}
+
+.lsa-final-cta__accent {
+  font-style: italic;
+  font-weight: 800;
+  background: linear-gradient(90deg, #D5410B 0%, #EA4817 50%, #F15A24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* ── Subtitle ───────────────────────────────────────────────────────────── */
+
+.lsa-final-cta__subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #999999;
+  max-width: 700px;
+  margin-top: 1.35rem;
+  margin-bottom: 2.5rem;
+}
+
+/* ── Primary CTA Button ─────────────────────────────────────────────────── */
+
+.lsa-final-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  background: linear-gradient(135deg, #e5441b 0%, #d53d10 50%, #c43208 100%);
+  padding: 10px 28px;
+  border-radius: 8px;
+  box-shadow:
+    0 4px 20px rgba(69, 24, 8, 0.5),
+    0 0 30px rgba(62, 20, 5, 0.25);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lsa-final-cta__btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 26px rgba(69, 24, 8, 0.65),
+    0 0 40px rgba(62, 20, 5, 0.35);
+}
+
+.lsa-final-cta__btn:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .lsa-final-cta {
+    padding-block: clamp(4.5rem, 8.5vw, 6.5rem);
+  }
+
+  .lsa-final-cta__heading {
+    font-size: clamp(24px, 5.5vw, 32px);
+  }
+
+  .lsa-final-cta__subtitle {
+    font-size: 13.5px;
+    margin-bottom: 2rem;
+  }
+
+  .lsa-final-cta__btn {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lsa-final-cta__heading {
+    font-size: clamp(20px, 6.5vw, 26px);
+  }
+
+  .lsa-final-cta__hl-line {
+    display: inline;
+  }
+}
+
 
 /* ==========================================================================
    Roofing Intro — two-column headline + body copy

@@ -855,6 +855,14 @@ Use the existing assets from the assets folder where appropriate. No images requ
 
 Make the section fully responsive: on smaller screens the 2-column grid should collapse to a single column with each card stacking vertically, maintaining consistent card width and padding. On smaller screens the icon, title, and description should stack vertically within each card.
 
+here are the font sizes and weights to use:
+eyebrow: use 11.52px size and 700 font weight
+headline: use 38.4px size and 700 font weight
+card title: use 20.48px size and 700 font weight
+card paragraph: use 13px size and 400 weight
+
+- on hover the cards should exactly look like in the attached image.
+
 Do not modify any other section or page.
 
 @prompt_material/why-lsa.png
@@ -916,6 +924,15 @@ Use the existing assets from the assets folder where appropriate. No images requ
 
 Make the section fully responsive: on smaller screens the 2-column grid should stack vertically with the highlighted "MOST POPULAR" card maintaining its red border and glow effect, and all cards should have consistent width and padding.
 
+here are the font sizes and weights to use:
+eyebrow: use 11.52px size and 700 font weight
+headline: use 38.4px size and 800 font weight
+card pill: use 11px size and 700 font weight
+card tag(most popular): use 10.24px size and 700 font weight
+card heading: use 28px size and 800 font weight
+card features: use 13.44px size and 400 font weight
+card cta: use 13px size and 700 font weight
+
 Do not modify any other section or page.
 
 @prompt_material/lsa-packages.png
@@ -945,6 +962,11 @@ TYPOGRAPHY & STYLING:
 Use the existing assets from the assets folder where appropriate. No images required for this section.
 
 Make the section fully responsive: on smaller screens the headline should wrap naturally while preserving the red gradient emphasis on "GOOGLE GUARANTEED LEADS", the subtitle should maintain readability, and the CTA button should remain prominent and full-width on mobile.
+
+here are the font sizes and weights to use:
+headline: use 38.4px size and 800 font weight
+paragraph: use 14px size and 400 font weight
+cta: use 13px size and 700 font weight
 
 Do not modify any other section or page.
 
