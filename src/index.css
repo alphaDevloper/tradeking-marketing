@@ -2424,6 +2424,237 @@ hr {
   }
 }
 
+/* ==========================================================================
+   Local Service Ads Page Hero Section (.hero--ads)
+   ========================================================================== */
+
+/* ── Background glow — subtle red radial gradient glow matching home & bottom center ── */
+.hero--ads .hero__glow--ads {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    /* Bottom center warm glow */
+    radial-gradient(ellipse 70% 55% at 50% 85%,
+      rgba(175, 40, 10, 0.42) 0%,
+      rgba(110, 18, 5, 0.22) 42%,
+      transparent 70%),
+    /* Primary upper glow behind headline matching home hero */
+    radial-gradient(ellipse 80% 65% at 50% 35%,
+      rgba(120, 16, 6, 0.65) 0%,
+      rgba(80, 10, 4, 0.35) 40%,
+      transparent 72%),
+    /* Secondary ambient spread */
+    radial-gradient(ellipse 110% 80% at 50% 50%,
+      rgba(70, 8, 3, 0.28) 0%,
+      transparent 65%);
+}
+
+/* ── Eyebrow pill — 11px, weight 700, red border/text ──────────────────── */
+.hero__eyebrow--ads {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  padding: 0.5rem 1.4rem;
+  color: var(--color-accent);
+  border: 1.5px solid var(--color-accent);
+  border-radius: 9999px;
+  text-transform: uppercase;
+  display: inline-block;
+  line-height: 1;
+}
+
+/* ── Headline — 51px, weight 700, 2-line layout ───────────────────────── */
+.hero__headline--ads {
+  max-width: 100%;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.hero--ads .hero__hl-line--ads {
+  display: block;
+  font-size: 51px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Red-to-orange gradient portion: "TOP OF GOOGLE," */
+.hero__hl-gradient--ads {
+  font-weight: 700;
+  background: linear-gradient(90deg, #D5410B 0%, #EA4817 50%, #F15A24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
+}
+
+/* ── Description subtitle — 15.51px, weight 400 ───────────────────────── */
+.hero__desc--ads {
+  margin-top: 1.375rem;
+  font-size: 15.51px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #c0c0c0;
+  max-width: 560px;
+  text-align: center;
+}
+
+/* ── Industry badges — 4 badges horizontal ───────────────────────────── */
+.hero--ads .hero__industries--ads {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0.375rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.hero--ads .hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.hero--ads .hero-badge__icon {
+  color: #D5410B;
+  flex-shrink: 0;
+}
+
+.hero--ads .hero__industries--ads > [role="listitem"] {
+  flex-shrink: 0;
+}
+
+/* ── Social proof row ─────────────────────────────────────────────────── */
+.hero--ads .hero__proof--ads {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+  flex-wrap: nowrap;
+}
+
+.hero--ads .hero__avatar {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero--ads .hero__avatar-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.hero--ads .hero__avatar-initials {
+  position: relative;
+  z-index: 0;
+}
+
+/* ── CTA — 13px, weight 700, styled matching home hero ────────────────── */
+.hero__cta--ads {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.85rem 2rem;
+  color: #FFFFFF;
+  background: var(--color-accent);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  box-shadow:
+    0 4px 28px rgba(149, 61, 29, 0.55),
+    0 2px 8px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-fast);
+}
+
+.hero__cta--ads:hover {
+  background: #bf3a0a;
+  transform: translateY(-2px);
+}
+
+.hero__cta--ads:active {
+  transform: translateY(0);
+}
+
+/* ── Responsive breakpoints ───────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .hero--ads .hero__hl-line--ads {
+    font-size: clamp(28px, 4.2vw, 46px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero--ads .hero__hl-line--ads {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero--ads .hero__hl-line--ads {
+    font-size: clamp(24px, 5.6vw, 38px);
+  }
+
+  /* ── Trust bar — keep on one line at all mobile widths ── */
+  .hero--ads .hero__proof--ads {
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero--ads .hero__hl-line--ads {
+    font-size: clamp(20px, 6.2vw, 32px);
+  }
+
+  .hero--ads .hero__industries--ads {
+    gap: 0.25rem 0.75rem;
+  }
+
+  .hero__desc--ads {
+    font-size: 14px;
+  }
+
+  .hero__cta--ads {
+    font-size: 12px;
+    padding: 0.8rem 1.75rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero--ads .hero__hl-line--ads {
+    font-size: clamp(18px, 6.8vw, 26px);
+  }
+
+  .hero--ads .hero__industries--ads {
+    gap: 0.15rem 0.55rem;
+  }
+
+  /* ── Trust bar — extra-compact so the sub text never wraps ── */
+  .hero--ads .hero__proof--ads {
+    gap: 0.35rem;
+  }
+}
+
 
 /* ==========================================================================
    Roofing Intro — two-column headline + body copy
