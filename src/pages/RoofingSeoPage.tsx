@@ -8,7 +8,9 @@ import SeoServices from '../components/sections/SeoServices';
 import SeoProcess from '../components/sections/SeoProcess';
 import SeoMistakes from '../components/sections/SeoMistakes';
 import SeoPricing from '../components/sections/SeoPricing';
+import SeoFinalCta from '../components/sections/SeoFinalCta';
 import Footer from '../components/layout/Footer';
+import FAQ from '../components/sections/FAQ';
 
 export default function RoofingSeoPage() {
   return (
@@ -20,6 +22,8 @@ export default function RoofingSeoPage() {
       <SeoProcess />
       <SeoMistakes />
       <SeoPricing />
+      <SeoFinalCta />
+      <FAQ/>
       <Footer />
     </main>
   );

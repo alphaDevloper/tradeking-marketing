@@ -3378,7 +3378,7 @@ hr {
   letter-spacing: 0.04em;
   color: #ffffff;
   background: linear-gradient(135deg, #e5441b 0%, #d53d10 50%, #c43208 100%);
-  padding: 13px 26px;
+  padding: 10px 26px;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(97, 31, 7, 0.45), 0 0 35px rgba(59, 19, 4, 0.574);
   text-decoration: none;
@@ -3423,6 +3423,137 @@ hr {
 @media (max-width: 480px) {
   .seo-pricing__price {
     font-size: clamp(48px, 12vw, 60px);
+  }
+}
+
+/* ==========================================================================
+   Roofing SEO Final CTA Section — "Ready To Own Page One In Your Market?"
+   ========================================================================== */
+
+.seo-final-cta {
+  position: relative;
+  background-color: #000000;
+  overflow: hidden;
+  padding-block: clamp(5rem, 9vw, 8rem);
+  color: #ffffff;
+}
+
+/* ── Red Radial Glow behind CTA button ──────────────────────────────────── */
+
+.seo-final-cta__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 55% 45% at 50% 68%,
+    rgba(213, 65, 11, 0.22) 0%,
+    rgba(213, 65, 11, 0.06) 45%,
+    transparent 75%
+  );
+}
+
+/* ── Centered Container ─────────────────────────────────────────────────── */
+
+.seo-final-cta__container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 4vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ── Headline ───────────────────────────────────────────────────────────── */
+
+.seo-final-cta__heading {
+  font-size: 38.4px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  color: #ffffff;
+  max-width: 880px;
+  margin: 0;
+}
+
+.seo-final-cta__accent {
+  font-style: italic;
+  font-weight: 700;
+  background: linear-gradient(90deg, #D5410B 0%, #EA4817 50%, #F15A24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* ── Subtitle ───────────────────────────────────────────────────────────── */
+
+.seo-final-cta__subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #a1a1a1;
+  max-width: 680px;
+  margin-top: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+/* ── Primary CTA Button ─────────────────────────────────────────────────── */
+
+.seo-final-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  background: linear-gradient(135deg, #e5441b 0%, #d53d10 50%, #c43208 100%);
+  padding: 10px 26px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(97, 31, 7, 0.45), 0 0 35px rgba(59, 19, 4, 0.574);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.seo-final-cta__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 26px rgba(72, 24, 6, 0.6), 0 0 45px rgba(53, 18, 5, 0.35);
+}
+
+.seo-final-cta__btn:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .seo-final-cta {
+    padding-block: clamp(4rem, 8vw, 6rem);
+  }
+
+  .seo-final-cta__heading {
+    font-size: clamp(24px, 5.5vw, 32px);
+  }
+
+  .seo-final-cta__subtitle {
+    font-size: 13.5px;
+    margin-bottom: 2rem;
+  }
+
+  .seo-final-cta__btn {
+    width: 100%;
+    max-width: 340px;
+  }
+}
+
+@media (max-width: 480px) {
+  .seo-final-cta__heading {
+    font-size: clamp(20px, 6.5vw, 26px);
   }
 }
 
