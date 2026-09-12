@@ -3257,6 +3257,175 @@ hr {
   }
 }
 
+/* ==========================================================================
+   Roofing SEO Pricing Section
+   ========================================================================== */
+
+.seo-pricing {
+  background-color: #121212;
+  padding-block: clamp(3rem, 6vw, 5.5rem);
+  color: #ffffff;
+}
+
+.seo-pricing__container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+/* ── Large rounded card with subtle red glow ────────────────────────────── */
+
+.seo-pricing__card {
+  position: relative;
+  background-color: #0d0d0d;
+  background-image: 
+    radial-gradient(circle at 85% 15%, rgba(213, 65, 11, 0.16) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(213, 65, 11, 0.08) 0%, transparent 75%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: clamp(2.75rem, 5vw, 4.25rem) clamp(2rem, 5vw, 4.25rem);
+  display: grid;
+  grid-template-columns: minmax(240px, 320px) 1fr;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: center;
+  overflow: hidden;
+}
+
+.seo-pricing__card-glow {
+  position: absolute;
+  top: -100px;
+  right: -50px;
+  width: 400px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(213, 65, 11, 0.18) 0%, rgba(213, 65, 11, 0.04) 50%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Left Column: Pricing Display ───────────────────────────────────────── */
+
+.seo-pricing__left {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.seo-pricing__eyebrow {
+  display: block;
+  font-size: 10.88px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #888888;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.75rem;
+}
+
+.seo-pricing__price {
+  font-size: 66.56px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.seo-pricing__period {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #D5410B;
+  letter-spacing: 0.16em;
+}
+
+/* ── Right Column: Body Content & CTA ───────────────────────────────────── */
+
+.seo-pricing__right {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.75rem;
+}
+
+.seo-pricing__desc {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #a3a3a3;
+  max-width: 600px;
+  margin: 0;
+}
+
+.seo-pricing__bold {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.seo-pricing__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  background: linear-gradient(135deg, #e5441b 0%, #d53d10 50%, #c43208 100%);
+  padding: 13px 26px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(97, 31, 7, 0.45), 0 0 35px rgba(59, 19, 4, 0.574);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.seo-pricing__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 26px rgba(72, 24, 6, 0.6), 0 0 45px rgba(53, 18, 5, 0.35);
+}
+
+.seo-pricing__cta:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 860px) {
+  .seo-pricing__card {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+    text-align: center;
+    padding: clamp(2.25rem, 6vw, 3.25rem) clamp(1.5rem, 5vw, 2.5rem);
+  }
+
+  .seo-pricing__right {
+    align-items: center;
+    text-align: center;
+  }
+
+  .seo-pricing__desc {
+    max-width: 100%;
+  }
+
+  .seo-pricing__cta {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .seo-pricing__price {
+    font-size: clamp(48px, 12vw, 60px);
+  }
+}
+
 
 /* ==========================================================================
    My Story / Meet The Founder Section

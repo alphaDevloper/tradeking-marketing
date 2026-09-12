@@ -7,6 +7,7 @@ import WhySeo from '../components/sections/WhySeo';
 import SeoServices from '../components/sections/SeoServices';
 import SeoProcess from '../components/sections/SeoProcess';
 import SeoMistakes from '../components/sections/SeoMistakes';
+import SeoPricing from '../components/sections/SeoPricing';
 import Footer from '../components/layout/Footer';
 
 export default function RoofingSeoPage() {
@@ -18,6 +19,7 @@ export default function RoofingSeoPage() {
       <SeoServices />
       <SeoProcess />
       <SeoMistakes />
+      <SeoPricing />
       <Footer />
     </main>
   );
