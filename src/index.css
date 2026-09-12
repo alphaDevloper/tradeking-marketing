@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "tailwindcss";
 
 /* ==========================================================================
    TradeKing Marketing — Global Theme
@@ -2652,6 +2652,154 @@ hr {
   /* ── Trust bar — extra-compact so the sub text never wraps ── */
   .hero--ads .hero__proof--ads {
     gap: 0.35rem;
+  }
+}
+
+/* ==========================================================================
+   Local Service Ads Intro — "Verified Leads, Every Single Day" (.ads-verified)
+   ========================================================================== */
+
+.ads-verified {
+  background-color: #000000;
+  padding-block: clamp(4.5rem, 8vw, 7.5rem);
+  color: #ffffff;
+}
+
+.ads-verified__container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 4vw, 2.5rem);
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) 1fr;
+  gap: clamp(3rem, 6vw, 5.5rem);
+  align-items: center;
+}
+
+/* ── Left Column: Badge Seal with Green Radial Glow ─────────────────────── */
+
+.ads-verified__left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ads-verified__badge-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 1 / 1;
+}
+
+/* .ads-verified__glow {
+  position: absolute;
+  inset: -15px;
+  background: radial-gradient(
+    circle at center,
+    rgba(34, 197, 94, 0.35) 0%,
+    rgba(34, 197, 94, 0.1) 45%,
+    transparent 72%
+  );
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 0;
+} */
+
+.ads-verified__badge-img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 50%;
+  /* filter: drop-shadow(0 8px 30px rgba(34, 197, 94, 0.25)); */
+}
+
+/* ── Right Column: Text Content ─────────────────────────────────────────── */
+
+.ads-verified__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Eyebrow: 11.52px, weight 700, red */
+.ads-verified__eyebrow {
+  display: inline-block;
+  font-size: 11.52px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* Headline: 38.4px, weight 700 */
+.ads-verified__headline {
+  font-size: 38.4px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0 0 1.25rem 0;
+}
+
+.ads-verified__accent {
+  font-style: italic;
+  font-weight: 700;
+  background: linear-gradient(90deg, #D5410B 0%, #EA4817 50%, #F15A24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
+}
+
+/* Paragraph: 14px, weight 400 */
+.ads-verified__paragraph {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #a1a1a1;
+  max-width: 620px;
+  margin: 0;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .ads-verified__headline {
+    font-size: clamp(28px, 3.8vw, 36px);
+  }
+}
+
+@media (max-width: 860px) {
+  .ads-verified__container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .ads-verified__right {
+    align-items: center;
+    text-align: center;
+  }
+
+  .ads-verified__badge-wrapper {
+    max-width: 240px;
+    margin-inline: auto;
+  }
+
+  .ads-verified__paragraph {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .ads-verified__headline {
+    font-size: clamp(22px, 6vw, 28px);
   }
 }
 

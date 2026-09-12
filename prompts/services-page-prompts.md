@@ -794,6 +794,10 @@ Use the existing assets from the assets folder where appropriate. No images requ
 
 Make the section fully responsive: on smaller screens the headline and body copy should stack vertically (headline first, then paragraphs) with consistent spacing and preserved typography hierarchy.
 
+here are the font sizes and weights to use:
+headline: use 38.4px size and weight 700.
+paragraph: use 14px size and weight 400 and for bold paragraph use 600 weight.
+
 Do not modify any other section or page.
 
 @prompt_material/top-by-accident.png
