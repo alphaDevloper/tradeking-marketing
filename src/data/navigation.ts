@@ -25,7 +25,7 @@ export const navItems: NavItem[] = [
       { label: 'Local Service Ads', href: '/services/local-service-ads', description: 'Turn visitors into leads' }
     ],
   },
-  { label: 'Case Studies', href: '/case-studies' },
+  { label: 'Portfolio', href: '/portfolio' },
 ];
 
 export const phone = {

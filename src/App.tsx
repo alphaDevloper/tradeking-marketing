@@ -6,6 +6,7 @@ import ServicesPage from './pages/ServicesPage';
 import WebDesignPage from './pages/WebDesignPage';
 import RoofingSeoPage from './pages/RoofingSeoPage';
 import LocalServiceAdsPage from './pages/LocalServiceAdsPage';
+import PortfolioPage from './pages/PortfolioPage';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/services/website-design-development" element={<WebDesignPage />} />
         <Route path="/services/local-seo" element={<RoofingSeoPage />} />
         <Route path="/services/local-service-ads" element={<LocalServiceAdsPage />} />
+        <Route path="/portfolio" element={<PortfolioPage />} />
       </Routes>
     </BrowserRouter>
   );

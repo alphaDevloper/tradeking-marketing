@@ -45,6 +45,15 @@ Use the existing assets from the assets folder where appropriate. If any require
 
 Make the hero fully responsive while preserving the design composition, headline impact, badge centering, laptop positioning, and CTA prominence across screen sizes (mobile, tablet, desktop).
 
+here are the font sizes and weights to use:
+pill: use 11px size and weight 700.
+headline: use 51px size and weight 800.
+paragraph: use 15.51px size and weight 400.
+cta: use 13px size and weight 700.
+
+
+For the styling, Look at the home page's hero section and use that same styling for the ads hero section. Look at the highlighted headline, bg gradient where it is placed in the hero and the cta styling as well.
+
 Do not modify any other section or page.
 
 @prompt_material/portfolio-hero.png
@@ -120,6 +129,11 @@ Use the existing assets from the assets folder where appropriate. If any portfol
 
 Make the section fully responsive: on smaller screens the 3-column grid should reflow to 2 columns on tablet and a single column on mobile, while maintaining card proportions and the filter tab layout.
 
+here are the font sizes and weights to use:
+filter tabs: use 12.16px size and weight 700.
+portfolio card heading: use 19px size and weight 800.
+portfolio card category: use 12px size and weight 700.
+
 Do not modify any other section or page.
 
 @prompt_material/portfolio-gallery.png
@@ -158,6 +172,10 @@ TYPOGRAPHY & STYLING:
 Use the existing assets from the assets folder where appropriate. If the gold guarantee badge image is missing, use a suitable placeholder from Unsplash or Picsum (gold seal/medal).
 
 Make the section fully responsive: on smaller screens the badge should stack above the text content with the headline and paragraph remaining prominent, and the card padding should adjust for mobile while maintaining the dashed border effect.
+
+here are the font sizes and weights to use:
+headline: use 38.4px size and weight 800.
+paragraph: use 14px size and weight 400.
 
 Do not modify any other section or page.
 
@@ -199,6 +217,12 @@ Use the existing assets from the assets folder where appropriate. No images requ
 
 Make the section fully responsive: on smaller screens the two-column input grid should collapse to a single column with all inputs stacking vertically, and the form card padding should adjust for mobile while maintaining readability and CTA prominence.
 
+here are the font sizes and weights to use:
+headline: use 38.4px size and weight 800.
+paragraph: use 14px size and weight 400.
+labels: use 11.52px size and weight 700.
+cta: use 13px size and weight 700.
+
 Do not modify any other section or page.
 
 @prompt_material/portfolio-contact-form.png
@@ -216,6 +240,7 @@ This file contains **4 implementation prompts** for the Portfolio page:
 4. **Portfolio Contact Form** - Centered form with headline featuring "LOSE SLEEP OVER?" accent, white form card with 2-column input grid, and red CTA button
 
 All prompts follow the standard project pattern and include:
+
 - Reference to AGENTS.md
 - Detailed content specifications
 - Asset guidance (use existing or placeholder)
