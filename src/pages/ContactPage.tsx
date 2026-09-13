@@ -3,6 +3,7 @@
 
 import ContactHero from '../components/sections/ContactHero';
 import GetInTouch from '../components/sections/GetInTouch';
+import ContractorMap from '../components/sections/ContractorMap';
 import Footer from '../components/layout/Footer';
 
 export default function ContactPage() {
@@ -10,6 +11,7 @@ export default function ContactPage() {
     <main className="page page--contact" aria-label="Contact Us">
       <ContactHero />
       <GetInTouch />
+      <ContractorMap />
       <Footer />
     </main>
   );

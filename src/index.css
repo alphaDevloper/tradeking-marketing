@@ -10541,3 +10541,405 @@ a.footer__line:hover {
     width: 100%;
   }
 }
+
+/* ==========================================================================
+   Contractor Map Coverage Section — Section 3 on Contact Page
+   ========================================================================== */
+
+.contractor-map {
+  position: relative;
+  background-color: #F2F2F2;
+  padding-block: 6.5rem 7rem;
+  overflow: hidden;
+}
+
+.contractor-map__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1.18fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* ── Left Column: Content & Stats ───────────────────────────────────────── */
+
+.contractor-map__left {
+  display: flex;
+  flex-direction: column;
+}
+
+.contractor-map__eyebrow {
+  font-size: 11.52px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-accent, #D5410B);
+  margin-bottom: 0.85rem;
+}
+
+.contractor-map__heading {
+  font-size: 38.4px;
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #000000;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.contractor-map__heading-accent {
+  font-style: italic;
+  background: linear-gradient(135deg, #ef4444 0%, #ea580c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.contractor-map__paragraph {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #52525b;
+  margin-bottom: 2.75rem;
+  max-width: 440px;
+}
+
+/* ── Stat Blocks ────────────────────────────────────────────────────────── */
+
+.contractor-map__stats {
+  display: flex;
+  align-items: flex-start;
+  gap: 3.5rem;
+}
+
+.contractor-map__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.contractor-map__stat-number {
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+  color: #000000;
+  letter-spacing: -0.02em;
+}
+
+.contractor-map__stat-label {
+  font-size: 10.88px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #71717a;
+}
+
+/* ── Right Column: Interactive Map Card ─────────────────────────────────── */
+
+.contractor-map__right {
+  display: flex;
+  width: 100%;
+}
+
+.contractor-map__map-card {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  background: #141c24;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.contractor-map__iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  filter: brightness(0.96) contrast(1.06);
+}
+
+/* ── Floating Info Card (Top-Left) ──────────────────────────────────────── */
+
+.contractor-map__info-card {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 10;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 12px 16px;
+  box-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.25),
+    0 1px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 220px;
+}
+
+.contractor-map__info-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.contractor-map__info-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.contractor-map__info-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: #eff6ff;
+  color: #2563eb;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.contractor-map__info-link:hover {
+  background: #dbeafe;
+}
+
+.contractor-map__info-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12.5px;
+}
+
+.contractor-map__rating-val {
+  font-weight: 700;
+  color: #111827;
+}
+
+.contractor-map__review-link {
+  color: #2563eb;
+  text-decoration: underline;
+  font-weight: 500;
+  margin-left: 2px;
+}
+
+.contractor-map__info-icon {
+  color: #9ca3af;
+  margin-left: 4px;
+}
+
+/* ── Red Location Pin Overlay ───────────────────────────────────────────── */
+
+.contractor-map__pin-container {
+  position: absolute;
+  top: 48%;
+  left: 63%;
+  transform: translate(-50%, -100%);
+  z-index: 8;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contractor-map__pin-svg {
+  width: 36px;
+  height: 36px;
+  filter: drop-shadow(0 4px 10px rgba(220, 38, 38, 0.65));
+}
+
+.contractor-map__pin-pulse {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.45);
+  position: absolute;
+  bottom: -4px;
+  transform: scaleY(0.5);
+  animation: pulse-pin 2s ease-in-out infinite;
+}
+
+@keyframes pulse-pin {
+  0%, 100% {
+    transform: scaleY(0.5) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scaleY(0.5) scale(1.6);
+    opacity: 0.2;
+  }
+}
+
+/* ── Map Controls & Buttons ─────────────────────────────────────────────── */
+
+.contractor-map__toggle-btn {
+  position: absolute;
+  bottom: 24px;
+  left: 18px;
+  width: 42px;
+  height: 42px;
+  background: #2563eb;
+  border: 2px solid #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+}
+
+.contractor-map__toggle-inner {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #10b981 0%, #065f46 50%, #3b82f6 100%);
+}
+
+.contractor-map__ctrl-btn {
+  position: absolute;
+  bottom: 28px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  background: #ffffff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #374151;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.contractor-map__ctrl-btn:hover {
+  transform: scale(1.08);
+  background: #f9fafb;
+}
+
+/* ── Bottom Attribution Bar ─────────────────────────────────────────────── */
+
+.contractor-map__attribution-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(2px);
+  padding: 3px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  color: #ffffff;
+  z-index: 9;
+  user-select: none;
+}
+
+.contractor-map__attribution-google {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.contractor-map__attribution-links {
+  display: flex;
+  gap: 8px;
+  font-size: 9.5px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── Responsive: Tablet (≤960px) ────────────────────────────────────────── */
+
+@media (max-width: 960px) {
+  .contractor-map {
+    padding-block: 5rem 6rem;
+  }
+
+  .contractor-map__container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .contractor-map__paragraph {
+    max-width: 100%;
+  }
+
+  .contractor-map__map-card {
+    height: 380px;
+  }
+}
+
+/* ── Responsive: Mobile (≤640px) ────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .contractor-map {
+    padding-block: 4rem 5rem;
+  }
+
+  .contractor-map__container {
+    padding-inline: 1.25rem;
+    gap: 2.25rem;
+  }
+
+  .contractor-map__heading {
+    font-size: clamp(26px, 7.5vw, 38.4px);
+  }
+
+  .contractor-map__paragraph {
+    margin-bottom: 2rem;
+  }
+
+  .contractor-map__stats {
+    gap: 1.25rem;
+    justify-content: space-between;
+  }
+
+  .contractor-map__stat-number {
+    font-size: 32px;
+  }
+
+  .contractor-map__map-card {
+    height: 300px;
+    border-radius: 16px;
+  }
+
+  .contractor-map__info-card {
+    top: 10px;
+    left: 10px;
+    padding: 8px 12px;
+    min-width: 180px;
+  }
+
+  .contractor-map__toggle-btn {
+    bottom: 20px;
+    left: 10px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .contractor-map__ctrl-btn {
+    bottom: 22px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .contractor-map__attribution-bar {
+    font-size: 8.5px;
+    padding: 2px 8px;
+  }
+
+  .contractor-map__attribution-links span:nth-child(2) {
+    display: none;
+  }
+}
