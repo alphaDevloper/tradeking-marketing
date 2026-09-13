@@ -19,28 +19,36 @@ function ScrollToTop() {
 interface DropdownProps {
   items: NonNullable<(typeof navItems)[number]["dropdown"]>;
   isOpen: boolean;
+  activePath: string;
 }
 
-function Dropdown({ items, isOpen }: DropdownProps) {
+function Dropdown({ items, isOpen, activePath }: DropdownProps) {
   return (
     <div
       className={`nav-dropdown ${isOpen ? "nav-dropdown--open" : ""}`}
       role="menu"
       aria-hidden={!isOpen}
     >
-      {items.map((item) => (
-        <Link
-          key={item.href}
-          to={item.href}
-          className="nav-dropdown__item"
-          role="menuitem"
-        >
-          <span className="nav-dropdown__label">{item.label}</span>
-          {item.description && (
-            <span className="nav-dropdown__desc">{item.description}</span>
-          )}
-        </Link>
-      ))}
+      {items.map((item) => {
+        const isItemActive = activePath === item.href;
+        return (
+          <Link
+            key={item.href}
+            to={item.href}
+            className={`nav-dropdown__item ${isItemActive ? "nav-dropdown__item--active" : ""}`}
+            role="menuitem"
+          >
+            <span
+              className={`nav-dropdown__label ${isItemActive ? "nav-dropdown__label--active" : ""}`}
+            >
+              {item.label}
+            </span>
+            {item.description && (
+              <span className="nav-dropdown__desc">{item.description}</span>
+            )}
+          </Link>
+        );
+      })}
     </div>
   );
 }
@@ -49,14 +57,18 @@ function Dropdown({ items, isOpen }: DropdownProps) {
 
 interface DesktopNavLinkProps {
   item: (typeof navItems)[number];
-  isActive: boolean;
+  activePath: string;
 }
 
-function DesktopNavLink({ item, isActive }: DesktopNavLinkProps) {
+function DesktopNavLink({ item, activePath }: DesktopNavLinkProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const hasDropdown = Boolean(item.dropdown?.length);
+
+  const isDirectActive = activePath === item.href;
+  const isChildActive = Boolean(item.dropdown?.some((sub) => activePath === sub.href));
+  const isActive = isDirectActive || isChildActive;
 
   // Close on outside click
   useEffect(() => {
@@ -106,7 +118,7 @@ function DesktopNavLink({ item, isActive }: DesktopNavLinkProps) {
           aria-hidden="true"
         />
       </button>
-      <Dropdown items={item.dropdown!} isOpen={open} />
+      <Dropdown items={item.dropdown!} isOpen={open} activePath={activePath} />
     </div>
   );
 }
@@ -169,7 +181,9 @@ function MobileNav({ isOpen, onClose, activePath }: MobileNavProps) {
         {/* Nav links */}
         <nav className="mobile-drawer__nav" aria-label="Mobile navigation">
           {navItems.map((item) => {
-            const isActive = activePath === item.href;
+            const isDirectActive = activePath === item.href;
+            const isChildActive = Boolean(item.dropdown?.some((sub) => activePath === sub.href));
+            const isActive = isDirectActive || isChildActive;
             const hasDropdown = Boolean(item.dropdown?.length);
             const isDropdownOpen = openDropdown === item.label;
 
@@ -197,21 +211,24 @@ function MobileNav({ isOpen, onClose, activePath }: MobileNavProps) {
                       className={`mobile-dropdown ${isDropdownOpen ? "mobile-dropdown--open" : ""}`}
                     >
                       <div className="mobile-dropdown__inner">
-                        {item.dropdown!.map((sub) => (
-                          <Link
-                            key={sub.href}
-                            to={sub.href}
-                            onClick={closeAndReset}
-                            className="mobile-dropdown__item"
-                          >
-                            <ArrowRight
-                              size={13}
-                              className="mobile-dropdown__arrow"
-                              aria-hidden="true"
-                            />
-                            {sub.label}
-                          </Link>
-                        ))}
+                        {item.dropdown!.map((sub) => {
+                          const isSubActive = activePath === sub.href;
+                          return (
+                            <Link
+                              key={sub.href}
+                              to={sub.href}
+                              onClick={closeAndReset}
+                              className={`mobile-dropdown__item ${isSubActive ? "mobile-dropdown__item--active" : ""}`}
+                            >
+                              <ArrowRight
+                                size={13}
+                                className="mobile-dropdown__arrow"
+                                aria-hidden="true"
+                              />
+                              {sub.label}
+                            </Link>
+                          );
+                        })}
                       </div>
                     </div>
                   </>
@@ -232,7 +249,7 @@ function MobileNav({ isOpen, onClose, activePath }: MobileNavProps) {
           <Link
             to="/contact"
             onClick={closeAndReset}
-            className="mobile-nav-link"
+            className={`mobile-nav-link ${activePath === "/contact" ? "mobile-nav-link--active" : ""}`}
           >
             Contact Us
           </Link>
@@ -291,7 +308,7 @@ export default function Navbar() {
               <DesktopNavLink
                 key={item.label}
                 item={item}
-                isActive={activePath === item.href}
+                activePath={activePath}
               />
             ))}
           </nav>
@@ -313,7 +330,10 @@ export default function Navbar() {
 
           {/* ── Right actions ── */}
           <div className="navbar__right">
-            <Link to="/contact" className="nav-link nav-link--contact">
+            <Link
+              to="/contact"
+              className={`nav-link nav-link--contact ${activePath === "/contact" ? "nav-link--active" : ""}`}
+            >
               Contact Us
             </Link>
             <a

@@ -45,6 +45,15 @@ Use the existing assets from the assets folder where appropriate. If any require
 
 Make the hero fully responsive while preserving the design composition, headline impact, badge centering, laptop positioning, and CTA prominence across screen sizes (mobile, tablet, desktop).
 
+here are the font sizes and weights to use:
+pill: use 11px size and weight 700.
+headline: use 51px size and weight 800.
+paragraph: use 15.51px size and weight 400.
+cta: use 13px size and weight 700.
+
+
+For the styling, Look at the home page's hero section and use that same styling for the ads hero section. Look at the highlighted headline, bg gradient where it is placed in the hero and the cta styling as well.
+
 Do not modify any other section or page.
 
 @prompt_material/contact-hero.png
@@ -97,6 +106,18 @@ Use the existing assets from the assets folder where appropriate. No images requ
 
 Make the section fully responsive: on smaller screens the left column (text + contact cards + button) should stack above the right column (form card), the two-column input grid should collapse to a single column within the form, and all padding should adjust for mobile while maintaining readability and CTA prominence.
 
+here are the font sizes and weights to use:
+headline: use 38.4px size and weight 800.
+paragraph: use 14px size and weight 400.
+cards label(email): use 10.24px size and weight 700.
+cards text(email address): use 15.36px size and weight 700.
+cta: use 13px size and weight 700.
+form heading: use 30.72px size and weight 800.
+form labels: use 11px size and weight 700.
+form cta: use 13.44px size and weight 700.
+disclaimer: use 12.16px size and weight 400.
+
+
 Do not modify any other section or page.
 
 @prompt_material/get-in-touch.png
@@ -146,6 +167,14 @@ Use the existing assets from the assets folder where appropriate. For the map, e
 
 Make the section fully responsive: on smaller screens the headline, body copy, stats, and map should stack vertically with appropriate spacing, maintaining the typography hierarchy and the map's responsive aspect ratio.
 
+here are the font sizes and weights to use:
+eyebrow: use 11.52px size and weight 700.
+heading: use 38.4px size and weight 800.
+paragraph: use 14px size and weight 400.
+stat number: use 40px size and weight 800.
+stat label: use 10.88px size and weight 700.
+
+
 Do not modify any other section or page.
 
 @prompt_material/contractors-map.png
@@ -162,6 +191,7 @@ This file contains **3 implementation prompts** for the Contact page:
 3. **Trusted By Contractors In All 50 States** - Two-column section on light gray with "ALL 50 STATES" gradient headline, body copy, three stats blocks (200+ / 50 / 24h), and a Google Maps embed with info card overlay
 
 All prompts follow the standard project pattern and include:
+
 - Reference to AGENTS.md
 - Detailed content specifications
 - Asset guidance (use existing or placeholder)
