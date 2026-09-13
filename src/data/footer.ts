@@ -56,12 +56,10 @@ export const footer: FooterData = {
   },
   quickLinks: [
     { label: 'Home', href: '/' },
-    { label: 'About Us', href: '/about' },
+    { label: 'About Us', href: '/about-us' },
     { label: 'Services', href: '/services' },
-    { label: 'Blog', href: '/blog' },
-    { label: 'Tool Reviews', href: '/tool-reviews' },
     { label: 'Portfolio', href: '/portfolio' },
-    { label: 'Case Studies', href: '/case-studies' },
+    {label: 'Contact Us', href: '/contact'}
   ],
   social: [
     { label: 'Instagram', href: 'https://www.instagram.com/abdu.llahalam680/' },
