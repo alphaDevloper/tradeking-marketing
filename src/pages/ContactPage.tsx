@@ -5,6 +5,7 @@ import ContactHero from '../components/sections/ContactHero';
 import GetInTouch from '../components/sections/GetInTouch';
 import ContractorMap from '../components/sections/ContractorMap';
 import Footer from '../components/layout/Footer';
+import FAQ from '../components/sections/FAQ';
 
 export default function ContactPage() {
   return (
@@ -12,6 +13,7 @@ export default function ContactPage() {
       <ContactHero />
       <GetInTouch />
       <ContractorMap />
+      <FAQ/>
       <Footer />
     </main>
   );
