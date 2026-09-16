@@ -7631,6 +7631,21 @@ a.footer__line:hover {
   }
 }
 
+/* ── Footer Copyright Bar ─────────────────────────────────────────────── */
+
+.footer__copyright {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-block: 1.25rem;
+  text-align: center;
+}
+
+.footer__copyright p {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
 
 /* ==========================================================================
    Track Record Band

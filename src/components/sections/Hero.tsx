@@ -4,7 +4,7 @@ import laptop from '../../assets/laptop.png';
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
-const defaultIndustries = ['Roofing', 'HVAC', 'Plumbing', 'Solar'];
+const defaultIndustries = ['Roofing', 'HVAC', 'Plumbing', 'Solar', 'Landscaping', 'Remodeling'];
 
 const avatars = [
   { initials: 'JD', color: '#e67e22' },
@@ -48,12 +48,12 @@ export interface HeroData {
 }
 
 const defaultHeroData: HeroData = {
-  headlineTop: 'The #1 Marketing Agency For',
-  headlineMid: 'Home',
-  headlineAccent: 'Service Brands',
+  headlineTop: 'The #1 Web Design & Marketing',
+  headlineMid: 'Agency For',
+  headlineAccent: 'Canadian Businesses',
   headlineTail: '',
   description:
-    'Custom-built brands and proven growth systems designed to help contractors dominate their local market within 24–72 hours.',
+    'Custom-built websites and proven growth systems designed to help Canadian businesses attract more customers and dominate their local market.',
   industries: defaultIndustries,
   ctaLabel: 'GET YOUR FREE CUSTOM DESIGN',
   ctaHref: '/contact',
@@ -74,9 +74,10 @@ export default function Hero({ data = defaultHeroData }: { data?: HeroData }) {
           {/* <div className="w-96 h-96 bg-accent blur-[200px]  absolute" /> */}
           <img
             src={laptopDemo}
-            alt=""
+            alt="Custom web design for a Canadian roofing company displayed on a laptop"
             className="hero__mockup hero__mockup--left"
             loading="eager"
+            fetchPriority="high"
           />
         </div>
 
@@ -141,7 +142,7 @@ export default function Hero({ data = defaultHeroData }: { data?: HeroData }) {
                 <span className="hero__rating-score">5.0</span>
                 <Stars count={5} />
               </div>
-              <span className="hero__rating-sub">Trusted by 200 Contractors Nationwide</span>
+              <span className="hero__rating-sub">Trusted by Businesses Across Canada</span>
             </div>
           </div>
 
@@ -155,7 +156,7 @@ export default function Hero({ data = defaultHeroData }: { data?: HeroData }) {
         <div className="hero__side hero__side--right" aria-hidden="true">
           <img
             src={laptop}
-            alt=""
+            alt="Responsive website design for a Canadian service business on a laptop"
             className="hero__mockup hero__mockup--right"
             loading="eager"
           />

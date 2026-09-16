@@ -66,7 +66,7 @@ export default function WhyChooseUs() {
           <div className="why__portrait">
             <img
               src={portraitImg}
-              alt=""
+              alt="Abdullah Alam, founder of TradeKing Marketing agency"
               className="why__portrait-img"
               loading="lazy"
               decoding="async"
@@ -76,7 +76,7 @@ export default function WhyChooseUs() {
           <div className="why__badge">
             <img
               src={badgeImg}
-              alt=""
+              alt="TradeKing Marketing 100% satisfaction guarantee badge"
               className="why__badge-img"
               loading="lazy"
               decoding="async"

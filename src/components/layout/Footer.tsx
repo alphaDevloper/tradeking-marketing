@@ -102,6 +102,8 @@ function ConnectColumn() {
 // ── Footer ────────────────────────────────────────────────────────────────────
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="footer" aria-label="Site footer">
       <Marquee />
@@ -114,6 +116,14 @@ export default function Footer() {
             <LinkColumn title="Social" links={footer.social} />
             <ConnectColumn />
           </div>
+        </div>
+      </div>
+
+      <div className="footer__copyright">
+        <div className="container-site">
+          <p>
+            &copy; {currentYear} TradeKing Marketing&reg;. All rights reserved. | Web Design &amp; Marketing Agency in Canada.
+          </p>
         </div>
       </div>
     </footer>

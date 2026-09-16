@@ -27,14 +27,14 @@ export interface FeaturedWorkData {
 
 export const featuredWork: FeaturedWorkData = {
   headingLead: 'SEE ',
-  headingAccent: 'THE BRANDS',
+  headingAccent: 'THE WEBSITES',
   headingTail: "\nWE'VE BUILT",
   descriptionBefore:
-    'These are just a few of the ',
-  descriptionHighlight: '200+ contractor websites',
+    'These are some of the ',
+  descriptionHighlight: 'custom websites',
   descriptionAfter:
-    " we've launched across America. We build websites that stop the scroll, earn trust instantly, and position contractors as the clear #1 choice in their market.",
-  ctaLabel: 'SCHEDULE YOUR FREE CUSTOM STRATEGY CALL',
+    " we've designed and developed for businesses across Canada. Each project is built around a conversion-focused strategy to help our clients stand out in their local market and win more customers.",
+  ctaLabel: 'SCHEDULE YOUR FREE STRATEGY CALL',
   ctaHref: '/contact',
   projects: [
     {
@@ -43,7 +43,7 @@ export const featuredWork: FeaturedWorkData = {
       tagline: 'EXTERIORS',
       image:
         'https://images.unsplash.com/photo-1633113213254-ae9b4e8d68b9?auto=format&fit=crop&w=1200&q=80',
-      imageAlt: 'NexGen Exteriors — roofing contractor website on a laptop',
+      imageAlt: 'NexGen Exteriors — roofing contractor website designed by TradeKing Marketing',
     },
     {
       id: 'panther-roof',
@@ -51,7 +51,7 @@ export const featuredWork: FeaturedWorkData = {
       tagline: 'POWERFUL ROOFING SOLUTIONS',
       image:
         'https://images.unsplash.com/photo-1633113213254-ae9b4e8d68b9?auto=format&fit=crop&w=1200&q=80',
-      imageAlt: 'Panther Roof — roofing contractor website on a laptop',
+      imageAlt: 'Panther Roof — roofing company website designed by TradeKing Marketing',
     },
     {
       id: 'apex-builders',
@@ -59,7 +59,7 @@ export const featuredWork: FeaturedWorkData = {
       tagline: 'CONSTRUCTION & REMODELING',
       image:
         'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80',
-      imageAlt: 'Apex Builders — construction contractor website on a laptop',
+      imageAlt: 'Apex Builders — construction and remodeling website designed by TradeKing Marketing',
     },
     {
       id: 'ironclad-hvac',
@@ -67,7 +67,7 @@ export const featuredWork: FeaturedWorkData = {
       tagline: 'HEATING & COOLING EXPERTS',
       image:
         'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=1200&q=80',
-      imageAlt: 'Ironclad HVAC — heating and cooling website on a laptop',
+      imageAlt: 'Ironclad HVAC — heating and cooling company website designed by TradeKing Marketing',
     },
   ],
 };

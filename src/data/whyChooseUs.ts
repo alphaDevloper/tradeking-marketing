@@ -3,10 +3,12 @@
 
 import type { LucideIcon } from 'lucide-react';
 import {
-  HardHat,
+  MapPin,
   MonitorSmartphone,
-  IdCard,
-  Users,
+  TrendingUp,
+  Zap,
+  ShieldCheck,
+  Handshake,
 } from 'lucide-react';
 
 export interface Benefit {
@@ -26,35 +28,47 @@ export interface WhyChooseUsData {
 
 export const whyChooseUs: WhyChooseUsData = {
   headingLead: 'WHY ',
-  headingAccent: 'CONTRACTORS',
+  headingAccent: 'CANADIAN BUSINESSES',
   headingTail: ' TRUST',
   headingLine2: 'TRADEKING AGENCY',
   description:
-    "Contractors choose us because we understand their world, we respect their reputation, and we build brands that actually move the needle. Here's what sets us apart:",
+    "Canadian business owners choose TradeKing because we understand their market, respect their reputation, and build brands that drive real results. Here's what sets us apart:",
   benefits: [
     {
-      title: 'WE SPECIALIZE IN CONTRACTORS.',
+      title: 'CANADA-WIDE REACH',
       description:
-        'Roofing, Remodeling, HVAC, Concrete, Construction. We know homeowners, the buying journey, and what makes a contractor look trustworthy online.',
-      icon: HardHat,
+        'We work with businesses in every province — from Toronto and Vancouver to Calgary, Montreal, Ottawa, and everywhere in between. Wherever your business operates in Canada, we deliver.',
+      icon: MapPin,
     },
     {
-      title: 'WE BUILD CUSTOM, PREMIUM BRANDS.',
+      title: '100% CUSTOM DESIGNS',
       description:
-        'Every website is designed from scratch to position your business as the #1 choice in your city.',
+        'No templates. No cookie-cutter layouts. Every website is designed from scratch to match your brand, your market, and your customers\' expectations.',
       icon: MonitorSmartphone,
     },
     {
-      title: 'WE PUT OUR NAME ON IT.',
+      title: 'BUILT TO CONVERT',
       description:
-        "My name and reputation are tied to every project. If it isn't something we'd proudly attach our name to, it doesn't go live.",
-      icon: IdCard,
+        'A good-looking website isn\'t enough. We engineer every page around a proven conversion blueprint so your site turns visitors into leads and estimate requests.',
+      icon: TrendingUp,
     },
     {
-      title: 'WE GUARANTEE SATISFACTION.',
+      title: 'FAST TURNAROUND',
       description:
-        "Our Satisfaction Guarantee is simple: We work for free until you're satisfied. No one else in the industry makes that promise.",
-      icon: Users,
+        'Most projects launch within 3–5 weeks. We move quickly without cutting corners, so your business starts generating results sooner.',
+      icon: Zap,
+    },
+    {
+      title: 'SATISFACTION GUARANTEE',
+      description:
+        "We work until you're completely satisfied. If you're not happy, we keep working — no additional cost. That's a promise we stand behind on every project.",
+      icon: ShieldCheck,
+    },
+    {
+      title: 'DEDICATED SUPPORT',
+      description:
+        'You get a dedicated point of contact from day one. No ticket queues, no chatbots — just direct access to the team building your website.',
+      icon: Handshake,
     },
   ],
 };

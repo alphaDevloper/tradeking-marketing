@@ -52,7 +52,7 @@ export const footer: FooterData = {
     address: '30 N. Gould St. Ste R, Sheridan, WY 82801',
     availability: '24 X 7, Send us a message',
     tagline:
-      'A highly converting website design for your service business. That’s a promise.',
+      'A full-service web design and marketing agency helping Canadian businesses grow online.',
   },
   quickLinks: [
     { label: 'Home', href: '/' },

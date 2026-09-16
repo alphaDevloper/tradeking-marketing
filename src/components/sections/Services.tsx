@@ -118,13 +118,13 @@ export default function Services() {
             OUR <span className="services__heading-accent">SERVICES</span>
           </h2>
           <p className="services__subheading">
-            Websites &amp; Marketing Systems Built for America&rsquo;s Top Contractors
+            Web Design, Development &amp; Digital Marketing Services for Canadian Businesses
           </p>
           <p className="services__description">
-            We help contractors build brands that look better, convert better,
-            and dominate their local markets. Whether you&rsquo;re established or
-            just getting started, our systems are built to elevate your
-            reputation and drive consistent estimate requests.
+            We help businesses across Canada build brands that look professional,
+            convert visitors into leads, and stand out in competitive local
+            markets. Whether you&rsquo;re an established company or just getting
+            started, our services are designed to grow your revenue.
           </p>
         </header>
 
