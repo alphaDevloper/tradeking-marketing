@@ -1180,7 +1180,7 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0.375rem 1.125rem;
   margin-top: 1.125rem;
 }
@@ -1669,8 +1669,12 @@ hr {
     font-size: 0.875rem;
   }
 
+  .hero__industries {
+    gap: 0.25rem 0.625rem;
+  }
+
   .hero-badge {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
   }
 
   .hero__cta {
@@ -1758,6 +1762,10 @@ hr {
   .hero__side--right {
     margin-top: 0.5rem;
     padding-bottom: 1rem;             /* ← air below mockups before next section */
+  }
+
+  .hero__industries {
+    gap: 0.15rem 0.5rem;
   }
 
   /* ── Trust bar — extra-compact so the sub text never wraps ── */
@@ -1875,36 +1883,9 @@ hr {
   max-width: 500px;
 }
 
-/* Industry badges — same look as home hero */
-.hero--about .hero-badge {
-  font-size: 0.9375rem;
-  font-weight: 600;
-  gap: 0.35rem;
-}
+/* ── About hero — industries/badge styling inherited from base .hero__industries
+   and .hero-badge rules — no variant overrides needed. ── */
 
-.hero--about .hero-badge__icon {
-  color: #D5410B;
-}
-
-/* CTA reuses the home hero's .hero__cta class entirely (same color, padding,
-   border-radius, weight, letter-spacing, shadow). */
-
-/* ── About hero — laptop mockups inherit the home hero's .hero__mockup,
-   .hero__mockup--left, .hero__mockup--right base rules and all responsive
-   breakpoint overrides (no about-specific mockup styles). ── */
-
-/* ── About hero — industries list always on a single row on all viewports ─ */
-.hero--about .hero__industries {
-  flex-wrap: nowrap;
-}
-
-.hero--about .hero__industries > [role="listitem"] {
-  flex-shrink: 0;
-}
-
-.hero--about .hero-badge {
-  white-space: nowrap;
-}
 
 /* ── About hero — headline responsive tweaks (only about-specific) ────── */
 @media (max-width: 1024px) {
@@ -1924,22 +1905,11 @@ hr {
   .hero--about .hero__hl-line {
     font-size: clamp(22px, 6.4vw, 32px);
   }
-
-  /* Tighten industry gap so all 4 fit on one row at the home's badge size */
-  .hero--about .hero__industries {
-    gap: 0.25rem 0.75rem;
-  }
 }
 
 @media (max-width: 400px) {
   .hero--about .hero__hl-line {
     font-size: clamp(20px, 7vw, 28px);
-  }
-
-  /* Even tighter gap at extra-small widths — home's badge size (0.875rem)
-     is preserved, only the gap is reduced so the row fits. */
-  .hero--about .hero__industries {
-    gap: 0.15rem 0.55rem;
   }
 }
 
@@ -1998,29 +1968,6 @@ hr {
   max-width: 540px;
 }
 
-/* ── Industry badges — same look as home/about hero ────────────────────── */
-.hero--services .hero-badge {
-  font-size: 0.9375rem;
-  font-weight: 600;
-  gap: 0.35rem;
-}
-
-.hero--services .hero-badge__icon {
-  color: #D5410B;
-}
-
-/* Industries row always on single row */
-.hero--services .hero__industries {
-  flex-wrap: nowrap;
-}
-
-.hero--services .hero__industries > [role="listitem"] {
-  flex-shrink: 0;
-}
-
-.hero--services .hero-badge {
-  white-space: nowrap;
-}
 
 /* ── CTA — 13px, weight 600, matches home hero CTA styling ─────────────── */
 .hero__cta--services {
@@ -2068,11 +2015,6 @@ hr {
     font-size: clamp(22px, 6.4vw, 32px);
   }
 
-  /* Tighten industry gap so all 4 fit on one row */
-  .hero--services .hero__industries {
-    gap: 0.25rem 0.75rem;
-  }
-
   .hero__desc--services {
     font-size: 14px;
   }
@@ -2087,10 +2029,6 @@ hr {
   .hero--services .hero__hl-line--services,
   .hero--services .hero__hl-accent--services {
     font-size: clamp(20px, 7vw, 28px);
-  }
-
-  .hero--services .hero__industries {
-    gap: 0.15rem 0.55rem;
   }
 }
 
@@ -2143,26 +2081,6 @@ hr {
   max-width: 540px;
 }
 
-/* ── Industry badges — same look as home/services hero ─────────────────── */
-.hero--webdesign .hero-badge {
-  font-size: 0.9375rem;
-  font-weight: 600;
-  gap: 0.35rem;
-  white-space: nowrap;
-}
-
-.hero--webdesign .hero-badge__icon {
-  color: #D5410B;
-}
-
-/* Industries row always on single row */
-.hero--webdesign .hero__industries {
-  flex-wrap: nowrap;
-}
-
-.hero--webdesign .hero__industries > [role="listitem"] {
-  flex-shrink: 0;
-}
 
 /* ── CTA — 13px, weight 600, matches home hero CTA styling ─────────────── */
 .hero__cta--webdesign {
@@ -2206,11 +2124,6 @@ hr {
     font-size: clamp(22px, 6.4vw, 32px);
   }
 
-  /* Tighten industry gap so all 4 fit on one row */
-  .hero--webdesign .hero__industries {
-    gap: 0.25rem 0.75rem;
-  }
-
   .hero__desc--webdesign {
     font-size: 14px;
   }
@@ -2224,10 +2137,6 @@ hr {
 @media (max-width: 400px) {
   .hero--webdesign .hero__hl-line--webdesign {
     font-size: clamp(20px, 7vw, 28px);
-  }
-
-  .hero--webdesign .hero__industries {
-    gap: 0.15rem 0.55rem;
   }
 }
 
@@ -2317,34 +2226,6 @@ hr {
   text-align: center;
 }
 
-/* ── Industry badges — 4 badges horizontal ───────────────────────────── */
-.hero--seo .hero__industries--seo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  gap: 0.375rem 1.25rem;
-  margin-top: 1.25rem;
-}
-
-.hero--seo .hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: #ffffff;
-  white-space: nowrap;
-}
-
-.hero--seo .hero-badge__icon {
-  color: #D5410B;
-  flex-shrink: 0;
-}
-
-.hero--seo .hero__industries--seo > [role="listitem"] {
-  flex-shrink: 0;
-}
 
 /* ── Social proof row ─────────────────────────────────────────────────── */
 .hero--seo .hero__proof--seo {
@@ -2408,10 +2289,6 @@ hr {
     font-size: clamp(20px, 6.2vw, 32px);
   }
 
-  .hero--seo .hero__industries--seo {
-    gap: 0.25rem 0.75rem;
-  }
-
   .hero__desc--seo {
     font-size: 14px;
   }
@@ -2427,9 +2304,6 @@ hr {
     font-size: clamp(18px, 6.8vw, 26px);
   }
 
-  .hero--seo .hero__industries--seo {
-    gap: 0.15rem 0.55rem;
-  }
 
   /* ── Trust bar — extra-compact so the sub text never wraps ── */
   .hero--seo .hero__proof--seo {
@@ -2520,34 +2394,6 @@ hr {
   text-align: center;
 }
 
-/* ── Industry badges — 4 badges horizontal ───────────────────────────── */
-.hero--ads .hero__industries--ads {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  gap: 0.375rem 1.25rem;
-  margin-top: 1.25rem;
-}
-
-.hero--ads .hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: #ffffff;
-  white-space: nowrap;
-}
-
-.hero--ads .hero-badge__icon {
-  color: #D5410B;
-  flex-shrink: 0;
-}
-
-.hero--ads .hero__industries--ads > [role="listitem"] {
-  flex-shrink: 0;
-}
 
 /* ── Social proof row ─────────────────────────────────────────────────── */
 .hero--ads .hero__proof--ads {
@@ -2639,10 +2485,6 @@ hr {
     font-size: clamp(20px, 6.2vw, 32px);
   }
 
-  .hero--ads .hero__industries--ads {
-    gap: 0.25rem 0.75rem;
-  }
-
   .hero__desc--ads {
     font-size: 14px;
   }
@@ -2658,9 +2500,6 @@ hr {
     font-size: clamp(18px, 6.8vw, 26px);
   }
 
-  .hero--ads .hero__industries--ads {
-    gap: 0.15rem 0.55rem;
-  }
 
   /* ── Trust bar — extra-compact so the sub text never wraps ── */
   .hero--ads .hero__proof--ads {
@@ -2751,34 +2590,6 @@ hr {
   text-align: center;
 }
 
-/* ── Industry badges — 4 badges horizontal ───────────────────────────── */
-.hero--portfolio .hero__industries--portfolio {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  gap: 0.375rem 1.25rem;
-  margin-top: 1.25rem;
-}
-
-.hero--portfolio .hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: #ffffff;
-  white-space: nowrap;
-}
-
-.hero--portfolio .hero-badge__icon {
-  color: #D5410B;
-  flex-shrink: 0;
-}
-
-.hero--portfolio .hero__industries--portfolio > [role="listitem"] {
-  flex-shrink: 0;
-}
 
 /* ── Social proof row ─────────────────────────────────────────────────── */
 .hero--portfolio .hero__proof--portfolio {
@@ -2859,10 +2670,6 @@ hr {
     font-size: clamp(20px, 6.2vw, 32px);
   }
 
-  .hero--portfolio .hero__industries--portfolio {
-    gap: 0.25rem 0.75rem;
-  }
-
   .hero__desc--portfolio {
     font-size: 14px;
   }
@@ -2878,9 +2685,6 @@ hr {
     font-size: clamp(18px, 6.8vw, 26px);
   }
 
-  .hero--portfolio .hero__industries--portfolio {
-    gap: 0.15rem 0.55rem;
-  }
 
   /* ── Trust bar — extra-compact so the sub text never wraps ── */
   .hero--portfolio .hero__proof--portfolio {
@@ -2978,34 +2782,6 @@ hr {
   text-align: center;
 }
 
-/* ── Industry badges — 4 badges horizontal ───────────────────────────── */
-.hero--contact .hero__industries--contact {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  gap: 0.375rem 1.25rem;
-  margin-top: 1.25rem;
-}
-
-.hero--contact .hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: #ffffff;
-  white-space: nowrap;
-}
-
-.hero--contact .hero-badge__icon {
-  color: #D5410B;
-  flex-shrink: 0;
-}
-
-.hero--contact .hero__industries--contact > [role="listitem"] {
-  flex-shrink: 0;
-}
 
 /* ── Social proof row ─────────────────────────────────────────────────── */
 .hero--contact .hero__proof--contact {
@@ -3087,10 +2863,6 @@ hr {
     font-size: clamp(20px, 6.2vw, 32px);
   }
 
-  .hero--contact .hero__industries--contact {
-    gap: 0.25rem 0.75rem;
-  }
-
   .hero__desc--contact {
     font-size: 14px;
   }
@@ -3106,9 +2878,6 @@ hr {
     font-size: clamp(18px, 6.8vw, 26px);
   }
 
-  .hero--contact .hero__industries--contact {
-    gap: 0.15rem 0.55rem;
-  }
 
   /* ── Trust bar — extra-compact so the sub text never wraps ── */
   .hero--contact .hero__proof--contact {

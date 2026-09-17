@@ -4,7 +4,7 @@ import laptop from '../../assets/laptop.png';
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
-const defaultIndustries = ['Roofing', 'HVAC', 'Plumbing', 'Solar', 'Landscaping', 'Remodeling'];
+const defaultIndustries = ['Roofing', 'HVAC', 'Plumbing', 'Landscaping'];
 
 const avatars = [
   { initials: 'JD', color: '#e67e22' },

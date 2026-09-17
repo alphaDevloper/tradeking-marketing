@@ -21,7 +21,7 @@ const servicesHeroData = {
   headlineAccent: "AMERICA'S TOP CONTRACTORS",
   description:
     "We help contractors build brands that look better, convert better, and dominate their local markets, whether you're established or just getting started.",
-  industries: ['Roofing', 'HVAC', 'Plumbing', 'Solar'],
+  industries: ['Roofing', 'HVAC', 'Plumbing', 'Landscaping'],
   ctaLabel: 'GET YOUR FREE CUSTOM DESIGN',
   ctaHref: '/contact',
 };

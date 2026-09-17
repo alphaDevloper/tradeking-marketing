@@ -19,7 +19,7 @@ const heroData = {
   eyebrow: 'WEBSITE DESIGN & DEVELOPMENT',
   description:
     'Custom built websites for roofing, HVAC, plumbing, and construction companies across the United States.',
-  industries: ['Roofing', 'HVAC', 'Plumbing', 'Solar'],
+  industries: ['Roofing', 'HVAC', 'Plumbing', 'Landscaping'],
   ctaLabel: 'GET YOUR FREE CUSTOM DESIGN',
   ctaHref: '/contact',
 };

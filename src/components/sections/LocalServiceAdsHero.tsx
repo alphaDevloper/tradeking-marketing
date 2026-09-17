@@ -16,7 +16,7 @@ import laptop from '../../assets/laptop.png';
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
-const industries = ['Roofing', 'HVAC', 'Plumbing', 'Solar'];
+const industries = ['Roofing', 'HVAC', 'Plumbing', 'Landscaping'];
 
 const avatars = [
   { initials: 'JD', color: '#e67e22' },
@@ -94,7 +94,7 @@ export default function LocalServiceAdsHero() {
           </p>
 
           {/* 4. Horizontal row of four industry tags */}
-          <div className="hero__industries hero__industries--ads" role="list" aria-label="Industries we serve">
+          <div className="hero__industries" role="list" aria-label="Industries we serve">
             {industries.map((ind) => (
               <div key={ind} role="listitem">
                 <IndustryBadge label={ind} />

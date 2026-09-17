@@ -24,7 +24,7 @@ const aboutHeroData = {
   headlineAccent: '#1 CHOICE',
   headlineLine2Tail: 'IN THEIR MARKET',
   description: 'More traffic. Better lead quality. Sell more roofs.',
-  industries: ['Roofing', 'HVAC', 'Plumbing', 'Solar'],
+  industries: ['Roofing', 'HVAC', 'Plumbing', 'Landscaping'],
   ctaLabel: 'GET YOUR FREE CUSTOM DESIGN',
   ctaHref: '/contact',
 };
