@@ -45,10 +45,10 @@ export const trackRecordHeading = {
 };
 
 export const aboutStats: AboutStat[] = [
-  { value: '200+', target: 200, suffix: '+', label: 'Contractor Brands Built', Icon: Trophy, delay: 320 },
-  { value: '50', target: 50, label: 'States Served', Icon: Building2, delay: 400 },
-  { value: '100%', target: 100, suffix: '%', decimals: 0, label: 'Custom Built', Icon: Percent, delay: 480 },
-  { value: '5.0', target: 5, suffix: '', decimals: 1, label: 'Average Client Rating', Icon: Star, iconInline: true, delay: 560 },
+  { value: '50+', target: 50, suffix: '+', label: 'Projects Delivered', Icon: Trophy, delay: 320 },
+  { value: '30+', target: 30, suffix: '+', label: 'Canadian Clients Served', Icon: Building2, delay: 400 },
+  { value: '5+', target: 5, suffix: '+', label: 'Years of Experience', Icon: Percent, delay: 480 },
+  { value: '100%', target: 100, suffix: '%', decimals: 0, label: 'Client Satisfaction Rate', Icon: Star, iconInline: false, delay: 560 },
 ];
 
 export interface ReasonRow {

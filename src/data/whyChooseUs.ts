@@ -35,7 +35,7 @@ export const whyChooseUs: WhyChooseUsData = {
     "Canadian business owners choose TradeKing because we understand their market, respect their reputation, and build brands that drive real results. Here's what sets us apart:",
   benefits: [
     {
-      title: 'CANADA-WIDE REACH',
+      title: 'DIRECT ACCESS TO THE FOUNDER',
       description:
         'We work with businesses in every province — from Toronto and Vancouver to Calgary, Montreal, Ottawa, and everywhere in between. Wherever your business operates in Canada, we deliver.',
       icon: MapPin,
@@ -53,7 +53,7 @@ export const whyChooseUs: WhyChooseUsData = {
       icon: TrendingUp,
     },
     {
-      title: 'FAST TURNAROUND',
+      title: 'TRANSPARENT PRICING, NO SURPRISES',
       description:
         'Most projects launch within 3–5 weeks. We move quickly without cutting corners, so your business starts generating results sooner.',
       icon: Zap,
