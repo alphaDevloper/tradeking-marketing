@@ -4,59 +4,20 @@
 // rounded card containing a two-column input grid plus a full-width field and
 // a glowing red CTA button. Submits via Web3Forms.
 
-import { useState, type FormEvent } from 'react';
-
-const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ?? '';
-
-type Status = 'idle' | 'submitting' | 'success' | 'error';
+import useContactForm from '../../hooks/useContactForm';
 
 export default function ContactForm() {
-  const [status, setStatus] = useState<Status>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
-
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (status === 'submitting') return;
-
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-
-    // Client-side required-field validation for the explicit required fields.
-    const required = ['Full Name', 'Company Name', 'Email Address', 'Phone Number'];
-    for (const field of required) {
-      if (!String(formData.get(field) ?? '').trim()) {
-        setStatus('error');
-        setErrorMessage('Please complete every required field before submitting.');
-        return;
-      }
-    }
-
-    setStatus('submitting');
-    setErrorMessage('');
-
-    formData.append('access_key', WEB3FORMS_ACCESS_KEY);
-    formData.append('subject', 'New Strategy Call Request — TradeKing Marketing');
-    formData.append('from_name', 'TradeKing Marketing Website');
-
-    try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData,
-      });
-      const data = (await response.json()) as { success?: boolean; message?: string };
-
-      if (data.success) {
-        setStatus('success');
-        form.reset();
-      } else {
-        setStatus('error');
-        setErrorMessage(data.message ?? 'Something went wrong. Please try again.');
-      }
-    } catch {
-      setStatus('error');
-      setErrorMessage('Network error. Please try again in a moment.');
-    }
-  }
+  const {
+    register,
+    submitHandler,
+    isSubmitting,
+    status,
+    message,
+  } = useContactForm({
+    subject: 'New Strategy Call Request — TradeKing Marketing',
+    fromName: 'TradeKing Marketing Website',
+    defaultSuccessMessage: "Thanks! We'll be in touch within 24 hours to book your free strategy call.",
+  });
 
   return (
     <section
@@ -78,8 +39,15 @@ export default function ContactForm() {
         </header>
 
         {/* ── White form card ────────────────────────────────────────────── */}
-        <form className="ctac__card" onSubmit={handleSubmit} noValidate>
-          <input type="hidden" name="botcheck" />
+        <form className="ctac__card" onSubmit={submitHandler} noValidate>
+          <input
+            type="checkbox"
+            className="hidden"
+            style={{ display: 'none' }}
+            tabIndex={-1}
+            autoComplete="off"
+            {...register('botcheck')}
+          />
 
           <div className="ctac__grid">
             {/* Row 1 */}
@@ -87,24 +55,22 @@ export default function ContactForm() {
               <label htmlFor="ctac-name" className="ctac__label">Full Name</label>
               <input
                 id="ctac-name"
-                name="Full Name"
                 type="text"
                 placeholder="John Smith"
                 className="ctac__input"
                 autoComplete="name"
-                required
+                {...register('Full Name', { required: 'Full name is required' })}
               />
             </div>
             <div className="ctac__field">
               <label htmlFor="ctac-company" className="ctac__label">Company Name</label>
               <input
                 id="ctac-company"
-                name="Company Name"
                 type="text"
                 placeholder="Smith Roofing Co."
                 className="ctac__input"
                 autoComplete="organization"
-                required
+                {...register('Company Name', { required: 'Company name is required' })}
               />
             </div>
 
@@ -113,24 +79,28 @@ export default function ContactForm() {
               <label htmlFor="ctac-phone" className="ctac__label">Phone Number</label>
               <input
                 id="ctac-phone"
-                name="Phone Number"
                 type="tel"
                 placeholder="(407) 555-0123"
                 className="ctac__input"
                 autoComplete="tel"
-                required
+                {...register('Phone Number', { required: 'Phone number is required' })}
               />
             </div>
             <div className="ctac__field">
               <label htmlFor="ctac-email" className="ctac__label">Email Address</label>
               <input
                 id="ctac-email"
-                name="Email Address"
                 type="email"
                 placeholder="you@company.com"
                 className="ctac__input"
                 autoComplete="email"
-                required
+                {...register('Email Address', {
+                  required: 'Email address is required',
+                  pattern: {
+                    value: /^\S+@\S+\.\S+$/,
+                    message: 'Please enter a valid email address',
+                  },
+                })}
               />
             </div>
 
@@ -139,21 +109,21 @@ export default function ContactForm() {
               <label htmlFor="ctac-website" className="ctac__label">Website URL</label>
               <input
                 id="ctac-website"
-                name="Website URL"
                 type="url"
                 placeholder="smithroofing.com"
                 className="ctac__input"
                 autoComplete="url"
+                {...register('Website URL')}
               />
             </div>
             <div className="ctac__field">
               <label htmlFor="ctac-jobs" className="ctac__label">How Many Jobs Do You Do A Week?</label>
               <input
                 id="ctac-jobs"
-                name="Jobs Per Week"
                 type="text"
                 placeholder="e.g. 5-10 jobs per week"
                 className="ctac__input"
+                {...register('Jobs Per Week')}
               />
             </div>
 
@@ -162,10 +132,10 @@ export default function ContactForm() {
               <label htmlFor="ctac-services" className="ctac__label">What Services Are You Currently Running?</label>
               <input
                 id="ctac-services"
-                name="Current Services"
                 type="text"
                 placeholder="SEO, Google Ads, social media, website, etc."
                 className="ctac__input"
+                {...register('Current Services')}
               />
             </div>
           </div>
@@ -174,20 +144,20 @@ export default function ContactForm() {
           <button
             type="submit"
             className="ctac__submit"
-            disabled={status === 'submitting'}
+            disabled={isSubmitting}
           >
-            {status === 'submitting' ? 'Submitting…' : 'GET MY FREE STRATEGY CALL'}
+            {isSubmitting ? 'Submitting…' : 'GET MY FREE STRATEGY CALL'}
           </button>
 
           {/* ── Feedback ───────────────────────────────────────────────── */}
           {status === 'success' && (
             <div className="ctac__feedback ctac__feedback--success" role="status">
-              Thanks! We'll be in touch within 24 hours to book your free strategy call.
+              {message || "Thanks! We'll be in touch within 24 hours to book your free strategy call."}
             </div>
           )}
           {status === 'error' && (
             <div className="ctac__feedback ctac__feedback--error" role="alert">
-              {errorMessage}
+              {message}
             </div>
           )}
         </form>

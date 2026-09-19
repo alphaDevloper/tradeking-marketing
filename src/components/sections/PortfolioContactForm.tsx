@@ -6,59 +6,20 @@
 //   • White form card with 2-column input grid, pill-shaped inputs, bold uppercase labels (11.52px, weight 700)
 //   • Full-width red CTA button "GET YOUR FREE CUSTOM DESIGN" (13px, weight 700) with red glow
 
-import { useState, type FormEvent } from 'react';
-
-const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ?? '';
-
-type Status = 'idle' | 'submitting' | 'success' | 'error';
+import useContactForm from '../../hooks/useContactForm';
 
 export default function PortfolioContactForm() {
-  const [status, setStatus] = useState<Status>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
-
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (status === 'submitting') return;
-
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-
-    // Client-side required-field validation
-    const required = ['Full Name', 'Company Name', 'Email Address', 'Phone Number'];
-    for (const field of required) {
-      if (!String(formData.get(field) ?? '').trim()) {
-        setStatus('error');
-        setErrorMessage('Please complete every required field before submitting.');
-        return;
-      }
-    }
-
-    setStatus('submitting');
-    setErrorMessage('');
-
-    formData.append('access_key', WEB3FORMS_ACCESS_KEY);
-    formData.append('subject', 'New Portfolio Custom Design Request — TradeKing Marketing');
-    formData.append('from_name', 'TradeKing Marketing Website');
-
-    try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData,
-      });
-      const data = (await response.json()) as { success?: boolean; message?: string };
-
-      if (data.success) {
-        setStatus('success');
-        form.reset();
-      } else {
-        setStatus('error');
-        setErrorMessage(data.message ?? 'Something went wrong. Please try again.');
-      }
-    } catch {
-      setStatus('error');
-      setErrorMessage('Network error. Please try again in a moment.');
-    }
-  }
+  const {
+    register,
+    submitHandler,
+    isSubmitting,
+    status,
+    message,
+  } = useContactForm({
+    subject: 'New Portfolio Custom Design Request — TradeKing Marketing',
+    fromName: 'TradeKing Marketing Website',
+    defaultSuccessMessage: "Thanks! We'll be in touch within 24 hours to book your free custom design call.",
+  });
 
   return (
     <section
@@ -83,8 +44,15 @@ export default function PortfolioContactForm() {
         </header>
 
         {/* ── White Form Card ────────────────────────────────────────────── */}
-        <form className="portfolio-contact__card" onSubmit={handleSubmit} noValidate>
-          <input type="hidden" name="botcheck" />
+        <form className="portfolio-contact__card" onSubmit={submitHandler} noValidate>
+          <input
+            type="checkbox"
+            className="hidden"
+            style={{ display: 'none' }}
+            tabIndex={-1}
+            autoComplete="off"
+            {...register('botcheck')}
+          />
 
           <div className="portfolio-contact__grid">
             {/* Row 1 */}
@@ -92,24 +60,22 @@ export default function PortfolioContactForm() {
               <label htmlFor="pcf-name" className="portfolio-contact__label">FULL NAME</label>
               <input
                 id="pcf-name"
-                name="Full Name"
                 type="text"
                 placeholder="John Smith"
                 className="portfolio-contact__input"
                 autoComplete="name"
-                required
+                {...register('Full Name', { required: 'Full name is required' })}
               />
             </div>
             <div className="portfolio-contact__field">
               <label htmlFor="pcf-company" className="portfolio-contact__label">COMPANY NAME</label>
               <input
                 id="pcf-company"
-                name="Company Name"
                 type="text"
                 placeholder="Smith Roofing Co."
                 className="portfolio-contact__input"
                 autoComplete="organization"
-                required
+                {...register('Company Name', { required: 'Company name is required' })}
               />
             </div>
 
@@ -118,24 +84,28 @@ export default function PortfolioContactForm() {
               <label htmlFor="pcf-phone" className="portfolio-contact__label">PHONE NUMBER</label>
               <input
                 id="pcf-phone"
-                name="Phone Number"
                 type="tel"
                 placeholder="(407) 555-0123"
                 className="portfolio-contact__input"
                 autoComplete="tel"
-                required
+                {...register('Phone Number', { required: 'Phone number is required' })}
               />
             </div>
             <div className="portfolio-contact__field">
               <label htmlFor="pcf-email" className="portfolio-contact__label">EMAIL ADDRESS</label>
               <input
                 id="pcf-email"
-                name="Email Address"
                 type="email"
                 placeholder="you@company.com"
                 className="portfolio-contact__input"
                 autoComplete="email"
-                required
+                {...register('Email Address', {
+                  required: 'Email address is required',
+                  pattern: {
+                    value: /^\S+@\S+\.\S+$/,
+                    message: 'Please enter a valid email address',
+                  },
+                })}
               />
             </div>
 
@@ -144,21 +114,21 @@ export default function PortfolioContactForm() {
               <label htmlFor="pcf-website" className="portfolio-contact__label">WEBSITE URL</label>
               <input
                 id="pcf-website"
-                name="Website URL"
                 type="url"
                 placeholder="smithroofing.com"
                 className="portfolio-contact__input"
                 autoComplete="url"
+                {...register('Website URL')}
               />
             </div>
             <div className="portfolio-contact__field">
               <label htmlFor="pcf-jobs" className="portfolio-contact__label">HOW MANY JOBS DO YOU DO A WEEK?</label>
               <input
                 id="pcf-jobs"
-                name="Jobs Per Week"
                 type="text"
                 placeholder="e.g. 5-10 jobs per week"
                 className="portfolio-contact__input"
+                {...register('Jobs Per Week')}
               />
             </div>
 
@@ -169,10 +139,10 @@ export default function PortfolioContactForm() {
               </label>
               <input
                 id="pcf-services"
-                name="Current Services"
                 type="text"
                 placeholder="SEO, Google Ads, social media, website, etc."
                 className="portfolio-contact__input"
+                {...register('Current Services')}
               />
             </div>
           </div>
@@ -182,20 +152,20 @@ export default function PortfolioContactForm() {
             type="submit"
             className="portfolio-contact__submit"
             id="portfolio-contact-submit"
-            disabled={status === 'submitting'}
+            disabled={isSubmitting}
           >
-            {status === 'submitting' ? 'SUBMITTING…' : 'GET YOUR FREE CUSTOM DESIGN'}
+            {isSubmitting ? 'SUBMITTING…' : 'GET YOUR FREE CUSTOM DESIGN'}
           </button>
 
           {/* ── Feedback Message ────────────────────────────────────────── */}
           {status === 'success' && (
             <div className="portfolio-contact__feedback portfolio-contact__feedback--success" role="status">
-              Thanks! We'll be in touch within 24 hours to book your free custom design call.
+              {message || "Thanks! We'll be in touch within 24 hours to book your free custom design call."}
             </div>
           )}
           {status === 'error' && (
             <div className="portfolio-contact__feedback portfolio-contact__feedback--error" role="alert">
-              {errorMessage}
+              {message}
             </div>
           )}
         </form>

@@ -18,60 +18,21 @@
 //       - Submit CTA: "GET MY FREE STRATEGY CALL" (13.44px / 700)
 //       - Centered disclaimer (12.16px / 400)
 
-import { useState, type FormEvent } from 'react';
 import { Mail, Phone, Calendar } from 'lucide-react';
-
-const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ?? '';
-
-type Status = 'idle' | 'submitting' | 'success' | 'error';
+import useContactForm from '../../hooks/useContactForm';
 
 export default function GetInTouch() {
-  const [status, setStatus] = useState<Status>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
-
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (status === 'submitting') return;
-
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-
-    // Client-side required field validation
-    const required = ['Full Name', 'Company Name', 'Email Address', 'Phone Number'];
-    for (const field of required) {
-      if (!String(formData.get(field) ?? '').trim()) {
-        setStatus('error');
-        setErrorMessage('Please complete all required fields (Name, Company, Email, Phone).');
-        return;
-      }
-    }
-
-    setStatus('submitting');
-    setErrorMessage('');
-
-    formData.append('access_key', WEB3FORMS_ACCESS_KEY);
-    formData.append('subject', 'New Contact Inquiry — TradeKing Marketing');
-    formData.append('from_name', 'TradeKing Marketing Website');
-
-    try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData,
-      });
-      const data = (await response.json()) as { success?: boolean; message?: string };
-
-      if (data.success) {
-        setStatus('success');
-        form.reset();
-      } else {
-        setStatus('error');
-        setErrorMessage(data.message ?? 'Something went wrong. Please try again.');
-      }
-    } catch {
-      setStatus('error');
-      setErrorMessage('Network error. Please try again in a moment.');
-    }
-  }
+  const {
+    register,
+    submitHandler,
+    isSubmitting,
+    status,
+    message,
+  } = useContactForm({
+    subject: 'New Contact Inquiry — TradeKing Marketing',
+    fromName: 'TradeKing Marketing Website',
+    defaultSuccessMessage: "Thank you! We've received your request and will reach out within 24 hours to schedule your strategy session.",
+  });
 
   return (
     <section className="get-in-touch" id="contact-section" aria-label="Get In Touch">
@@ -145,8 +106,15 @@ export default function GetInTouch() {
               START HERE. <span className="get-in-touch__form-heading-accent">IT'S FREE.</span>
             </h3>
 
-            <form onSubmit={handleSubmit} noValidate>
-              <input type="hidden" name="botcheck" />
+            <form onSubmit={submitHandler} noValidate>
+              <input
+                type="checkbox"
+                className="hidden"
+                style={{ display: 'none' }}
+                tabIndex={-1}
+                autoComplete="off"
+                {...register('botcheck')}
+              />
 
               <div className="get-in-touch__form-grid">
                 {/* Row 1 */}
@@ -156,12 +124,11 @@ export default function GetInTouch() {
                   </label>
                   <input
                     id="git-fullname"
-                    name="Full Name"
                     type="text"
                     placeholder="John Smith"
                     className="get-in-touch__input"
                     autoComplete="name"
-                    required
+                    {...register('Full Name', { required: 'Full name is required' })}
                   />
                 </div>
 
@@ -171,12 +138,11 @@ export default function GetInTouch() {
                   </label>
                   <input
                     id="git-company"
-                    name="Company Name"
                     type="text"
                     placeholder="Smith Roofing Co."
                     className="get-in-touch__input"
                     autoComplete="organization"
-                    required
+                    {...register('Company Name', { required: 'Company name is required' })}
                   />
                 </div>
 
@@ -187,12 +153,11 @@ export default function GetInTouch() {
                   </label>
                   <input
                     id="git-phone"
-                    name="Phone Number"
                     type="tel"
                     placeholder="(407) 000-0000"
                     className="get-in-touch__input"
                     autoComplete="tel"
-                    required
+                    {...register('Phone Number', { required: 'Phone number is required' })}
                   />
                 </div>
 
@@ -202,12 +167,17 @@ export default function GetInTouch() {
                   </label>
                   <input
                     id="git-email"
-                    name="Email Address"
                     type="email"
                     placeholder="you@company.com"
                     className="get-in-touch__input"
                     autoComplete="email"
-                    required
+                    {...register('Email Address', {
+                      required: 'Email address is required',
+                      pattern: {
+                        value: /^\S+@\S+\.\S+$/,
+                        message: 'Please enter a valid email address',
+                      },
+                    })}
                   />
                 </div>
 
@@ -218,11 +188,11 @@ export default function GetInTouch() {
                   </label>
                   <input
                     id="git-website"
-                    name="Website URL"
-                    type="text"
+                    type="url"
                     placeholder="smithroofing.com"
                     className="get-in-touch__input"
                     autoComplete="url"
+                    {...register('Website URL')}
                   />
                 </div>
 
@@ -232,10 +202,10 @@ export default function GetInTouch() {
                   </label>
                   <input
                     id="git-jobs"
-                    name="Jobs Per Week"
                     type="text"
                     placeholder="e.g. 3-5"
                     className="get-in-touch__input"
+                    {...register('Jobs Per Week')}
                   />
                 </div>
 
@@ -246,10 +216,10 @@ export default function GetInTouch() {
                   </label>
                   <input
                     id="git-services"
-                    name="Services Currently Running"
                     type="text"
                     placeholder="SEO, Ads, none yet..."
                     className="get-in-touch__input"
+                    {...register('Services Currently Running')}
                   />
                 </div>
 
@@ -260,10 +230,10 @@ export default function GetInTouch() {
                   </label>
                   <textarea
                     id="git-details"
-                    name="Project Details"
                     placeholder="Tell us about your goals..."
                     className="get-in-touch__textarea"
                     rows={4}
+                    {...register('Project Details')}
                   />
                 </div>
               </div>
@@ -273,20 +243,20 @@ export default function GetInTouch() {
                 type="submit"
                 className="get-in-touch__submit-btn"
                 id="contact-form-submit"
-                disabled={status === 'submitting'}
+                disabled={isSubmitting}
               >
-                {status === 'submitting' ? 'SUBMITTING…' : 'GET MY FREE STRATEGY CALL'}
+                {isSubmitting ? 'SUBMITTING…' : 'GET MY FREE STRATEGY CALL'}
               </button>
 
               {/* Status feedback */}
               {status === 'success' && (
                 <div className="get-in-touch__feedback get-in-touch__feedback--success" role="status">
-                  Thank you! We've received your request and will reach out within 24 hours to schedule your strategy session.
+                  {message || "Thank you! We've received your request and will reach out within 24 hours to schedule your strategy session."}
                 </div>
               )}
               {status === 'error' && (
                 <div className="get-in-touch__feedback get-in-touch__feedback--error" role="alert">
-                  {errorMessage}
+                  {message}
                 </div>
               )}
 
